@@ -1,6 +1,6 @@
 ---
 title: Java
-subtitle: programing language
+subtitle: programming language
 layout: "java"
 icon: fa-coffee
 order: 3

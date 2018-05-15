@@ -1,0 +1,82 @@
+---
+title: 함수형 프로그래밍
+author: 한주희
+layout: post
+icon: fa-angle-right
+categories: java
+permalink: functional1.html
+---
+
+<div class="font17 darkGray">
+  <header>
+    <h3><i>#함수형 프로그래밍이란 무엇인가?</i></h3>
+  </header>
+  <p>
+    간단히 말해서 '<u>함수를 이용하는 프로그래밍이다</u>' 라고 답변할 수 있다. <br><br>
+    그렇다면 여기서 '함수'란 무엇일까?<br><br>
+    바로 수학적인 함수를 말한다. <br>
+    <code>f(x) = y</code><br>
+    위와 같은 공식을 보면 우리는 x라는 인수를 전달 하였을때 y라는 결과가 '부작용 없이' 반환되는 것을
+    의심하지 않는다.
+    {% highlight java %}
+    z=ramdon();
+    y=z*z;
+    {% endhighlight %}
+    하지만 위와 같은 함수는 random이 호출 될때마다 결과가 달라질 수 있는, 즉 부작용을 발생시키는 함수다.<br>
+    즉, <code class="highlighter-rouge">함수형</code>이라는 말은 '<u>수학의 함수처럼 부작용이 없는</u>'을 의미한다.<br>
+  </p>
+  <p>
+    <img src="assets/images/fp01.png"><br>
+   * 결론: <code class="highlighter-rouge"><i>함수형프로그래밍</i></code>은 자료 처리를 수학적 함수의 계산으로 취급하고
+      상태와 가변 데이터를 멀리하는 프로그래밍 패러다임의 하나다.<br>
+      <i>명령형 프로그래밍</i>에서는 상태를 바꾸는 것을 강조하는 것과 달리, 함수형 프로그래밍은 함수의 응용을 강조한다. 대부분 람다 대수에
+      근간을 두고 있으며, 다수의 함수형 언어는 람다 연산을 발전시킨 것으로 볼 수 있다.<br>
+      참조 링크 : <a href="https://devhue.github.io/blog/functional-programming">
+        https://devhue.github.io/blog/functional-programming</a>
+    <li>
+      <code class="highlighter-rouge">함수형 프로그래밍</code>: 시스템의 다른 부분에 영향을 미치지 않는다면 내부적으로는 함수형이 아닌 기능도 사용<br>
+      (내부적으로는 부작용이 발생하지만 호출자가 이를 알아차리지 못하게 감춘다.)
+    </li>
+    <li>
+      <code class="highlighter-rouge">순수 함수형 프로그래밍</code>: 함수 그리고 if-then-else 등의 수학적 표현만 사용
+    </li>
+  </p>
+  <hr>
+  <header>
+    <h3><i>#선언형 프로그래밍</i></h3>
+    <p>프로그래밍 방식은 크게 '어떻게<sup>how</sup>'에 집중하는 프로그래밍 방식과 '무엇을'에 집중하는 방식이 있다.</p>
+  </header>
+    {% highlight java %}
+    //작업을 어떻게 수행할 것인지 집중하는 방식으로, '명령형 프로그래밍'이라고 부르기도 한다.
+    Transaction mostExpensive = transactions.get(0);
+    if(mostExpensive == null) {
+      throw new IllegalArgumentException("Empty list of transactions");
+    }
+    for(Transaction t: transactions.subList(1, transactions.size())) {
+      if(t.getValue() > mostExpensive.getValue()) {
+        mostExpensive = t;
+      }
+    }
+    {% endhighlight %}
+
+    {% highlight java %}
+    //질의문 자체로 문제를 어떻게 푸는지 명확하게 보여 줌으로서,
+    //문제 자체가 코드로 명확하게 드러난다는 특징이 있다.
+    Optional<Trasaction> mostExpensive =
+      transactions.stream()
+        .max(comparing(Trasaction:getValue))
+    {% endhighlight %}
+
+    <p>
+      함수형 프로그래밍은 선언형 프로그래밍을 따르는 대표적인 방식으로, 부작용이 없는 계산을 지향한다.
+      이 두가지 개념은 좀 더 쉽게 시스템을 구현하고 유지보수하는 데 도움을 준다.
+    </p>
+
+    <hr>
+    <h3><i>#요약</i></h3>
+    <ul>
+      <li>공유된 가변 자료를 줄이는 것은 장기적으로 프로그램을 유지보수하고 디버깅 하는데 도움이 된다.</li>
+      <li>함수형 프로그래밍은 부작용이 없는 메서드와 선언형 프로그래밍 방식을 지향한다.</li>
+      <li>함수형 메서드는 입력 인수와 출력 결과만을 갖는다.</li>
+    </ul>
+</div>
