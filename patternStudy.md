@@ -1,5 +1,5 @@
 ---
-title: 패턴
+title: Design Pattern
 subtitle: design Pattern
 layout: "pattern"
 icon: fa-building

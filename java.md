@@ -1,5 +1,5 @@
 ---
-title: java8
+title: Java
 subtitle: programing language
 layout: "java"
 icon: fa-coffee
