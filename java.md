@@ -1,8 +1,7 @@
 ---
 title: java8
 subtitle: programing language
-layout: "blog"
-icon: fa-book
+layout: "java"
+icon: fa-coffee
 order: 3
-folder: _articles_java
 ---

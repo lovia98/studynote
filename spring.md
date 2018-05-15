@@ -2,6 +2,6 @@
 title: spring
 subtitle: framework
 layout: "spring"
-icon: fa-book
+icon: fa-desktop
 order: 2
 ---
