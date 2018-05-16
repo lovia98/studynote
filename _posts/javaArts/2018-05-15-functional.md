@@ -1,5 +1,5 @@
 ---
-title: 함수형 프로그래밍 기법
+title: 함수형 프로그래밍 기법#1
 author: 한주희
 layout: post
 icon: fa-angle-right
@@ -44,7 +44,7 @@ permalink: functional2.html
     <br>함수의 전달인자 몇개를 미리 채움으로써 더 간단한 함수를 만드는 방법이다.
     <br>참고 링크 : <a href="https://www.linkedin.com/pulse/functional-programming-applying-currying-java-figueras" target="_blank">https://www.linkedin.com/pulse/functional-programming-applying-currying-java-figueras</a>
     <br>예제를 통해 알아보자.
-    {% highlight java %}
+{%highlight java %}
 //아래와 같이 섭씨를 화씨로 바꿔주는 함수가 있다.
 public int tempConverter(int x, int y, int z) {
   return x*y+z;
@@ -52,7 +52,7 @@ public int tempConverter(int x, int y, int z) {
 
 //--> 넘겨받는 인자중 x를 리턴해 주는 함수로 교체해본다면 어떨까?
 public IntUnaryOperator curryConverter(int y, int z) {
-    return (int x)->x*y+z;
+  return (int x)->x*y+z;
 }
 
 //수정한 함수 curry를 이용해서 섭씨를 화씨로
@@ -62,10 +62,10 @@ IntUnaryOperator convertB = curryConverter(2,6);
 
 int result a = convertA.applyAsInt(10); //10*3+5
 int result b = convertB.applyAsInt(10); //10*2+6;
-    {% endhighlight %}
+{% endhighlight %}
     <br>함수 curryConverter는 x, y, z를 넘기지 않고 y,z만을 넘겨 받고, 다시 x라는 값을 받아 연산하는 함수를 리턴한다.
     <br>하지만 원래 우리가 도달하고자 했던 x*y+z를 한번의 호출로 반환하는 함수는 아니다.
-    <br>이와 같이 여러 과정이 끝까지 완료 되지 않은 상태를 가리켜 '<code>함수가 부분적으로<sup>partially</sup>적용 되었다</code>'라고 말한다.
+    <br>이와 같이 여러 과정이 끝까지 완료 되지 않은 상태를 가리켜 <code>함수가 부분적으로<sup>partially</sup>적용 되었다</code>라고 말한다.
     <br>이런 방식으로 변환 로직을 재활용할 수 있으며 다양한 변환 요소로 다양한 함수를 만들 수 있다.
   </p>
 </div>
