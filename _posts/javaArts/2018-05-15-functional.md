@@ -44,7 +44,7 @@ permalink: functional2.html
     <br>함수의 전달인자 몇개를 미리 채움으로써 더 간단한 함수를 만드는 방법이다.
     <br>참고 링크 : <a href="https://www.linkedin.com/pulse/functional-programming-applying-currying-java-figueras" target="_blank">https://www.linkedin.com/pulse/functional-programming-applying-currying-java-figueras</a>
     <br>예제를 통해 알아보자.
-    {%highlight javascript %}
+    {%highlight java %}
 //아래와 같이 섭씨를 화씨로 바꿔주는 함수가 있다.
 public int tempConverter(int x, int y, int z) {
   return x*y+z;
@@ -65,4 +65,49 @@ int resultb = convertB.applyAsInt(10); //10*2+6;
     <br>이와 같이 여러 과정이 끝까지 완료 되지 않은 상태를 가리켜 <code>함수가 부분적으로<sup>partially</sup>적용 되었다</code>라고 말한다.
     <br>이런 방식으로 변환 로직을 재활용할 수 있으며 다양한 변환 요소로 다양한 함수를 만들 수 있다.
   </p>
+
+<hr>
+  <h3><i>#영속 자료구조</i></h3>
+  <ul>
+    <li>자료의 불변성(Immutable)을 유지 하는 것을 말한다.</li>
+    <li>오해하지 말하야 할것은 함수형 언어가 근본적인 문제를 해결해 주지는 않는다.</li>
+    <li>다만 코딩하는 사람에게 제약을 조금 더 주어 변경을 난발하게 못하게 할 뿐이다.</li>
+    <li>클로저에서 함수는 변경 불가능한 자료를 다루기 때문에 함수의 결과가 새로운 값을 리턴한다.</li>
+    <li>내부적으로는 공유 데이터를 사용하기 때문에 중복 데이터에 대한 성능 문제는 발생하지 않는다.</li>
+    참고 링크 : <a href="https://github.com/eunmin/clojure-study/wiki/%5B%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D-%ED%81%B4%EB%A1%9C%EC%A0%80%5D-5%EC%9E%A5-%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D" target="_blank">[프로그래밍 클로저] 5장 함수형 프로그래밍</a>
+  </ul>
+  예) 다음과 같은 linkedList가 있다.
+{%highlight java %}
+class TrainJourney {
+  public int price;
+  public TraiinJourney onward;
+  public TrainJourney(int p, TrainJourney t) {
+    price = p;
+    onward = t;
+  }
+}
+{% endhighlight %}
+      인자의 갱신이 일어나는 함수
+      {%highlight java %}
+public TrainJourney link(TrainJourney a, TrainJourney b) {
+    if (a == null) {
+        return b;
+    }
+    TrainJourney t = a;
+    while (t.onward != null) {
+      //반복적으로 인자 a의 값의 변형이 발생한다.
+        t = t.onward;
+    }
+    t.onward = b;
+    return a;
+}      
+      {% endhighlight %}
+
+			함수형
+      {%highlight java %}
+public TrainJourney append(TrainJourney a, TrainJourney b) {
+    //기존의 자료구조를 갱신하지 않도록 중단 단계의 계산결과를 새로운 자료구조로 반
+    return a == null ? b : new TrainJourney(a.price, append(a.onward, b));
+}     
+      {% endhighlight %}
 </div>
