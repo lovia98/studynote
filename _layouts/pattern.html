@@ -1,7 +1,8 @@
 ---
 layout: default
 ---
-{%- assign _posts = site.categories.pattern | sort: 'date' | reverse -%}
+
+{%- assign _posts = site.categories.patternArts | sort: 'date' -%}
 {%- include header.html scrolly_nav=_posts -%}
 <!-- Main -->
 <div id="main">
