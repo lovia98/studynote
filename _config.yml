@@ -38,6 +38,8 @@ author: Juhee
 email: lovia98@daum.net
 avatar: assets/images/07.jpg
 
+markdown : kramdown
+
 # You'll want to customize url and baseurl for your own site:
 baseurl: "/studynote" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site
