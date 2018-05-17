@@ -1,5 +1,5 @@
 ---
-title: 함수형 프로그래밍 기법#2
+title: 람다 표현식
 author: 한주희
 layout: post
 icon: fa-angle-right
@@ -9,6 +9,113 @@ permalink: functional3.html
 <div class="font17 darkGray">
   <hr>
   <header>
-    <h3><i>#게으른 평가(Lazy evaluation)</i></h3>
+    <h3><i>#람다의 특징</i></h3>
   </header>
+  <ul>
+    <li>익명 : 보통의 메서드와 달리 이름이 없으므로 익명이라 표현한다.</li>
+    <li>함수 : 메서드처럼 특정 클래스에 종속되지 않으므로 함수라 부른다.</li>
+    <li>전달 : 람다 표현식을 메서드 인수로 전달하거나 변수로 저장할 수 있다.</li>
+    <li>간결성 : 익명 클래스처럼 많은 자질구레한 코드를 구현할 필요가 없다.</li>
+  </ul>
+  <p>
+      람다<sup>lamda</sup>라는 용어는 람다 미적분학 학계에서 개발한 시스템에서 유래했다.
+      <br>람다 표현식은 아래와 같이 세 부분으로 이루어 진다.
+      <li>파라미터 리스트 : 메서드의 파라미터</li>
+      <li>화살표 : 화살표(->)는 람다의 파라미터 리스트와 바디를 구분한다.</li>
+      <li>람다의 바디 : 두 사과의 무게를 비교한다. 람다의 반환값에 해당하는 표현식이다.</li>
+{% highlight java %}
+() -> {}
+() -> 42
+() -> null
+() -> {return 42;}
+() -> { System.out.println("do something"); }
+() -> {
+  if (true) { return 12;}
+  else { return 11; }
+}
+(int x) -> x+1
+(x) -> x+1
+(Apple a) -> a.getWeight()
+{% endhighlight %}
+  </p>
+
+  <hr>
+  <header>
+    <h3><i>#함수형 인터페이스</i></h3>
+    <p>람다식은 함수형 인터페이스를 표현하기 위해서 사용된다.</p>
+  </header>
+  <li>java8에서 동작(함수)를 파라미터화 하기 위해서 클래스의 선언과 인스턴스화를 동시에 수행할 수 있도록 익명 클래스라는 기법을 사용하였다.</li>
+  <li>익명 클래스를 전달 할시 코드의 장황함을 해결하기 위해서 람다 표현식이 활용 된다.</li>
+  <li>이런 익명 클래스의 추상화된 인터페이스를 <code class="highlighter-rouge">함수형 인터페이스</code>라고 하며,&nbsp;
+      함수형 인터페이스는 하나의 추상 메서드를 가지고 있다.</li>
+  <p>
+      <code class="highlighter-rouge">@FunctionalInterface</code>&nbsp;:&nbsp;
+      java8에 도입된 어노테이션으로 함수형 인터페이스임을 가르키는 어노테이션이다. @FunctionalInterface로 인터페이서를 선언했지만
+      실제로 함수형 인터페이스가 아니면 컴파일러가 에러를 발생시킨다. 예를 들어 추상 메서드가 한 개 이상이라면 "Multiplenonoverriding abstract methods found in interface Foo(인터페이스 Foo에 오버라이드 하지 않은 여러 추상메서드가 있음)"같은 에러가 발생할 수 있다.
+  </p>
+
+  자바8 API에는 java.util.faction 패키지안에 여러유형의 함수형 인터페이스를 제공하고 있다.
+  <br>api문서 참고&nbsp;:&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html">Package java.util.function</a>
+  <br><br>
+  <h1>자바8의 대표적인 함수형 인터페이스</h1>
+  <div class="table-wrapper pdTop10">
+    <table>
+      <thead>
+          <tr>
+            <th>함수형 인터페이스</th>
+            <th>함수 디스크립터</th>
+            <th>기본형 특화</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>Predicate<T></td>
+              <td>T -> boolean</td>
+              <td>IntPredicate, LongPredicate, DoublePredicate</td>
+          </tr>
+          <tr>
+              <td>Consumer<T></td>
+              <td>T -> void</td>
+              <td>IntConsumer, LongConsumer, DoubleConsumer</td>
+          </tr>
+          <tr>
+              <td>Function<T, R></td>
+              <td>T -> R</td>
+              <td>IntFunction<R>, IntToDoubleFunction, IntToLongFunction,
+                LongToDoubleFunction, DoubleFunction<R>, LongToIntFunction,
+                ...</td>
+          </tr>
+          <tr>
+              <td>Supplier<T></td>
+              <td>() -> T</td>
+              <td>BooleanSupplier, IntSupplier, LongSupplier, DoubleSupplier</td>
+          </tr>
+          <tr>
+              <td>UnaryOperator<T></td>
+              <td>T -> T</td>
+              <td>IntUnaryOperator, LongUnaryOperator, DoubleUnaryOperator</td>
+          </tr>
+          <tr>
+              <td>BinaryOperator<T></td>
+              <td>(T, T) -> T</td>
+              <td>IntBinaryOperator, LongBinaryOperator, DoubleBinaryOperator</td>
+          </tr>
+          <tr>
+              <td>BiPredicate<L,R></td>
+              <td>(L, R) -> boolean</td>
+              <td></td>
+          </tr>
+          <tr>
+              <td>BiConsumer<T, U></td>
+              <td>(T, U) -> void </td>
+              <td>ObjIntConsumer<T>, ObjLongConsumer<T>, ObjDoubleConsumer<T></td>
+          </tr>
+          <tr>
+              <td>BiFunction<T, U, R></td>
+              <td>(T, U) -> R</td>
+              <td>ToIntBiFunction<T,U>, ToLongBiFunction<T, U>, ToDoubleBiFunction<T,U></td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

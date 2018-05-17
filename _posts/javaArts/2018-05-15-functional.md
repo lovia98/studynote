@@ -103,7 +103,7 @@ public TrainJourney link(TrainJourney a, TrainJourney b) {
 }      
       {% endhighlight %}
 
-			함수형
+			함수형 프로그래밍
       {%highlight java %}
 public TrainJourney append(TrainJourney a, TrainJourney b) {
     //기존의 자료구조를 갱신하지 않도록 중단 단계의 계산결과를 새로운 자료구조로 반
