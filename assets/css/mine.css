@@ -3,6 +3,10 @@
     background-color: #eee;
     font-weight:400;
 }
+.colorBlueLight {
+  color: #337ab7;
+  font-weight:340;
+}
 
 .font14 {font-size: 14px;}
 .font17 {font-size: 17px;}
