@@ -2,6 +2,6 @@
 title: Spring
 subtitle: framework
 layout: "spring"
-icon: fa-desktop
+icon: fa-leaf
 order: 2
 ---
