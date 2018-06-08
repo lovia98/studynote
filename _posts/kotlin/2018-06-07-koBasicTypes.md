@@ -62,7 +62,8 @@ JAVA와 아주 비슷하게 numbers를 다루는데 다른점은,
     public override fun toShort(): Short
     public override fun toInt(): Int
     public override fun toLong(): Long
-    public override fun toFloat(): Float
+    pub      
+     override fun toFloat(): Float
     public override fun toDouble(): Double
 </code></pre>
 
@@ -74,6 +75,11 @@ JAVA와 아주 비슷하게 numbers를 다루는데 다른점은,
 - <code>or(bits)</code> : bitwise or
 - <code>xor(bits)</code> : bitwise xor
 - <code>inv()</code> : bitwise inversion
+
+<bold class="font19">소수점숫자들의 비교</bold>
+- equality Check : <code>a == b</code>, <code>a != b</code>
+- 비교연산자들 : <code>a < b</code>, <code>a > b</code>, <code>a <= b</code>, <code>a >= b</code>
+- <code>범위설정 표현과 범위 체크</code> : <code>a..b</code>, <code>x in a..b</code>, <code>x !in a..b</code>
 
 - - -
 ## Characters
@@ -92,16 +98,62 @@ Char 변수는 single quotes(')로 표현한다: <code>'1'</code>
 <code>\"t"</code>, <code>\\</code>, <code>$</code>
 
 역시 명시적인 형변화를 통해 문자열을 Int형으로 변환 가능하다.
-<pre><code>
+<pre><code class="kotlin">
 val c:Char = 'A'
 val n:Int = c.toInt() - '0'.toInt() //Explicit conversions to numbers
 </code></pre>
 
 - - -
 ## Booleans
-
+true나 false 둘 중 하나의 값을 가지는 타입, java와 별반 다를게 없다.
 - - -
 ## Arrays
+* Arrays class로 존재한다.&nbsp;&nbsp;get, set 함수, size 프로퍼티를 가지고 있습니다.
+([refer링크](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html){:target="_blank"})
+* 배열을 생성하는 방법은 아래와 같습니다.
+<br>1) 표준 라이브러리 함수를 사용 - arrayOf(), arrayOfNulls(), emptyArray()
+<br>2) Array Contructor 사용 - controctor는 배열size와 초기화할 element를 만드는 람다식을 파라미터로 받는 형식.
+{% highlight kotlin%}
+val t:Array<Int> = arrayOf(1,2,3) // [1,2,3]
+val s: Array<Int?> = arrayOfNulls(3) //size: 3, null로 이루어진 array 생성
+
+//빈 Array선언
+val a: Array<String> = emptyArray();
+
+//size : 5, (i*i)값으로 이루어진 Array<String>생성 ["0", "1", "4", "9", "16"]
+val asc = Array(5, {i->(i*i).toString()})
+
+//Any타입으로 선언하면 여러 타입의 element을 가질수 있네요.
+val c:Array<Any> = arrayOf("1",2,3.3)
+{% endhighlight %}
+
+* 코틀린은 자바와 같은 자동 boxing 처리 없이 각 원시타입을 위한 특화된 클래스가 존재합니다.
+<br><code>ByteArray</code>, <code>ShortArray</code>, <code>IntArray</code> 등등..
+<br>일반 배열과 마찬가지로, 원시타입을 위한 배열을 생성하는 함수 또한 표준 라이브러리에 포함 되어 있습니다.
+{% highlight kotlin%}
+val intArr : IntArray = IntArray(1,2,3,4,5)
+{% endhighlight %}
+
+* 한가지 알아둘 점은 자바와 달리 코틀린에서 배열은 타입의 변환을 허용하지 않는다는 점입니다.(Arrays are invariant)
+즉 <code>Array< String ></code> 타입의 변수를 <code>Array< Any ></code>타입으로 배당할수 없습니다.
+&nbsp;예를 들어 java에서는 다음과 같은 코드가 허용 되지만,
+{% highlight kotlin%}
+Number[] numbers = new Number[1];
+Object[] objects = numbers;
+objects[0] = "hello";
+{% endhighlight %}
+다음과 같이 코틀린에서는 <code>Array< Int > ->Array< Any ></code>로의 할당이 불가능합니다.
+{% highlight kotlin%}
+fun copy(from: Array<Any>, to: Array<Any>) {
+    assert(from.size == to.size)
+    for(i in from.indices)
+        to[i] = from[i]
+}
+
+val ints: Array<Int> = arrayOf(1,2,3)
+    val any = Array<Any>(3){ "" }
+    copy(ints, any) //오류 발생
+{% endhighlight %}
 
 - - -
 ## Strings
