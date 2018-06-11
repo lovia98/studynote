@@ -44,6 +44,9 @@ markdown : kramdown
 baseurl: "/studynote" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site
 
+#Disqus
+discus_identifier: juhee-studyNote #add your discus identifier
+
 # Social settings
 facebook: lovia98
 github: lovia98
