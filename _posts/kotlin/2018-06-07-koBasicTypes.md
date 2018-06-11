@@ -157,3 +157,15 @@ val ints: Array<Int> = arrayOf(1,2,3)
 
 - - -
 ## Strings
+java와 같이 코틀린에서도 String은 불변객체입니다.(immutable)
+string의 각 요소는 characters로 이루어져 있으면 indexing operation을 통해 접근 가능합니다. : <code>s[i]</code>
+```
+for(c in str) {
+  println(c)
+}
+```
+<!-- *표준라이브러리 trimMargin()을 이용해서 공백을 지울수 있습니다.
+```
+val text = """
+|Tell me and I forget. |Teach me and I remember. |Involve me and I learn. |(Benjamin Franklin) """.trimMargin()
+``` -->
