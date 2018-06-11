@@ -3,6 +3,7 @@ title: 스프링 클라우드
 author: 한주희
 layout: post
 categories: spring
+comments: true
 ---
 
 Spring Cloud 홈페이지에 따르면, MSA와 같은 분산 시스템의 규모가 점차 커지면서 중간에 조정할
@@ -123,3 +124,26 @@ boot application을 배포하지 않은 상태에서 build를 하기 위해서�
 
 
 Spring Cloud는 배포없는 변경을 지원해 주기도 하지만 다른 기능도 여러개 있는 것으로 보이는데, 좀 더 공부가 필요할 것 같다.
+
+{% if page.comments %}
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://juhee-studynote.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endif %}
