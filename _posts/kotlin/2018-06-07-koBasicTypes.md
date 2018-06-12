@@ -1,5 +1,5 @@
 ---
-title: Basic Types
+title: 기본 타입
 author: 한주희
 layout: post
 icon: fa-angle-right
@@ -17,7 +17,7 @@ comments: true
 ## Numbers
 JAVA와 아주 비슷하게 numbers를 다루는데 다른점은,
 * 크기가 큰 타입으로의 암시적인 타입변환이 없다.(명시적으로 타입 변환을 해주어야 한다.)
-* 몇몇의 경우에 [literals(변수값)](https://ko.wikipedia.org/wiki/%EB%A6%AC%ED%84%B0%EB%9F%B4){:target="_blank"}이 미세하게 다른점이 있다.
+* 몇몇의 경우에 [literals(변수값)](https://ko.wikipedia.org/wiki/%EB%A6%AC%ED%84%B0%EB%9F%B4){:target="_blank"}할당시 약간 다른점이 있다.
 
 
 <span class="font14">숫자형 타입들</span>
@@ -40,7 +40,7 @@ JAVA와 아주 비슷하게 numbers를 다루는데 다른점은,
 </code></pre>
 
 
-* <bold class="colorBlueLight">명시적 타입 변환</bold> 코틀린에서는 크기가 작은 타입이 크기가 큰 타입으로 변환되지 않는다.
+* <bold class="colorBlueLight">명시적 타입 변환</bold> 코틀린에서는 크기가 작은 타입이 크기가 큰 타입으로 자동(암묵적인)변환되지 않는다.
 <br><span class="font15">(나와 같은 경우 공식문서의 예와는 다르게 print 결과가 나오기 전에 syntax오류 발생하였다.)</span>
 <pre><code>
     val a: Int? = 1
