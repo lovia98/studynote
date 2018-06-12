@@ -5,6 +5,7 @@ layout: post
 icon: fa-angle-right
 categories: kotlin
 permalink: kotlin-basicTypes.html
+comments: true
 ---
 이 글은 코틀린 공식 홈페이지를 보고 발번역한 내용입니다.
 <br/>[Kotlin Refrence 링크](https://kotlinlang.org/docs/reference/basic-types.html){:target="_blank"}
@@ -158,14 +159,61 @@ val ints: Array<Int> = arrayOf(1,2,3)
 - - -
 ## Strings
 java와 같이 코틀린에서도 String은 불변객체입니다.(immutable)
-string의 각 요소는 characters로 이루어져 있으면 indexing operation을 통해 접근 가능합니다. : <code>s[i]</code>
-```
+string의 각 요소는 characters로 이루어져 있으며 indexing operation을 통해 접근 가능합니다. : <code>s[i]</code>
+<pre><code>
 for(c in str) {
   println(c)
 }
-```
-<!-- *표준라이브러리 trimMargin()을 이용해서 공백을 지울수 있습니다.
-```
+</code></pre>
+코틀린에서 triple quote(` """ `)를 사용하면 개행문자(` \n `)를 쓰지 않고도 줄바꿈이나 공백등 어떤 문자든 자유롭게 표현 할 수 있습니다.
+<pre><code>
+var text = """
+  for (c in "foo")
+    print(c)
+"""
+</code></pre>
+또한 각줄의 시작을 구분하는 문자(default `|`)로 채운 후 `trimMargin()`을 이용하여 앞의 공백의 제거 할 수 있습니다.
+<pre><code>
 val text = """
-|Tell me and I forget. |Teach me and I remember. |Involve me and I learn. |(Benjamin Franklin) """.trimMargin()
-``` -->
+    |Tell me and I forget.
+    |Teach me and I remember.
+    |Involve me and I learn.
+    |(Benjamin Franklin)
+    """.trimMargin()
+</code></pre>
+공백 구분값으로 사용되는 문자 `|`는 default입니다. 다른 문자를 사용할 경우 함수에 해당 구분문자를 파라미터로 넘겨주어 사용 가능합니다.
+`trimmargin(">")`
+
+*문자열 템플릿*
+문자열 템플릿을 이용하여 문자내 일부 단어를 다른 값으로 치환할 수 있습니다.
+<pre><code>
+val i = 10
+println("i = $i") //prints "i = 10"
+
+val s = "abc"
+println("$s.length is ${s.length}") //prints "abc.length is 3"
+</code></pre>
+
+
+{% if page.comments %}
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://juhee-studynote.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+{% endif %}
