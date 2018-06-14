@@ -7,9 +7,10 @@ categories: kotlin
 permalink: kotlin-control.html
 comments: true
 ---
+---
+### *If Expression*
 
-### If Expression
-코틀린에서 if 조건절을 value를 리턴할수 있다.
+<br>코틀린에서는 if 조건절에서 value를 리턴할수 있다.
 <br>따라서 다음과 같은 삼항 조건 연산자가 존재하지 않는다. 예) (x=1)? "true" : "false"
 <pre><code>
   //전통적인 방식
@@ -34,7 +35,7 @@ comments: true
   }
 </code></pre>
 
- 위와 같이 if결과값을 변수에 할당해야 하는 경우(if절로 부터 리턴받아야 할 값이 있는 경우)라면 반드시 else절이
+ * 위와 같이 if결과값을 변수에 할당해야 하는 경우(if절로 부터 리턴받아야 할 값이 있는 경우)라면 반드시 else절이
  존재 해야 한다.
  <pre><code>
  //오류 발생 없음
@@ -51,7 +52,7 @@ comments: true
  </code></pre>
 
 ---
-### When Expression
+### *When Expression*<br><br>
  * C계열 언어의 switch문과 같음.
  * when문은 각각의 branches의 조건문이 만족할 때 까지 위에서 부터 순차적으로 인자를 비교함.
 <pre><code>
@@ -113,7 +114,7 @@ fun hasPrefix(x: Any) = when(x) {
 </code></pre>
 
 ---
-### For Loops
+### *For Loops*<br><br>
 * for문은 iterator를 제공하는 모든 것을 반복 할수 있다.
 <br>( - has a member- or extension-function iterator(), whose return type
 <br> - has a member- or extension-function next(), and
@@ -159,7 +160,7 @@ fun hasPrefix(x: Any) = when(x) {
   4
 </code></pre>
 ---
-### While Loops
+### *While Loops*<br><br>
 while문은 do..while과 유사하게 작동한다.
 <pre><code>
 while (x > 0) {
