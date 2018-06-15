@@ -147,7 +147,7 @@ fun hasPrefix(x: Any) = when(x) {
   0
 </code></pre>
 
-* index를 사용하고 싶다면 indices를 이용하면 된다.
+* index를 사용하고 싶다면 indices를 이용하면 된다.xz
 <pre><code>
   val array = arrayOf(1,2,3,4)
   for (i in array.indices) {
@@ -160,7 +160,7 @@ fun hasPrefix(x: Any) = when(x) {
   4
 </code></pre>
 ---
-### *While Loops*<br><br>
+### * While Loops*<br><br>
 while문은 do..while과 유사하게 작동한다.
 <pre><code>
 while (x > 0) {
