@@ -56,12 +56,40 @@ interface UserInfo {
 }
 
 ````
+---
+### 접근자(getter, setter)의 가시성(visibility) 변경
+<br>
+* 접근자의 가시성은 기본적으로 프로퍼티의 가시성과 같다.(프로퍼티가 public이면 getter, setter도 public)
+* 원한다면 접근자의 가시성을 변경 할수 있다.
 
+```Kotlin
+class LengthCounter {
+  var counter: Int = 0
+    private set
 
+  fun addWord(word: String) {
+    counter += word.length
+  }  
+}
+````
+```Kotlin
+>>> val len = LengthCounter()
 
+// private setter기 때문에 외부에서 직접 값을 바꿀 수 없다.
+>>> len = "test"    
 
-
-
+error: val cannot be reassigned
+len = "test"
+^
+error: type mismatch: inferred type is String but Line_40.LengthCounter was expected
+len = "test"
+      ^
+````
+```Kotlin
+>>> len.addWord("Hi")
+>>> println(len.counter)
+2
+````
 
 
 
