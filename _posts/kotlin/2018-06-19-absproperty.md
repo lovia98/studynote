@@ -4,7 +4,7 @@ author: 한주희
 layout: post
 icon: fa-angle-right
 categories: kotlin
-permalink: kotlin-property.html
+permalink: kotlin-property2.html
 comments: true
 ---
  코틀린에서는 인터페이스에 추상 프로퍼티 선언을 넣을 수 있다.
