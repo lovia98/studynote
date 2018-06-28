@@ -12,6 +12,22 @@
   color: #337ab7;
 }
 
+.fontHighlight {
+  color: #337ab7;
+  font-weight:500;
+  font-size: 20px;
+}
+
+.fontHighlight1 {
+  color: #337ab7;
+  font-weight:400;
+  font-size: 19px;
+}
+
+.fontHighlight2 {
+  color: #337ab7;
+}
+
 .font14 {font-size: 14px;}
 .font15 {font-size: 15px;}
 .font17 {font-size: 17px;}
