@@ -7,10 +7,13 @@ categories: kotlin
 permalink: kotlin-funtionalInterface.html
 comments: true
 ---
+
 ### 함수형 인터페이스
 <br>
 * java8에서 동작(함수)를 파라미터화 하기 위해서 클래스의 선언과 인스턴스화를 동시에 수행할 수 있도록 익명 클래스라는 기법을 사용하였다.
 * 익명 클래스를 전달 할 시 코드의 장황함을 해결하기 위해서 람다 표현식이 활용 된다.
+
+
 {% highlight Kotlin %}
 //자바의 Onclick인터페이스
 public interface OnClickListener {
@@ -41,6 +44,10 @@ button.setOnClickListener(new OnClickListener() {
 button.setOnClickListener(v->{ System.out.println("button view"); })
 
 {% endhighlight %}
+
+
+
+
 * 위와 같이 람다식을 인자로 넘기는 코드가 가능한 이유는 OnclickListener에 추상 메소드가 단 하나만 있기 때문이다.
 * 이렇게 하나의 추상 메소드를 가진 인터페이스를 <span class="highlighter-rouge">함수형 인터페이스(functional interface)</span> 또는 <span class="highlighter-rouge">SAM인터페이스-single abstract method</span>라고 한다.
 
@@ -57,12 +64,13 @@ public class FunctionalTest {
         }
 }
 
->>> val ft = FunctionalTest()
+> > > val ft = FunctionalTest()
 >>> println(ft.setFunctional(5,{i->i*i}))
 function Result : 25
 
 >>> println(ft.setFunctional(5){i->i*i})
 function Result : 25
+
 {% endhighlight %}
 
 <br>익명클래스 전달코드를 간소화 하기 위해 람다식을 이용하지만, <code>내부적으로 람다와 익명클래스 사이에는 차이</code>가 있다.
