@@ -2,7 +2,7 @@
 layout: default
 ---
 
-{%- assign _posts = site.categories.java | sort: 'date' -%}
+{%- assign _posts = site.categories.java | sort: 'date' | reverse -%}
 {%- include header.html scrolly_nav=_posts -%}
 <!-- Main -->
 <div id="main">
