@@ -3,6 +3,7 @@ title: 스프링 클라우드
 author: 한주희
 layout: post
 categories: spring
+permalink: spring-cloud.html
 comments: true
 ---
 
