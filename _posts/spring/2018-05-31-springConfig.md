@@ -18,7 +18,8 @@ comments: true
 <br><img src="/studynote/assets/images/spring/sp-clound-bus.jpg">
 
 본격적으로 설정을 위해
-[레퍼런스](http://cloud.spring.io/spring-cloud-bus/single/spring-cloud-bus.html#_quick_start){: target="_blank"}를 찾아가 보니, dependency에 <code>spring-cloud-starter-bus-amqp</code>나
+[레퍼런스](http://cloud.spring.io/spring-cloud-bus/single/spring-cloud-bus.html#_quick_start){: target="_blank"}을 방문 하였다.
+<br>dependency에 <code>spring-cloud-starter-bus-amqp</code>나
 <code>spring-cloud-starter-bus-kafka</code>둘 중 하나를 추가하라고 하는거 보니, Message Queque를
 이용해 /refresh를 전파하는 방식이라는 것을 알 수 있었다.
 <br>따라서 메세지를 저장할 서버가 별도로 필요하다.
