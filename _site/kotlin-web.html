@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<!--
+Prologue by HTML5 UP
+html5up.net | @ajlkn
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+Jekyll integration by Chris Bobbe | chrisbobbe.github.io
+-->
+<html><head><!-- Robots -->
+  <meta name="robots" content="index, follow" /><link rel="canonical" href="http://localhost:4000/studynote/kotlin-web.html" /><!-- Title, description, author --><title>코틀린 + 스프링부트 Restcontroller 만들기 | Juhee&#39;s Blog - 배우는 개발자</title>
+  <meta name="description" content="항상 겸손하게!" />
+  <meta name="author" content="Juhee" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="코틀린 + 스프링부트 Restcontroller 만들기 | Juhee&#39;s Blog - 배우는 개발자" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/studynote/assets/images/08.jpg" />
+  <meta property="og:url" content="http://localhost:4000/studynote/kotlin-web.html" />
+  <meta property="og:site_name" content="Juhee&#39;s Blog" />
+  <meta property="og:description" content="항상 겸손하게!" />
+
+  <!-- Styles -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--[if lte IE 8]><script src="/studynote/assets/js/ie/html5shiv.js" defer></script><![endif]-->
+  <link rel="stylesheet" href="/studynote/assets/css/main.css" />
+  <link rel="stylesheet" href="/studynote/assets/css/mine.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="/studynote/assets/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/studynote/assets/css/ie9.css" /><![endif]-->
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" defer></script>
+  <script src="/studynote/assets/js/jquery.scrolly.min.js" defer></script>
+  <script src="/studynote/assets/js/jquery.scrollzer.min.js" defer></script>
+  <script src="/studynote/assets/js/skel.min.js" defer></script>
+  <script src="/studynote/assets/js/util.js" defer></script>
+  <!--[if lte IE 8]><script src="/studynote/assets/js/ie/respond.min.js" defer></script><![endif]-->
+  <script src="/studynote/assets/js/main.js" defer></script>
+
+</head>
+<body><!-- Header -->
+<div id="header">
+  <div class="top"><!-- Logo -->
+<div id="logo">
+  <a href="http://localhost:4000/studynote/" id="home-link">
+    <span class="image avatar48"><img src="/studynote/assets/images/08.jpg" alt="Avatar of Juhee" /></span>
+    <h1 id="title">Juhee's Blog</h1>
+    <p>배우는 개발자</p>
+  </a>
+</div><!-- Nav -->
+<nav id="nav">
+  <ul><li><a href="http://localhost:4000/studynote/" id="home-link">
+            <span class="icon fa-home">Home</span>
+          </a></li><li><a href="http://localhost:4000/studynote/spring.html" id="spring-link">
+            <span class="icon fa-leaf">Spring</span>
+          </a></li><li><a href="http://localhost:4000/studynote/java.html" id="java-link">
+            <span class="icon fa-coffee">Java</span>
+          </a></li><li><a href="http://localhost:4000/studynote/kotlin.html" id="kotlin-link">
+            <span class="icon fa-desktop">Kotlin</span>
+          </a></li><li><a href="http://localhost:4000/studynote/etc.html" id="etc-link">
+            <span class="icon fa-leaf">etc</span>
+          </a></li><li><a href="http://localhost:4000/studynote/patternStudy.html" id="design-pattern-link">
+            <span class="icon fa-building">Design Pattern</span>
+          </a></li></ul>
+</nav></div>
+  <div class="bottom"><!-- Social Icons -->
+<ul class="icons"><li><a href="mailto:lovia98@daum.net" class="icon fa-envelope"><span class="label">Email</span></a></li></ul>
+</div>
+</div>
+<!-- Main -->
+<div id="main">
+	<!-- Post -->
+	<article class="shade-two font17 darkGray">
+	  <div class="container">
+			<header>
+				<h2>코틀린 + 스프링부트 Restcontroller 만들기</h2>
+				<p>한주희, 20 June 2018</p>
+			</header><p><a href="https://spring.io/guides/tutorials/spring-boot-kotlin/" target="_blank">참조 Ref. https://spring.io/guides/tutorials/spring-boot-kotlin/</a></p>
+
+<ol>
+  <li>
+    <p>File &gt; New &gt; Project &gt; Spring initializer 선택
+<img src="/studynote/assets/images/kotlin/spweb1.jpg" alt="spweb1" width="700" /><br /></p>
+  </li>
+  <li>
+    <p>language : kotlin
+<br />Type : Gradle Project<br />
+<img src="/studynote/assets/images/kotlin/spweb2.jpg" alt="spweb2" width="700" /><br /></p>
+  </li>
+  <li>
+    <p>Dependencies &gt; “Web”, “Mustache” 선택</p>
+  </li>
+  <li>
+    <p>build.gradle</p>
+  </li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-yml" data-lang="yml"><span class="s">buildscript {</span>
+    <span class="s">ext {</span>
+        <span class="s">kotlinVersion = '1.2.41'</span>
+        <span class="s">springBootVersion = '2.0.2.RELEASE'</span>
+    <span class="s">}</span>
+    <span class="s">repositories {</span>
+        <span class="s">mavenCentral()</span>
+    <span class="s">}</span>
+    <span class="s">dependencies {</span>
+        <span class="s">classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")</span>
+        <span class="s">classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")</span>
+        <span class="s">classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")</span>
+    <span class="s">}</span>
+<span class="err">}</span>
+
+<span class="na">apply plugin</span><span class="pi">:</span> <span class="s1">'</span><span class="s">kotlin'</span>
+<span class="na">apply plugin</span><span class="pi">:</span> <span class="s1">'</span><span class="s">kotlin-spring'</span>
+<span class="na">apply plugin</span><span class="pi">:</span> <span class="s1">'</span><span class="s">org.springframework.boot'</span>
+<span class="na">apply plugin</span><span class="pi">:</span> <span class="s1">'</span><span class="s">io.spring.dependency-management'</span>
+
+<span class="s">group = 'com.kotlin'</span>
+<span class="s">version = '0.0.1-SNAPSHOT'</span>
+<span class="s">sourceCompatibility = 1.8</span>
+<span class="s">compileKotlin {</span>
+    <span class="s">kotlinOptions {</span>
+        <span class="s">freeCompilerArgs = ["-Xjsr305=strict"]</span>
+        <span class="s">jvmTarget = "1.8"</span>
+    <span class="s">}</span>
+<span class="err">}</span>
+<span class="s">compileTestKotlin {</span>
+    <span class="s">kotlinOptions {</span>
+        <span class="s">freeCompilerArgs = ["-Xjsr305=strict"]</span>
+        <span class="s">jvmTarget = "1.8"</span>
+    <span class="s">}</span>
+<span class="err">}</span>
+
+<span class="s">repositories {</span>
+    <span class="s">mavenCentral()</span>
+<span class="err">}</span>
+
+
+<span class="s">dependencies {</span>
+    <span class="s">compile('org.springframework.boot:spring-boot-starter-web')</span>
+    <span class="s">compile('org.springframework.boot:spring-boot-starter-mustache')</span>
+    <span class="s">compile('com.fasterxml.jackson.module:jackson-module-kotlin')</span>
+    <span class="s">compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")</span>
+    <span class="s">compile("org.jetbrains.kotlin:kotlin-reflect")</span>
+    <span class="s">testCompile('org.springframework.boot:spring-boot-starter-test')</span>
+<span class="err">}</span></code></pre></figure>
+
+<ul>
+  <li>Restcontroller.kt생성</li>
+</ul>
+
+<pre><code class="language-Kotiln">@RestController
+class RestTestController {
+
+    @GetMapping("/test")
+    fun blog(model: Model) : String {
+
+        return "test"
+    }
+}
+</code></pre>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://juhee-studynote.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+	</article>
+</div>
+<!-- Footer -->
+<div id="footer">
+
+  <!-- Copyright -->
+  <ul class="copyright">
+    
+      <li>&copy;Juhee's Blog. All rights reserved.</li>
+    
+    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    <li>Jekyll integration: <a href="https://chrisbobbe.github.io/">Chris Bobbe</a></li>
+  </ul>
+
+</div>
+<script id="dsq-count-scr" src="//juhee-studynote.disqus.com/count.js" async></script>
+</body>
+</html>

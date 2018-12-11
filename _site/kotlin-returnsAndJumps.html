@@ -1,0 +1,226 @@
+<!DOCTYPE HTML>
+<!--
+Prologue by HTML5 UP
+html5up.net | @ajlkn
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+Jekyll integration by Chris Bobbe | chrisbobbe.github.io
+-->
+<html><head><!-- Robots -->
+  <meta name="robots" content="index, follow" /><link rel="canonical" href="http://localhost:4000/studynote/kotlin-returnsAndJumps.html" /><!-- Title, description, author --><title>Returns and Jumps | Juhee&#39;s Blog - 배우는 개발자</title>
+  <meta name="description" content="항상 겸손하게!" />
+  <meta name="author" content="Juhee" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Returns and Jumps | Juhee&#39;s Blog - 배우는 개발자" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/studynote/assets/images/08.jpg" />
+  <meta property="og:url" content="http://localhost:4000/studynote/kotlin-returnsAndJumps.html" />
+  <meta property="og:site_name" content="Juhee&#39;s Blog" />
+  <meta property="og:description" content="항상 겸손하게!" />
+
+  <!-- Styles -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--[if lte IE 8]><script src="/studynote/assets/js/ie/html5shiv.js" defer></script><![endif]-->
+  <link rel="stylesheet" href="/studynote/assets/css/main.css" />
+  <link rel="stylesheet" href="/studynote/assets/css/mine.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="/studynote/assets/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/studynote/assets/css/ie9.css" /><![endif]-->
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" defer></script>
+  <script src="/studynote/assets/js/jquery.scrolly.min.js" defer></script>
+  <script src="/studynote/assets/js/jquery.scrollzer.min.js" defer></script>
+  <script src="/studynote/assets/js/skel.min.js" defer></script>
+  <script src="/studynote/assets/js/util.js" defer></script>
+  <!--[if lte IE 8]><script src="/studynote/assets/js/ie/respond.min.js" defer></script><![endif]-->
+  <script src="/studynote/assets/js/main.js" defer></script>
+
+</head>
+<body><!-- Header -->
+<div id="header">
+  <div class="top"><!-- Logo -->
+<div id="logo">
+  <a href="http://localhost:4000/studynote/" id="home-link">
+    <span class="image avatar48"><img src="/studynote/assets/images/08.jpg" alt="Avatar of Juhee" /></span>
+    <h1 id="title">Juhee's Blog</h1>
+    <p>배우는 개발자</p>
+  </a>
+</div><!-- Nav -->
+<nav id="nav">
+  <ul><li><a href="http://localhost:4000/studynote/" id="home-link">
+            <span class="icon fa-home">Home</span>
+          </a></li><li><a href="http://localhost:4000/studynote/spring.html" id="spring-link">
+            <span class="icon fa-leaf">Spring</span>
+          </a></li><li><a href="http://localhost:4000/studynote/java.html" id="java-link">
+            <span class="icon fa-coffee">Java</span>
+          </a></li><li><a href="http://localhost:4000/studynote/kotlin.html" id="kotlin-link">
+            <span class="icon fa-desktop">Kotlin</span>
+          </a></li><li><a href="http://localhost:4000/studynote/etc.html" id="etc-link">
+            <span class="icon fa-leaf">etc</span>
+          </a></li><li><a href="http://localhost:4000/studynote/patternStudy.html" id="design-pattern-link">
+            <span class="icon fa-building">Design Pattern</span>
+          </a></li></ul>
+</nav></div>
+  <div class="bottom"><!-- Social Icons -->
+<ul class="icons"><li><a href="mailto:lovia98@daum.net" class="icon fa-envelope"><span class="label">Email</span></a></li></ul>
+</div>
+</div>
+<!-- Main -->
+<div id="main">
+	<!-- Post -->
+	<article class="shade-two font17 darkGray">
+	  <div class="container">
+			<header>
+				<h2>Returns and Jumps</h2>
+				<p>한주희, 13 June 2018</p>
+			</header><ul>
+  <li>코틀린은 3가지 jump expressions를 가지고 있다. - returns. break. continue.</li>
+</ul>
+
+<hr />
+<h3 id="lable로-break와-continue-하기">Lable로 Break와 Continue 하기</h3>
+
+<ul>
+  <li>코틀린에서는 어떤 식이던 <code>라벨</code>로 표시할수 있다.</li>
+  <li>라벨은 식별자 다음에 <code>@</code>를 붙여 사용한다. : <code class="highlighter-rouge">abc@</code>, <code class="highlighter-rouge">fooBar@</code></li>
+  <li>특정 조건절앞에 라벨을 붙이기만 하면 label expressions을 사용할 수 있다.</li>
+</ul>
+<pre><code>
+  myLabel@ for(i in 1..100) {
+      for(j in 1..100) {
+          println(j)
+          if(j == 3) break@myLabel
+      }
+  }
+
+  //*****
+  1
+  2
+  3
+</code></pre>
+
+<hr />
+<h3 id="lable로-return">Lable로 Return</h3>
+<p>코틀린에서는 아래와 같이 return 식별자 하나만 사용이 가능한데, 공식문서에 의하면 <a href="https://kotlinlang.org/docs/reference/exceptions.html#the-nothing-type" target="_blank">Nothing Type</a>을 넘기는거라고 한다.</p>
+<pre><code>
+  val s = person.name ?: return
+</code></pre>
+<p>이를 이용해서 loop를 빠져 나가는 용도로 쓸 수 있다.</p>
+<pre><code>
+fun foo() {
+  listOf(1, 2, 3, 4, 5).forEach {
+      if (it == 3) return // non-local return directly to the caller of foo()
+      println(it)
+  }
+  println("this point is unreachable")
+}
+
+&gt;&gt;&gt; foo()
+1
+2
+</code></pre>
+<p>주의할 점은 return-expression은 가장 가까운 함수를 return한다는 점이다.
+<br />위 코드의 경우 .forEach 람다식의 결과가 return되는 것이 아니라 함수 foo()의 리턴
+으로 인식하고 함수를 빠져 나가게 된다.</p>
+
+<ul>
+  <li>람다식 내에서만 return 하고 싶다면 label을 이용해야 한다.</li>
+</ul>
+<pre><code>
+fun fooLabel() {
+    listOf(1, 2, 3, 4, 5).forEach lit@{
+        if (it == 3) return@lit // local return to the caller of the lambda, i.e. the forEach loop
+        print(it)
+    }
+    print(" done with explicit label")
+}
+
+
+&gt;&gt;&gt; fooLabel()
+1
+2
+4
+5
+ done with explicit label
+</code></pre>
+
+<p>다음과 같이 앞단에 라벨을 선언하지 않고도 암시적인 Lable을 사용할 수도 있다.</p>
+<pre><code>
+fun foo() {
+    listOf(1, 2, 3, 4, 5).forEach {
+        if (it == 3) return@forEach // local return to the caller of the lambda, i.e. the forEach loop
+        println(it)
+    }
+    println(" done with implicit label")
+}
+
+&gt;&gt;&gt; foo()
+1
+2
+4
+5
+ done with implicit label
+</code></pre>
+
+<ul>
+  <li>Label왜에 익명함수를 이용하여 위와 똑같은 결과를 도출 할 수도 있다.</li>
+</ul>
+<pre><code>
+fun foo() {
+    listOf(1, 2, 3, 4, 5).forEach(fun(value: Int) {
+        if (value == 3) return  // local return to the caller of the anonymous fun, i.e. the forEach loop
+        println(value)
+    })
+    println(" done with anonymous function")
+}
+
+&gt;&gt;&gt; foo()
+1
+2
+4
+5
+ done with anonymous function
+</code></pre>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://juhee-studynote.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+	</article>
+</div>
+<!-- Footer -->
+<div id="footer">
+
+  <!-- Copyright -->
+  <ul class="copyright">
+    
+      <li>&copy;Juhee's Blog. All rights reserved.</li>
+    
+    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    <li>Jekyll integration: <a href="https://chrisbobbe.github.io/">Chris Bobbe</a></li>
+  </ul>
+
+</div>
+<script id="dsq-count-scr" src="//juhee-studynote.disqus.com/count.js" async></script>
+</body>
+</html>

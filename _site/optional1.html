@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<!--
+Prologue by HTML5 UP
+html5up.net | @ajlkn
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+Jekyll integration by Chris Bobbe | chrisbobbe.github.io
+-->
+<html><head><!-- Robots -->
+  <meta name="robots" content="index, follow" /><link rel="canonical" href="http://localhost:4000/studynote/optional1.html" /><!-- Title, description, author --><title>Optional | Juhee&#39;s Blog - 배우는 개발자</title>
+  <meta name="description" content="항상 겸손하게!" />
+  <meta name="author" content="Juhee" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Optional | Juhee&#39;s Blog - 배우는 개발자" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/studynote/assets/images/08.jpg" />
+  <meta property="og:url" content="http://localhost:4000/studynote/optional1.html" />
+  <meta property="og:site_name" content="Juhee&#39;s Blog" />
+  <meta property="og:description" content="항상 겸손하게!" />
+
+  <!-- Styles -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--[if lte IE 8]><script src="/studynote/assets/js/ie/html5shiv.js" defer></script><![endif]-->
+  <link rel="stylesheet" href="/studynote/assets/css/main.css" />
+  <link rel="stylesheet" href="/studynote/assets/css/mine.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="/studynote/assets/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/studynote/assets/css/ie9.css" /><![endif]-->
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" defer></script>
+  <script src="/studynote/assets/js/jquery.scrolly.min.js" defer></script>
+  <script src="/studynote/assets/js/jquery.scrollzer.min.js" defer></script>
+  <script src="/studynote/assets/js/skel.min.js" defer></script>
+  <script src="/studynote/assets/js/util.js" defer></script>
+  <!--[if lte IE 8]><script src="/studynote/assets/js/ie/respond.min.js" defer></script><![endif]-->
+  <script src="/studynote/assets/js/main.js" defer></script>
+
+</head>
+<body><!-- Header -->
+<div id="header">
+  <div class="top"><!-- Logo -->
+<div id="logo">
+  <a href="http://localhost:4000/studynote/" id="home-link">
+    <span class="image avatar48"><img src="/studynote/assets/images/08.jpg" alt="Avatar of Juhee" /></span>
+    <h1 id="title">Juhee's Blog</h1>
+    <p>배우는 개발자</p>
+  </a>
+</div><!-- Nav -->
+<nav id="nav">
+  <ul><li><a href="http://localhost:4000/studynote/" id="home-link">
+            <span class="icon fa-home">Home</span>
+          </a></li><li><a href="http://localhost:4000/studynote/spring.html" id="spring-link">
+            <span class="icon fa-leaf">Spring</span>
+          </a></li><li><a href="http://localhost:4000/studynote/java.html" id="java-link">
+            <span class="icon fa-coffee">Java</span>
+          </a></li><li><a href="http://localhost:4000/studynote/kotlin.html" id="kotlin-link">
+            <span class="icon fa-desktop">Kotlin</span>
+          </a></li><li><a href="http://localhost:4000/studynote/etc.html" id="etc-link">
+            <span class="icon fa-leaf">etc</span>
+          </a></li><li><a href="http://localhost:4000/studynote/patternStudy.html" id="design-pattern-link">
+            <span class="icon fa-building">Design Pattern</span>
+          </a></li></ul>
+</nav></div>
+  <div class="bottom"><!-- Social Icons -->
+<ul class="icons"><li><a href="mailto:lovia98@daum.net" class="icon fa-envelope"><span class="label">Email</span></a></li></ul>
+</div>
+</div>
+<!-- Main -->
+<div id="main">
+	<!-- Post -->
+	<article class="shade-two font17 darkGray">
+	  <div class="container">
+			<header>
+				<h2>Optional</h2>
+				<p>한주희, 13 July 2018</p>
+			</header><p><span class="fontHighlight">Optional 객체 만들기</span></p>
+
+<ul>
+  <li>
+    <p>빈 Optional
+<br /><code class="highlighter-rouge"> Optional&lt;Car&gt; optCar = Optional.empty() </code></p>
+  </li>
+  <li>
+    <p>Optional.of
+<br /> Optional에 null아닌 값만 포함하고자 할때는 Optional.of로 Optional객체를 만든다.
+<br /><code class="highlighter-rouge"> Optional&lt;Car&gt; optCar = Optional.of(car) </code></p>
+  </li>
+  <li>
+    <p>Optional.ofNullable
+<br /> null값을 저장할 수 있는 Optional을 만들때 사용한다.
+<br /><code class="highlighter-rouge"> Optional&lt;Car&gt; optCar = Optional.ofNullable(car) </code></p>
+  </li>
+</ul>
+
+<p><span class="fontHighlight">map와 flatMap을 이용한 Optional처리</span>
+<br />Optional에 map와 flatMap을 이용하여 객체정보를 추출시 null-safe한 코드를 만들 수 있다.</p>
+<pre><code class="language-JAVA">
+//Optional로 데이터 모델 정의
+public class Person {
+    private Optional&lt;Car&gt; car; //차가 null일수 있다는 것을 알 수 있음
+    public Optional&lt;Car&gt; getCar() { return car; }
+}
+
+public class Car {
+    private Optional&lt;Insurance&gt; insurance; //보험이 null일수 있다는 것을 알 수 있음
+    public Optional&lt;Insurance&gt; getInsurance() { return insurance; }
+}
+
+public class Insurance {
+    private String name;    //보험에는 반드시 name이 있어야 한다는 것을 알 수 있다.
+    public String getName() { return name; }
+}
+
+//Optional을 이용해 자동차보험 이름 얻기
+public String getCarInsuranceName(Optional&lt;Person&gt; person) {
+
+    return person.flatMap(Person::getCar)
+            .flatMap(Car::getInsurance)
+            .map(Insurance::getName)
+            .orElse("Unkown");
+}
+</code></pre>
+<p><a href="/studynote/optional.html" target="_blank">이전 글</a>에 만들었던 함수 getCarInsuranceNameNullCheck과
+비교해 보면 훨씬 가독성이 높으면서 null로 부터 안전한 코드가 만들어 졌다.</p>
+
+<p>getCarInsuranceName 을 보면 Person에서 Car정보를, Car에서 Insurance 정보를 가지고 올때는 flatMap을 사용하고
+<br />Insurance의 name 정보를 가져 올때는 map을 사용하였다.
+<br />이유는 Person의 car 멤버 변수가 Optional<Car>로 선언되어 있기 때문에 <code>.map(Person::getCar)</code>
+로 데이터를 추출할 경우 결과가 &lt;Optional&lt;Optional<Car>&gt; 형식으로 나타난다. Optional<Car>로 결과를 얻기 위해서는
+flatMap을 이용해야 한다.</Car></Car></Car></p>
+
+<p><span class="fontHighlight">디폴트 액션과 Option언랩<sup>unwrap</sup></span></p>
+<ul>
+  <li>
+    <p>get()
+<br />get은 래핑된 값이 있으면 해당 값을 반환하고 값이 없으면 NoSuchElementException을 발생시킨다.
+<br />따라서 Optional의 값을 읽는 가장 간단한 메서드이지만 가장 안전하지 않은 메서드로 null이 있을 수 있는 Optional값을
+읽을때는 사용하지 않는 것이 좋다.</p>
+  </li>
+  <li>
+    <p>orElse
+<br />orElse 메서드를 이용하면 Optional이 값을 포함하지 않을 때 디폴트값을 제공할 수 있다.<code>.orElse("Unknown")</code></p>
+  </li>
+  <li>
+    <p>orElseGet(orElseGet(Supplier&lt;? extends T&gt; other))
+<br />Optional에 값이 없을 때만 Supplier을 실행하여 디폴트값을 생성한다.</p>
+  </li>
+  <li>
+    <p>orElseThrow(Supplier&lt;? extends X&gt; exceptionSupplier)
+<br />Optional이 비어 있을때 예외를 발생시킬 예외의 종류를 선택 할 수 있다.</p>
+  </li>
+  <li>
+    <p>ifPresent(Consumer&lt;? super T&gt; consumer)
+<br />값이 존재할 때 인수로 넘겨준 동작을 실행할 수 있다. 값이 없으면 아무일도 일어나지 않는다.</p>
+  </li>
+</ul>
+
+<div id="disqus_thread"></div>
+<script>
+  /**
+  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+  /*
+  var disqus_config = function () {
+  this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+  */
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://juhee-studynote.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+	</article>
+</div>
+<!-- Footer -->
+<div id="footer">
+
+  <!-- Copyright -->
+  <ul class="copyright">
+    
+      <li>&copy;Juhee's Blog. All rights reserved.</li>
+    
+    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    <li>Jekyll integration: <a href="https://chrisbobbe.github.io/">Chris Bobbe</a></li>
+  </ul>
+
+</div>
+<script id="dsq-count-scr" src="//juhee-studynote.disqus.com/count.js" async></script>
+</body>
+</html>

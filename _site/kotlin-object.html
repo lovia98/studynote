@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+<!--
+Prologue by HTML5 UP
+html5up.net | @ajlkn
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+Jekyll integration by Chris Bobbe | chrisbobbe.github.io
+-->
+<html><head><!-- Robots -->
+  <meta name="robots" content="index, follow" /><link rel="canonical" href="http://localhost:4000/studynote/kotlin-object.html" /><!-- Title, description, author --><title>Object Expressions and Declarations | Juhee&#39;s Blog - 배우는 개발자</title>
+  <meta name="description" content="항상 겸손하게!" />
+  <meta name="author" content="Juhee" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Object Expressions and Declarations | Juhee&#39;s Blog - 배우는 개발자" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/studynote/assets/images/08.jpg" />
+  <meta property="og:url" content="http://localhost:4000/studynote/kotlin-object.html" />
+  <meta property="og:site_name" content="Juhee&#39;s Blog" />
+  <meta property="og:description" content="항상 겸손하게!" />
+
+  <!-- Styles -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--[if lte IE 8]><script src="/studynote/assets/js/ie/html5shiv.js" defer></script><![endif]-->
+  <link rel="stylesheet" href="/studynote/assets/css/main.css" />
+  <link rel="stylesheet" href="/studynote/assets/css/mine.css" />
+  <!--[if lte IE 8]><link rel="stylesheet" href="/studynote/assets/css/ie8.css" /><![endif]-->
+  <!--[if lte IE 9]><link rel="stylesheet" href="/studynote/assets/css/ie9.css" /><![endif]-->
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" defer></script>
+  <script src="/studynote/assets/js/jquery.scrolly.min.js" defer></script>
+  <script src="/studynote/assets/js/jquery.scrollzer.min.js" defer></script>
+  <script src="/studynote/assets/js/skel.min.js" defer></script>
+  <script src="/studynote/assets/js/util.js" defer></script>
+  <!--[if lte IE 8]><script src="/studynote/assets/js/ie/respond.min.js" defer></script><![endif]-->
+  <script src="/studynote/assets/js/main.js" defer></script>
+
+</head>
+<body><!-- Header -->
+<div id="header">
+  <div class="top"><!-- Logo -->
+<div id="logo">
+  <a href="http://localhost:4000/studynote/" id="home-link">
+    <span class="image avatar48"><img src="/studynote/assets/images/08.jpg" alt="Avatar of Juhee" /></span>
+    <h1 id="title">Juhee's Blog</h1>
+    <p>배우는 개발자</p>
+  </a>
+</div><!-- Nav -->
+<nav id="nav">
+  <ul><li><a href="http://localhost:4000/studynote/" id="home-link">
+            <span class="icon fa-home">Home</span>
+          </a></li><li><a href="http://localhost:4000/studynote/spring.html" id="spring-link">
+            <span class="icon fa-leaf">Spring</span>
+          </a></li><li><a href="http://localhost:4000/studynote/java.html" id="java-link">
+            <span class="icon fa-coffee">Java</span>
+          </a></li><li><a href="http://localhost:4000/studynote/kotlin.html" id="kotlin-link">
+            <span class="icon fa-desktop">Kotlin</span>
+          </a></li><li><a href="http://localhost:4000/studynote/etc.html" id="etc-link">
+            <span class="icon fa-leaf">etc</span>
+          </a></li><li><a href="http://localhost:4000/studynote/patternStudy.html" id="design-pattern-link">
+            <span class="icon fa-building">Design Pattern</span>
+          </a></li></ul>
+</nav></div>
+  <div class="bottom"><!-- Social Icons -->
+<ul class="icons"><li><a href="mailto:lovia98@daum.net" class="icon fa-envelope"><span class="label">Email</span></a></li></ul>
+</div>
+</div>
+<!-- Main -->
+<div id="main">
+	<!-- Post -->
+	<article class="shade-two font17 darkGray">
+	  <div class="container">
+			<header>
+				<h2>Object Expressions and Declarations</h2>
+				<p>한주희, 08 July 2018</p>
+			</header><p>다음은 코틀린 Ref문서중 <a href="https://kotlinlang.org/docs/reference/object-declarations.html" target="_blank">Object Expressions and Declarations</a>를 번역한 글이다.(의역 포함)</p>
+
+<p>때때로 우리는 클래스를 명시적으로 선언하지 않고 약간 수정만한 객체가 필요한 경우가 있다.
+JAVA는 이런 경우를 익명의 inner 클래스로 처리한다.</p>
+
+<p>Kotlin은 객체식(object expressions)과 객체 선언으로 이 개념을 약간 일반화한다.</p>
+
+<h2 id="object-expressions-object식">Object expressions (Object식)</h2>
+<p>어떤 타입(또는 타입들)로 부터 상속받은 익명클래스의 객체를 생성하기 위해 다음과 같이 작성한다 :</p>
+<pre><code class="language-Kotlin">window.addMouseListener(object : MouseAdapter() {
+    override fun mouseClicked(e: MouseEvent) {
+        // ...
+    }
+
+    override fun mouseEntered(e: MouseEvent) {
+        // ...
+    }
+})
+</code></pre>
+<p>상위타입이 생성자를 가지고 있다면, 적합한 생성자 파라미터가 전달되어야 한다.
+많은 상위타입들은 콜론 뒤에 쉼표로 구분 된 목록으로 지정 될 수 있다.</p>
+<pre><code class="language-Kotlin">open class A(x: Int) {
+    public open val y: Int = x
+}
+
+interface B {...}
+
+val ab: A = object : A(1), B {
+    override val y = 15
+}
+
+만약에 이렇다할 의미 있는 슈퍼타입 없이, 오로지 하나의 object가 필요하다면, 아래와 같이 간단한 방법으로 만들 수 있다.
+fun foo() {
+    val adHoc = object {
+        var x: Int = 0
+        var y: Int = 0
+    }
+    print(adHoc.x + adHoc.y)
+}
+</code></pre>
+
+<p><br />익명객체는 오로지 local안에서나 private선언으로만 타입으로서 사용될 수 있다.
+<br />익명객체를 public 함수의 리턴타입이나 프로퍼티의 타입으로 쓴다면,
+<br />그 함수나 프로퍼티의 실제 타입은 익명 클래스의 상위타입이 된다.
+<br />혹은 익명 객체에 어떤 상위 타입도 선언하지 않은 경우 Any타입으로 인식하게 된다.
+<br />익명 클래스 안에 추가된 멤버는 접근 할수 없다.</p>
+<pre><code class="language-Kotlin">class C {
+    // Private function, so the return type is the anonymous object type
+    private fun foo() = object {
+        val x: String = "x"
+    }
+
+    // Public function, so the return type is Any
+    fun publicFoo() = object {
+        val x: String = "x"
+    }
+
+    fun bar() {
+        val x1 = foo().x        // 실행가능
+        val x2 = publicFoo().x  // 'x'에 접근 안됨
+    }
+}
+</code></pre>
+<p>자바의 익명 inner class와 마찬가지로 oject expressions안의 코드들은 둘러싼 범위의 변수에 접근 할 수 있다.</p>
+
+<pre><code class="language-Kotlin">fun countClicks(window: JComponent) {
+    var clickCount = 0
+    var enterCount = 0
+
+    window.addMouseListener(object : MouseAdapter() {
+        override fun mouseClicked(e: MouseEvent) {
+            clickCount++
+        }
+
+        override fun mouseEntered(e: MouseEvent) {
+            enterCount++
+        }
+    })
+    // ...
+}
+</code></pre>
+
+<h2 id="object-declarations-object-선언">Object declarations (Object 선언)</h2>
+<p>싱글톤은 여러 경우에 유용 할 수 있으며 코틀린(Scala 이후)은 싱글톤을 선언하기 쉽다.</p>
+
+<pre><code class="language-Kotlin">object DataProviderManager {
+    fun registerDataProvider(provider: DataProvider) {
+        // ...
+    }
+
+    val allDataProviders: Collection&lt;DataProvider&gt;
+        get() = // ...
+}
+</code></pre>
+<p>이를 오브젝트 선언(object declarations)이라고하며 오브젝트 키워드 다음에 항상 이름이 있다.
+변수 선언과 마찬가지로 객체 선언은 표현식이 아니며 대입문(=)의 오른쪽 사이드에 올 수 없다.</p>
+
+<p>객체 선언의 초기화는 스레드로부터 안전하다.(thread-safe)</p>
+
+<p>객체를 참조하기 위해 이름을 직접 사용한다.</p>
+<pre><code class="language-Kotlin">DataProviderManager.registerDataProvider(...)
+</code></pre>
+
+<p>이러한 객체는 수퍼 유형을 가질 수 있습니다.</p>
+<pre><code class="language-Kotlin">object DefaultListener : MouseAdapter() {
+    override fun mouseClicked(e: MouseEvent) {
+        // ...
+    }
+
+    override fun mouseEntered(e: MouseEvent) {
+        // ...
+    }
+}
+</code></pre>
+<p>참고 : 객체 선언은 로컬일 수 없으며 (즉 함수 내에 직접 중첩 될 수 있지만-nested directly)
+다른 객체선언 또는 내부 클래스가 아닌 클래스(non-inner class)에 중첩 될 수 있습니다.</p>
+
+<h2 id="companion-objects동반자-개체">Companion Objects(동반자 개체)</h2>
+
+<p>클래스 내의 객체 선언은 companion 키워드로 표시 할 수 있다.</p>
+<pre><code class="language-Kotlin">class MyClass {
+    companion object Factory {
+        fun create(): MyClass = MyClass()
+    }
+}
+</code></pre>
+
+<p>클래스 이름을 한정자로 사용하여 companion object의 멤버를 호출 할 수 있다.</p>
+<pre><code class="language-Kotlin">val instance = MyClass.create()
+</code></pre>
+<p>companion object의 이름을 생략 할 수 있는데, 이 경우 Companion 식별자를 사용한다.</p>
+<pre><code class="language-Kotlin">class MyClass {
+    companion object {
+    }
+}
+
+val x = MyClass.Companion
+</code></pre>
+<p>companion객체의 멤버가 다른 언어의 정적 멤버처럼 보이더라도 런타임에는 여전히
+실제 객체의 인스턴스 멤버이며 예를 들어 인터페이스를 구현할 수 있다.</p>
+<pre><code class="language-Kotlin">interface Factory&lt;T&gt; {
+    fun create(): T
+}
+
+class MyClass {
+    companion object : Factory&lt;MyClass&gt; {
+        override fun create(): MyClass = MyClass()
+    }
+}
+</code></pre>
+<p>그러나 JVM에서 @JvmStatic 어노테이션을 사용하는 경우 companion객체의 멤버를 실제 정적 메서드 및 필드로 생성 할 수 있다. 자세한 내용은 Java 상호 운용성 섹션(<a href="https://kotlinlang.org/docs/reference/object-declarations.html" target="_blank">Java interoperability</a>)을 참조하십시오.</p>
+
+<h2 id="object-expressions과-declarations사이의-의미론적-차이">Object Expressions과 Declarations사이의 의미론적 차이</h2>
+<p>객체 표현과 객체 선언 사이에는 중요한 의미상의 차이가 있다.</p>
+
+<ul>
+  <li>객체 표현은 사용되는 곳에서 즉시 실행되고 초기화된다.</li>
+  <li>객체 선언은 처음 액세스 할 때 초기화됨으로 지연 초기화된다.</li>
+  <li>companion object는 Java static initializer와 의미상 일치하는 대응하는 클래스가 load(참조)되었을 때에 초기화된다. –&gt; (이해가 안가서 원문을 붙임 : a companion object is initialized when the corresponding class is loaded (resolved), matching the semantics of a Java static initializer.)</li>
+</ul>
+
+<div id="disqus_thread"></div>
+<script>
+  /**
+  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+  /*
+  var disqus_config = function () {
+  this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+  */
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://juhee-studynote.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+	</article>
+</div>
+<!-- Footer -->
+<div id="footer">
+
+  <!-- Copyright -->
+  <ul class="copyright">
+    
+      <li>&copy;Juhee's Blog. All rights reserved.</li>
+    
+    <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    <li>Jekyll integration: <a href="https://chrisbobbe.github.io/">Chris Bobbe</a></li>
+  </ul>
+
+</div>
+<script id="dsq-count-scr" src="//juhee-studynote.disqus.com/count.js" async></script>
+</body>
+</html>
