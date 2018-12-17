@@ -34,7 +34,12 @@
 .font19 {font-size: 19px;}
 .font21 {font-size: 21px;}
 
-.darkGray{color:#1E1B1B}
+.darkGray{color:#444}
+
+.myFontFamily{
+  font-family: "Malgun Gothic",sans-serif;
+  font-weight: 100;
+}
 
 bold {
   font-weight: 400;
