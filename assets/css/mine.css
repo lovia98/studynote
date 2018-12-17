@@ -36,6 +36,11 @@
 
 .darkGray{color:#1E1B1B}
 
+.myFontFamily{
+  font-family: "Malgun Gothic",sans-serif;
+  font-weight: 100;
+}
+
 bold {
   font-weight: 400;
 }
