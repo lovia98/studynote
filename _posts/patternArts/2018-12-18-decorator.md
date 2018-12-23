@@ -46,7 +46,7 @@ permalink: decorator.html
   2. 모카 객체로 장식한다.
   3. 휘핑 객체로 장식한다.
 
-그렇다면, 장식을 어떻게 디자인해야 할까?(변화에 닫혀있으면서..)  
+그렇다면, 장식을 어떻게 디자인해야 할까? (변화에 닫혀있으면서..)  
 이는 기본 객체인 <code>확장</code>을 통해 가능하다.  
 아래 클래스 다이어그램을 보면서 이해해 보자.  
  <img src="{{site.baseurl}}/assets/images/pattern/deco2.png" width="400">
@@ -163,3 +163,9 @@ permalink: decorator.html
    Espresso + steam milk $2.09
    dark roast + Mocha + Mocha $1.39
   ~~~
+  
+***결론***
+  * 데코레이터 패턴을 적용하면 객체에 추가 요소가 발생하여도 코드를 변경하지 않고 추가적인 요소(장식)을  
+  동적으로 더할 수 있다.  
+  * 데코레이터 패턴을 적용하면 서브 클래스를 만드는 경우에 비해 훨씬 유연하게 기능을 확장할 수 있다.(OCP)
+  
