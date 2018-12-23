@@ -99,4 +99,66 @@ permalink: decorator.html
       }
   }
 ~~~
+3. 장식 구상 클래스 선언
+~~~
+  public class Mocha extends CondimentDecorator {
 
+      Beverage beverage;
+
+      public Mocha(Beverage beverage) {
+          this.beverage = beverage;
+      }
+
+      @Override
+      public String getDescription() {
+          return beverage.getDescription() + " + Mocha";
+      }
+
+      @Override
+      public double cost() {
+          return .20 + beverage.cost();
+      }
+  }
+
+  public class SteamMilk extends CondimentDecorator {
+
+      Beverage beverage;
+
+      public SteamMilk(Beverage beverage) {
+          this.beverage = beverage;
+      }
+
+      @Override
+      public double cost() {
+          return .10 + beverage.cost();
+      }
+
+      @Override
+      public String getDescription() {
+          return beverage.getDescription() + " + steam milk";
+      }
+  }
+~~~
+4. 테스트
+~~~
+  //에스프레소
+  Beverage espresso = new Espresso();
+  espresso = new SteamMilk(espresso); //우유를 첨가하여 까페라떼가 되었음.
+
+  System.out.println(espresso.getDescription() + " $" + espresso.cost());
+
+  //다크로스트
+  Beverage darkRoast = new DarkRoast();
+  darkRoast = new Mocha(darkRoast);
+  darkRoast = new Mocha(darkRoast);
+  Beverage darkRoastMochaWhip = new WhipingCream(darkRoast);
+
+  //모카를 두번, 휘핑크림을 얻은 darkRoast
+  System.out.println(darkRoast.getDescription() + " $" + darkRoast.cost());
+~~~
+  
+  * 실행결과 : 각 첨가물의 가격이 본래 가격에 추가되었다.
+  ~~~
+   Espresso + steam milk $2.09
+   dark roast + Mocha + Mocha $1.39
+  ~~~
