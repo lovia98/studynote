@@ -39,14 +39,15 @@ permalink: decorator.html
  > OCP
    클래스는 확장에 대해서는 열려 있어야 하지만 코드 변경에 대해서는 닫혀 있어야 한다.
    
-데코레이터 패턴은 기본 객체에 추가 장식을 한다는 개념으로 아래와 같이 문제를 해결한다.
 
-**모카커피 주문**
+데코레이터 패턴은 기본 객체에 추가 장식을 한다는 개념으로 아래와 같이 문제를 해결한다.
+커피에 모카를 장식하는 과정을 그려보자.
   1. 커피 객체를 가져온다.
   2. 모카 객체로 장식한다.
   3. 휘핑 객체로 장식한다.
 
-위에서 언급한 "장식"은 기본 객체인 커피 객체를 <code>확장</code>을 통해 가능하다.  
+그렇다면, 장식을 어떻게 디자인해야 할까?(변화에 닫혀있으면서..)  
+이는 기본 객체인 <code>확장</code>을 통해 가능하다.  
 아래 클래스 다이어그램을 보면서 이해해 보자.  
  <img src="{{site.baseurl}}/assets/images/pattern/deco2.png" width="400">
 
@@ -55,8 +56,8 @@ permalink: decorator.html
 * Decorator : ConcreateComponent와 추가될 장식 사이에 접착제 역할을하는 인터페이스.  
 * Concrete Decorator : 그 동작을 추가하는 실제 데코레이터.  
 
-"커피 주문 음료"에 데코레이터 패턴을 적용하면 다음과 같다.
-1. **음료** (Component)객체와 **첨가물** (Decorator)객체 생성 
+**"커피 주문 음료"**에 데코레이터 패턴을 적용하면 다음과 같다.  
+1. **음료** (Component)객체와 **첨가물** (Decorator)객체 생성  
 ~~~
   public abstract class Beverage {
     String description = "no subject";
@@ -72,7 +73,7 @@ permalink: decorator.html
     public abstract String getDescription();
   }
 ~~~
-2. 실제로 장식이 추가될 대상자인 구상 클래스 선언
+2. 실제로 장식이 추가될 대상자인 **커피음료**(ConcreteComponent) 선언
 ~~~
   //에스프레소
   public class Espresso extends Beverage {
@@ -99,7 +100,7 @@ permalink: decorator.html
       }
   }
 ~~~
-3. 장식 구상 클래스 선언
+3. **첨가물**(ConcreteDecorator)클래스 선언
 ~~~
   public class Mocha extends CondimentDecorator {
 
