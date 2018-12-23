@@ -50,7 +50,9 @@ permalink: decorator.html
 아래 클래스 다이어그램을 보면서 이해해 보자.  
  <img src="{{site.baseurl}}/assets/images/pattern/deco2.png" width="400">
 
- 구성 요소 : 행동을 추가 할 인터페이스를 정의하는 클래스입니다.
-Concrete Component :: 인터페이스를 구현하고 더 많은 비헤이비어 / 데코레이터를 추가하려는 속성을 가진 실제 클래스입니다.
-Decorator : 구체적인 구성 요소와 동작 사이에 접착제 역할을하는 클래스입니다.
-Concrete Decorator : 그 동작을 추가하는 실제 데코레이터.
+* Component : 장식이 추가될 될 기본 객체  
+* ConcreteComponent : 인터페이스를 구현하고 더 많은 기능(장식)을 추가하려는 속성을 가진 실제 클래스.  
+* Decorator : ConcreateComponent와 추가될 장식 사이에 접착제 역할을하는 인터페이스.  
+* Concrete Decorator : 그 동작을 추가하는 실제 데코레이터.  
+
+위 
