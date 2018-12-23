@@ -62,7 +62,7 @@ permalink: decorator.html
     String description = "no subject";
 
     public String getDescription() {
-        return description;
+      return description;
     }
 
     public abstract double cost();
@@ -71,72 +71,72 @@ permalink: decorator.html
   public abstract class CondimentDecorator extends Beverage {
     public abstract String getDescription();
   }
-~~~
+~~~  
 2. 실제로 장식이 추가될 대상자인 **커피음료**(ConcreteComponent) 선언  
 ~~~
   //에스프레소
   public class Espresso extends Beverage {
 
-      public Espresso() {
-          description = "Espresso";
-      }
+    public Espresso() {
+        description = "Espresso";
+    }
 
-      @Override
-      public double cost() {
-          return 1.99;
-      }
+    @Override
+    public double cost() {
+        return 1.99;
+    }
   }
   //하우스블렌드
   public class HouseBlend extends Beverage {
 
-      public HouseBlend() {
-          description = "House Blend Coffee";
-      }
+    public HouseBlend() {
+        description = "House Blend Coffee";
+    }
 
-      @Override
-      public double cost() {
-          return .99;
-      }
+    @Override
+    public double cost() {
+        return .99;
+    }
   }
 ~~~
 3. **첨가물**(ConcreteDecorator)클래스 선언  
 ~~~
   public class Mocha extends CondimentDecorator {
 
-      Beverage beverage;
+    Beverage beverage;
 
-      public Mocha(Beverage beverage) {
-          this.beverage = beverage;
-      }
+    public Mocha(Beverage beverage) {
+        this.beverage = beverage;
+    }
 
-      @Override
-      public String getDescription() {
-          return beverage.getDescription() + " + Mocha";
-      }
+    @Override
+    public String getDescription() {
+        return beverage.getDescription() + " + Mocha";
+    }
 
-      @Override
-      public double cost() {
-          return .20 + beverage.cost();
-      }
+    @Override
+    public double cost() {
+        return .20 + beverage.cost();
+    }
   }
 
   public class SteamMilk extends CondimentDecorator {
 
-      Beverage beverage;
+    Beverage beverage;
 
-      public SteamMilk(Beverage beverage) {
-          this.beverage = beverage;
-      }
+    public SteamMilk(Beverage beverage) {
+        this.beverage = beverage;
+    }
 
-      @Override
-      public double cost() {
-          return .10 + beverage.cost();
-      }
+    @Override
+    public double cost() {
+        return .10 + beverage.cost();
+    }
 
-      @Override
-      public String getDescription() {
-          return beverage.getDescription() + " + steam milk";
-      }
+    @Override
+    public String getDescription() {
+        return beverage.getDescription() + " + steam milk";
+    }
   }
 ~~~
 4. 테스트  
