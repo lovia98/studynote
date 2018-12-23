@@ -56,7 +56,7 @@ permalink: decorator.html
 * **Concrete Decorator** : 그 동작을 추가하는 실제 데코레이터.  
 
 **"커피 주문 음료"**에 데코레이터 패턴을 적용하면 다음과 같다.  
-1. **음료** (Component)객체와 **첨가물** (Decorator)객체 생성    
+1. **음료** (Component)객체와 **첨가물** (Decorator)객체 생성   
 ~~~
   public abstract class Beverage {
     String description = "no subject";
