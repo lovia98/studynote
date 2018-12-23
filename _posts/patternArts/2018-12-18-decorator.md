@@ -48,6 +48,6 @@ permalink: decorator.html
 
 위에서 언급한 "장식"은 기본 객체인 커피 객체를 <code>확장</code>을 통해 가능하다.  
 아래 클래스 다이어그램을 보면서 이해해 보자.  
- ![deco]({{site.baseurl}}/assets/images/pattern/deco1.png)
+ ![deco]({{site.baseurl}}/assets/images/pattern/deco2.png)
 
  
