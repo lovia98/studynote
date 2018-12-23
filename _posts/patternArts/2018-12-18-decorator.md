@@ -55,4 +55,48 @@ permalink: decorator.html
 * Decorator : ConcreateComponent와 추가될 장식 사이에 접착제 역할을하는 인터페이스.  
 * Concrete Decorator : 그 동작을 추가하는 실제 데코레이터.  
 
-위 
+"커피 주문 음료"에 데코레이터 패턴을 적용하면 다음과 같다.
+1. **음료** (Component)객체와 **첨가물** (Decorator)객체 생성 
+~~~
+  public abstract class Beverage {
+    String description = "no subject";
+
+    public String getDescription() {
+        return description;
+    }
+
+    public abstract double cost();
+  }
+
+  public abstract class CondimentDecorator extends Beverage {
+    public abstract String getDescription();
+  }
+~~~
+2. 실제로 장식이 추가될 대상자인 구상 클래스 선언
+~~~
+  //에스프레소
+  public class Espresso extends Beverage {
+
+      public Espresso() {
+          description = "Espresso";
+      }
+
+      @Override
+      public double cost() {
+          return 1.99;
+      }
+  }
+  //하우스블렌드
+  public class HouseBlend extends Beverage {
+
+      public HouseBlend() {
+          description = "House Blend Coffee";
+      }
+
+      @Override
+      public double cost() {
+          return .99;
+      }
+  }
+~~~
+
