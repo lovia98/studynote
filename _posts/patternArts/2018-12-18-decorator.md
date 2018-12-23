@@ -12,12 +12,12 @@ permalink: decorator.html
   기능을 유연하게 확장할 수 있는 방법을 제공한다.
  
   음료 주문의 예
- ![deco]({{site.baseurl}}/assets/images/pattern/deco.png)
+ ![deco]({{site.baseurl}}/assets/images/pattern/deco.png){width="400"}
  
  위와 같이 커피의 종류가 4개가 있는데, 우유, 휘핑크림, 모카등이 첨가된 커피가 필요한
  경우 그때 마다 새로운 클래스를 만들어 낸다면 클래스 갯수가 너무 많아진다는 문제가 있다.  
  
- ![deco]({{site.baseurl}}/assets/images/pattern/deco1.png)
+ ![deco]({{site.baseurl}}/assets/images/pattern/deco1.png){width="400"}
 
  첨가물들을 추상클래스인 Beverage에 추가하는 것을 생각해 볼 수 있다.
 ~~~
@@ -48,6 +48,6 @@ permalink: decorator.html
 
 위에서 언급한 "장식"은 기본 객체인 커피 객체를 <code>확장</code>을 통해 가능하다.  
 아래 클래스 다이어그램을 보면서 이해해 보자.  
- ![deco]({{site.baseurl}}/assets/images/pattern/deco2.png)
+ ![deco]({{site.baseurl}}/assets/images/pattern/deco2.png){width="400"}
 
  
