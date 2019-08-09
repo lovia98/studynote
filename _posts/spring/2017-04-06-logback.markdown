@@ -1,0 +1,27 @@
+---
+layout: post
+title: "[spring]Log back 기억해 둘만한 것들"
+date: 2019-02-07
+description: 로그백 관련 정보 정리. # Add post description (optional)
+categories: spring
+img:  # Add image post (optional)
+---
+* logback-spring.xml 설정시 LOG-PATH, lOG-BACK 변수는 system property에 logging.path, logging.file 변수를 통해 정의가 가능하다.  
+
+  [docs.spring.io-83.logging](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-logging.html#howto-configure-logback-for-logging){: target="_blank"})  
+
+  즉, (jar로 서비스 하는 경우) --logging.path=xxxx --logging.file=xxx 으로 property값을 넘겨 주거나  
+  property파일에 설정해 주면 logback-spring.xml에서는 저 전달값을 LOG_PATH, LOG_FILE 값으로 셋팅된다.  
+  <img src="{{site.baseurl}}/assets/img/spring/logging.png">  
+
+* logback-spring.xml이 아래와 같이 설정되어 있다면,  
+  ~~~
+    <property name="LOG_PATH" value="${LOG_PATH:-${user.home}/logs}"/>
+    <property name="LOG_FILE" value="${LOG_FILE:-spring}"/>
+  ~~~  
+  LOG_PATH가 없으면, '${user.home}/logs' 를 로그 패스로, LOG_FILE이 없으면 'spring'으로 값을 설정 하겠다는 뜻이다.  
+
+* 절대경로 없이 폴더명만 설정 하면 project root에 폴더가 생성된다.  
+  ~~~
+   logging.path=logs //--> project root에 logs폴더가 생성됨.
+  ~~~
