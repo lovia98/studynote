@@ -1,12 +1,10 @@
 ---
 title: 기본 타입
-author: 한주희
 layout: post
-icon: fa-angle-right
+date: 2018-06-09
 categories: kotlin
-permalink: kotlin-basicTypes.html
-comments: true
 ---
+
 이 글은 코틀린 공식 홈페이지를 보고 발번역한 내용입니다.
 <br/>[Kotlin Refrence 링크](https://kotlinlang.org/docs/reference/basic-types.html){:target="_blank"}
 
@@ -21,7 +19,7 @@ JAVA와 아주 비슷하게 numbers를 다루는데 다른점은,
 
 
 <span class="font14">숫자형 타입들</span>
-<br>![typesOfNumbers]({{ site.baseurl }}/assets/images/kotlin/types_of_numbers.jpg)
+<br>![typesOfNumbers]({{ site.baseurl }}/assets/img/kotlin/types_of_numbers.jpg)
 
 숫자 리터럴안에 underline을 이용하여 좀더 알아보기 쉽게 표현할 수 있다.
 <pre><code class="kotlin">

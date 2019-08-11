@@ -2,8 +2,8 @@
 title: 스프링 클라우드(책 정리)
 author: 한주희
 layout: post
+date: 2018-05-30
 categories: spring
-comments: true
 ---
 
 이전에 스프링 클라우드 config를 활용한 rest서비스 구축 과정을 정리 하였는데,
@@ -34,7 +34,7 @@ comments: true
 * 환경설정 정보를 배포 패키지에서 분리해서 외부화하는 방법은 JNDI, PropertySource, 어플리케이션 실행시 argument(-D)
 이용등이 있지만, 대규모 시스템에서 유연함을 보장하지 못한다.
 
-<br><img src="/studynote/assets/images/spring/sp-clound.jpg">
+<br><img src="{{site.baseurl}}/assets/img/spring/sp-clound.jpg">
 * 위 그림에서 볼수 있는 것처럼 모든 마이크로서비스가 필요한 환경설정 파라미터를 읽기 위해 중앙에 있는 하나의 서버에 접근한다.
 * config서버는 환경설정 정보를 git이나 svn같은 버전관리 도구에 저장한다.
 git 저장소는 로컬에 둘 수도 있고 원격에 둘 수도 있다.
@@ -51,25 +51,3 @@ git 저장소는 로컬에 둘 수도 있고 원격에 둘 수도 있다.
   ㄴ label은 필수가 아닌 옵션 정보이며, 깃 브랜치 이름이 레이블로 사용된다.(default : master)
 
 
-  {% if page.comments %}
-  <div id="disqus_thread"></div>
-  <script>
-
-  /**
-  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-  /*
-  var disqus_config = function () {
-  this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-  this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-  };
-  */
-  (function() { // DON'T EDIT BELOW THIS LINE
-  var d = document, s = d.createElement('script');
-  s.src = 'https://juhee-studynote.disqus.com/embed.js';
-  s.setAttribute('data-timestamp', +new Date());
-  (d.head || d.body).appendChild(s);
-  })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  {% endif %}

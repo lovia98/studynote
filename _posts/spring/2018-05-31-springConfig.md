@@ -1,7 +1,7 @@
 ---
 title: 스프링 클라우드 버스
-author: 한주희
 layout: post
+date: 2018-05-31
 categories: spring
 comments: true
 ---
@@ -15,7 +15,7 @@ comments: true
 환경설정 정보를 최신화하려면 각 마이크로서비스의 /refresh 엔드포인트를 호출 해야 한다.
 <br>마이스크로 서비스가 한 두개가 아닌 경우 일일히 호출해주는 것도 만만한 일이 아닐 것이다.
 <br>스프링 클라우드 버스는 이런 문제를 해결해 주기 위한 서비스이다.
-<br><img src="/studynote/assets/images/spring/sp-clound-bus.jpg">
+<br><img src="{{site.baseurl}}/assets/img/spring/sp-clound-bus.jpg">
 
 본격적으로 설정을 위해
 [레퍼런스](http://cloud.spring.io/spring-cloud-bus/single/spring-cloud-bus.html#_quick_start){: target="_blank"}을 방문 하였다.
