@@ -1,11 +1,10 @@
-
 ---
 title: 버전에 따른 class 디자인
 author: 한주희
 layout: post
 icon: fa-angle-right
 categories: patternArts
-permalink: /pattern/versioning.html
+date: 2019-03-07
 ---
 
   어떤 회사 면접시에 받은 질문인데, api 버젼에 따른 메소드내 코드 변경을 어떻게 디자인 하는 것이 좋을까?는 질문을 받은 적이 있다.  

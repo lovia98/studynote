@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>위임 프로퍼티1 - juhee's 개발과 일상</title>
+
+  <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
+
+    <meta content="juhee's 개발과 일상" property="og:site_name">
+  
+    <meta content="위임 프로퍼티1" property="og:title">
+  
+  
+    <meta content="article" property="og:type">
+  
+  
+    <meta content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+" property="og:description">
+  
+  
+    <meta content="http://localhost:4000/delegatedProp.html" property="og:url">
+  
+  
+    <meta content="2018-07-10T00:00:00+09:00" property="article:published_time">
+    <meta content="http://localhost:4000/about/" property="article:author">
+  
+  
+    <meta content="http://localhost:4000/blog/assets/img/profile.jpg" property="og:image">
+  
+  
+    
+    <meta content="kotlin" property="article:section">
+    
+  
+  
+    
+  
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@">
+    <meta name="twitter:creator" content="@">
+  
+    <meta name="twitter:title" content="위임 프로퍼티1">
+  
+  
+    <meta name="twitter:url" content="http://localhost:4000/delegatedProp.html">
+  
+  
+    <meta name="twitter:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+  
+  
+    <meta name="twitter:image:src" content="http://localhost:4000/blog/assets/img/profile.jpg">
+  
+
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:image" content="">
+	<link rel="shortcut icon" href="/blog/assets/img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/blog/assets/img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/blog/assets/img/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/blog/assets/img/favicon/apple-touch-icon-144x144.png">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#263959">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#263959">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#263959">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="/blog/assets/fonts/font-awesome/css/font-awesome.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="/blog/assets/css/main.css">
+        
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <aside class="sidebar">
+  <header>
+    <div class="about">
+      <div class="cover-author-image">
+        <a href="/blog/"><img src="/blog/assets/img/profile.jpg" alt="Juhee Han"></a>
+      </div>
+      <div class="author-name">Juhee Han</div>
+      <p>일상과 개발</p>
+    </div>
+  </header> <!-- End Header -->
+  <footer>
+    <section class="contact">
+      <h3 class="contact-title">Contact me</h3>
+      <ul>
+        
+<!--          <li><a href="https://twitter.com/artemsheludko_" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>-->
+        
+        
+          <li><a href="https://facebook.com/https://www.facebook.com/juhee.han.9847" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        
+        
+          <li class="github"><a href="http://github.com/lovia98" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+          <li class="linkedin"><a href="https://in.linkedin.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+        
+        
+<!--          <li class="email"><a href="mailto:example.david@blog.com"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>-->
+        
+      </ul>
+    </section> <!-- End Section Contact -->
+    <div class="copyright">
+      <p>2019 &copy; Juhee Han</p>
+    </div>
+  </footer> <!-- End Footer -->
+</aside> <!-- End Sidebar -->
+<div class="content-box clearfix">
+  <article class="article-page">
+  <div class="page-content">
+    
+    
+    <div class="wrap-content">
+      <header class="header-page">
+        <h1 class="page-title">위임 프로퍼티1</h1>
+        <div class="page-date"><span>2018, Jul 10&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+      </header>
+      <p><a href="https://kotlinlang.org/docs/reference/delegated-properties.html#lazy" target="_blank">Ref번역 - 의역 살짝(https://kotlinlang.org/docs/reference/delegated-properties.html#lazy)</a></p>
+
+<p>위임 프로퍼티는 말그대로 위임 패턴을 적용한 프로퍼티이다.
+<br />우리는 보통 필요할 경우에 수동으로 accessor를 구현할 필요가 있는데 이 로직이 자주 쓰인다면 매번 구현할 것이 아니라 라이브러리에 넣고
+쓴다면 좋을 것이다.</p>
+
+<ul>
+  <li>Lazy 프로퍼티 : 첫 번째 acces시에만 값이 계산된다.</li>
+  <li>관찰 가능한 프로퍼티 : listeners들이 ㅍ로퍼티에 대한 변경 사항에 대한 알림을 받을수 있다.</li>
+  <li>각 프로퍼티에 대한 별도의 필드 대신 map에 각프로퍼티들을 저장한다.</li>
+</ul>
+
+<p>이러한 (및 기타) 사례를 다루기 위해 Kotlin은 위임 된 속성을 지원합니다.</p>
+<pre><code class="language-Kotlin">class Example {
+    var p: String by Delegate()
+}
+</code></pre>
+<p>구문은 다음과 같다.
+<br /><code class="highlighter-rouge"> val / var &lt;property name&gt; : &lt;Type&gt; by &lt;expression&gt;</code>
+<br /> getValue () 및 setValue () 메서드에 위임 될 프로퍼티에 해당하는 get () (및 set ())이 by delegate이므로
+<code class="highlighter-rouge">by by expression</code>이 대리자이다.</p>
+
+<p>프로퍼티 대리자는 인터페이스를 구현할 필요는 없지만 getValue () 함수 (및 vars의 경우 setValue () -)를 제공해야합니다. 예 :</p>
+
+<pre><code class="language-Kotlin">class Delegate {
+    operator fun getValue(thisRef: Any?, property: KProperty&lt;*&gt;): String {
+        return "$thisRef, thank you for delegating '${property.name}' to me!"
+    }
+
+    operator fun setValue(thisRef: Any?, property: KProperty&lt;*&gt;, value: String) {
+        println("$value has been assigned to '${property.name}' in $thisRef.")
+    }
+}
+</code></pre>
+
+<p>Delegate의 인스턴스에 delegate하는 <code>p</code>를 읽을 때 <code>Delegate</code>의 <code>getValue()</code>함수가 호출되므로
+첫 번째 매개 변수는 p에서 읽은 객체이고 두 번째 매개 변수는 p 자체에 대한 설명을 포함합니다 (예 : 이름을 가져 올 수 있습니다.) 예 :</p>
+<pre><code class="language-Kotlin">val e = Example()
+println(e.p)
+
+출력 결과 :
+com.kotlin.web.delegate.DelegateTest$Example@2752f6e2, thank you for delegating 'p' to me!
+</code></pre>
+<p>마찬가지로 p에 대입하면 setValue () 함수가 호출됩니다. 처음 두 매개 변수는 동일하고 세 번째 매개 변수는 할당 할 값을 보유합니다.</p>
+
+<pre><code class="language-Kotlin">e.p = "NEW"
+
+//노출 결과
+NEW has been assigned to 'p' in com.kotlin.web.delegate.DelegateTest$Example@2752f6e2.
+</code></pre>
+
+<p>Kotlin 1.1에서는 함수 또는 코드 블록 내에 위임 된 속성을 선언 할 수 있으므로 반드시 클래스의 멤버가 아니어야합니다. 아래에서 예제를 찾을 수 있습니다.</p>
+
+<h3 id="standard-delegates">Standard Delegates</h3>
+<p><br />Kotlin 표준 라이브러리는 몇 가지 유용한 대리인을위한 팩토리 메서드를 제공합니다.</p>
+
+<p>Lazy
+<br />lazy()는 lamby를 취하고 lazy <T>의 인스턴스를 반환하는 함수로, lazy 속성을 구현하는 위임자 역할을 할 수 있습니다. get ()의 첫 번째 호출은 lazy ()에 전달 된 lambda를 실행하고 결과를 기억합니다 이후에 get ()을 호출하면 단순히 기억 된 결과가 반환됩니다.</T></p>
+<pre><code class="language-Kotlin">val lazyValue: String by lazy {
+    println("computed!")
+    "Hello"
+}
+
+fun main(args: Array&lt;String&gt;) {
+    println(lazyValue)
+    println(lazyValue)
+}
+</code></pre>
+<p>This example prints:</p>
+
+<p>computed!
+Hello
+Hello</p>
+
+<p>기본적으로 게으른 속성의 평가는 동기화됩니다. 값은 하나의 스레드에서만 계산되며 모든 스레드는 동일한 값을 볼 수 있습니다. 초기화 대리자의 동기화가 필요하지 않아 여러 스레드가 동시에 실행할 수 있도록 LazyThreadSafetyMode.PUBLICATION을 매개 변수로 lazy () 함수에 전달합니다. 초기화가 항상 단일 스레드에서 발생한다고 확신하는 경우 스레드 안전성 보장 및 관련 오버 헤드가 발생하지 않는 LazyThreadSafetyMode.NONE 모드를 사용할 수 있습니다.</p>
+
+<p>Observable
+<br />Delegates.observable ()은 초기 값과 수정을위한 핸들러라는 두 개의 인수를 취합니다. 처리기는 속성에 할당 할 때마다 (할당이 수행 된 후에) 호출됩니다. 세 개의 매개 변수가 있습니다 : 속성이 할당되고 이전 값과 새 값이 지정됩니다.</p>
+<pre><code class="language-Kotlin">import kotlin.properties.Delegates
+
+class User {
+    var name: String by Delegates.observable("&lt;no name&gt;") {
+        prop, old, new -&gt;
+        println("$old -&gt; $new")
+    }
+}
+
+fun main(args: Array&lt;String&gt;) {
+    val user = User()
+    user.name = "first"
+    user.name = "second"
+}
+</code></pre>
+<p>This example prints:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;no name&gt; -&gt; first
+first -&gt; second
+</code></pre></div></div>
+
+<p>할당을 가로 채서 “거부”하려면 observable () 대신 vetoable ()을 사용하십시오. 거부권에 전달 된 핸들러는 새로운 속성 값의 할당이 수행되기 전에 호출됩니다.</p>
+
+<p>Storing Properties in a Map
+<br />하나의 일반적인 사용 사례는 속성 값을지도에 저장하는 경우입니다. 이것은 JSON을 파싱하거나 다른 “동적 인”일을하는 것과 같은 애플리케이션에서 자주 발생합니다. 이 경우 위임 된 속성의 위임자로지도 인스턴스 자체를 사용할 수 있습니다.</p>
+
+<pre><code class="language-Kotlin">class User(val map: Map&lt;String, Any?&gt;) {
+    val name: String by map
+    val age: Int     by map
+}
+</code></pre>
+
+<p>In this example, the constructor takes a map:</p>
+<pre><code class="language-Kotlin">val user = User(mapOf(
+    "name" to "John Doe",
+    "age"  to 25
+))
+</code></pre>
+<p>위임 된 속성은 이 맵에서 값을 가져옵니다 (문자열 키 - 속성 이름).</p>
+<pre><code class="language-Kotlin">println(user.name) // Prints "John Doe"
+println(user.age)  // Prints 25
+</code></pre>
+
+<p>읽기 전용 Map 대신 MutableMap을 사용하면 var의 속성에도 적용됩니다.</p>
+<pre><code class="language-Kotlin">class MutableUser(val map: MutableMap&lt;String, Any?&gt;) {
+    var name: String by map
+    var age: Int     by map
+}
+</code></pre>
+
+<p>Local Delegated Properties (since 1.1)</p>
+
+<p>You can declare local variables as delegated properties. For instance, you can make a local variable lazy:</p>
+<pre><code class="language-Kotlin">fun example(computeFoo: () -&gt; Foo) {
+    val memoizedFoo by lazy(computeFoo)
+
+    if (someCondition &amp;&amp; memoizedFoo.isValid()) {
+        memoizedFoo.doSomething()
+    }
+}
+</code></pre>
+<p>The memoizedFoo variable will be computed on the first access only. If someCondition fails, the variable won’t be computed at all.</p>
+
+<div id="disqus_thread"></div>
+<script>
+  /**
+  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+  /*
+  var disqus_config = function () {
+  this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+  */
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://juhee-studynote.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+      <div class="page-footer">
+        <div class="page-share">
+          <a href="https://twitter.com/intent/tweet?text=위임 프로퍼티1&url=http://localhost:4000/delegatedProp.html" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u=http://localhost:4000/delegatedProp.html" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+          <a href="https://plus.google.com/share?url=http://localhost:4000/delegatedProp.html" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+        </div>
+        <div class="page-tag">
+          
+        </div>
+      </div>
+      <section class="comment-area">
+  <div class="comment-wrapper">
+    
+    <div id="disqus_thread" class="article-comments"></div>
+    <script>
+      (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//mr-brown.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+  </div>
+</section> <!-- End Comment Area -->
+
+    </div> <!-- End Wrap Content -->
+  </div> <!-- End Page Content -->
+</article> <!-- End Article Page -->
+
+</div>
+
+  </div>
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script> <!-- End Analytics -->
+
+</body>
+</html>

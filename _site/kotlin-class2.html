@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>클래스와 오브젝트#1 - juhee's 개발과 일상</title>
+
+  <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
+
+    <meta content="juhee's 개발과 일상" property="og:site_name">
+  
+    <meta content="클래스와 오브젝트#1" property="og:title">
+  
+  
+    <meta content="article" property="og:type">
+  
+  
+    <meta content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+" property="og:description">
+  
+  
+    <meta content="http://localhost:4000/kotlin-class2.html" property="og:url">
+  
+  
+    <meta content="2018-06-15T00:00:00+09:00" property="article:published_time">
+    <meta content="http://localhost:4000/about/" property="article:author">
+  
+  
+    <meta content="http://localhost:4000/blog/assets/img/profile.jpg" property="og:image">
+  
+  
+    
+    <meta content="kotlin" property="article:section">
+    
+  
+  
+    
+  
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@">
+    <meta name="twitter:creator" content="@">
+  
+    <meta name="twitter:title" content="클래스와 오브젝트#1">
+  
+  
+    <meta name="twitter:url" content="http://localhost:4000/kotlin-class2.html">
+  
+  
+    <meta name="twitter:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+  
+  
+    <meta name="twitter:image:src" content="http://localhost:4000/blog/assets/img/profile.jpg">
+  
+
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:image" content="">
+	<link rel="shortcut icon" href="/blog/assets/img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/blog/assets/img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/blog/assets/img/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/blog/assets/img/favicon/apple-touch-icon-144x144.png">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#263959">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#263959">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#263959">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="/blog/assets/fonts/font-awesome/css/font-awesome.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="/blog/assets/css/main.css">
+        
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <aside class="sidebar">
+  <header>
+    <div class="about">
+      <div class="cover-author-image">
+        <a href="/blog/"><img src="/blog/assets/img/profile.jpg" alt="Juhee Han"></a>
+      </div>
+      <div class="author-name">Juhee Han</div>
+      <p>일상과 개발</p>
+    </div>
+  </header> <!-- End Header -->
+  <footer>
+    <section class="contact">
+      <h3 class="contact-title">Contact me</h3>
+      <ul>
+        
+<!--          <li><a href="https://twitter.com/artemsheludko_" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>-->
+        
+        
+          <li><a href="https://facebook.com/https://www.facebook.com/juhee.han.9847" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        
+        
+          <li class="github"><a href="http://github.com/lovia98" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+          <li class="linkedin"><a href="https://in.linkedin.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+        
+        
+<!--          <li class="email"><a href="mailto:example.david@blog.com"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>-->
+        
+      </ul>
+    </section> <!-- End Section Contact -->
+    <div class="copyright">
+      <p>2019 &copy; Juhee Han</p>
+    </div>
+  </footer> <!-- End Footer -->
+</aside> <!-- End Sidebar -->
+<div class="content-box clearfix">
+  <article class="article-page">
+  <div class="page-content">
+    
+    
+    <div class="wrap-content">
+      <header class="header-page">
+        <h1 class="page-title">클래스와 오브젝트#1</h1>
+        <div class="page-date"><span>2018, Jun 15&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+      </header>
+      <blockquote>
+  <h3 id="visibility-modifier가시성-변경자">visibility modifier(가시성 변경자)</h3>
+  <p><br />코틀린에서 클래스 선언시 별다른 modifier를 붙이지 않는다면 기본적으로 public으로 정의된다.</p>
+</blockquote>
+
+<p>코틀린에서는 자바에서와 같은 패키지 전용 접근 제어자는 없고, 그에 대한 대안으로 <code class="highlighter-rouge">internal</code>을 도입하였다.
+<br />internal은 “<code>같은 모듈 내부에서만 접근 가능</code>“하며, 여기서 <code>모듈</code>은 한 번에
+한꺼번에 컴파일 되는 코틀린 파일들을 의미한다.
+<br /> private 는 <code>같은 파일에서만 접근 가능</code>하다는 것을 의미한다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>modifier</th>
+      <th>클래스 멤버</th>
+      <th>최상위 선언</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>public(기본)</td>
+      <td>모든 곳에서 볼수 있다.</td>
+      <td>모든 곳에서 볼수 있다.</td>
+    </tr>
+    <tr>
+      <td>internal</td>
+      <td>같은 모듈 안에서만 볼 수 있다.</td>
+      <td>같은 모듈 안에서만 볼 수 있다.</td>
+    </tr>
+    <tr>
+      <td>protected</td>
+      <td>하위 클래스 안에서만 볼 수 있다.</td>
+      <td>(최상위 선언에 적요할 수 없음)</td>
+    </tr>
+    <tr>
+      <td>private</td>
+      <td>같은 클래스 안에서만 볼 수 있다.</td>
+      <td>같은 파일 안에서만 볼 수 있다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>아래 TalkativeButton 메소드는 모두 syntax가 발생하는데, 하나씩 확인해 보자.</p>
+<pre><code>
+internal open class TalkativeButton : MyInterface {
+
+    private fun yell() = println("Hey")
+    protected fun whisper() = println("Let's talk!")
+}
+
+fun TalkativeButton.giveSpeech() { //Error--- (1)
+    yell()  //Error--- (2)
+    whisper()  //Error--- (3)
+}
+</code></pre>
+<ul>
+  <li>(1) public인 멤버가 자신의 “internal”타입인 “TalkativeButton”을 노출함.</li>
+  <li>(2) yell함수는 private이므로 TalkativeButton의 내에서만 접근 가능하다.</li>
+  <li>
+    <p>(3) TalkativeButton의 하위 클래스가 아니므로 접근 불가</p>
+  </li>
+  <li>
+    <p>컴파일된 코틀린의 public, protected, private 변경자는 컴파일된 자바 바이트코드 안에서도 그대로 유지 된다.
+<br />internal 변경자의 경우는, 자바에 딱 맞는 가시성이 없어 바이트 코드상에서는 public이 된다.
+<br />이런 차이 때문에 코틀린에서는 접근할 수 없는 대상을 자바에서 접근할 수 있는 경우가 생긴다.</p>
+  </li>
+  <li>코틀린 컴파일러는 internal 멤버의 이름을 변경하는데, 이는 한 모듈에 속한 어떤 클래스를 모듈 밖에서 상속한
+<br />경우 그 하위 클래스 내부의 메소드 이름이 우연히 상위 클래스의 internal 메소드와 같아져서 내부 메소드를 오버라이드하는
+<br />경우를 방지하고, 실수로 internal 클래스를 보듈 외부에서 사용하는 일을 막기 위함이다.</li>
+</ul>
+
+<blockquote>
+  <h2 id="내부-클래스"><em>내부 클래스</em></h2>
+  <p><br />자바와는 달리 코틀린에서는 내부에 선언된 클래스에서 명시적으로 요청하지 않는 한 바깥쪽 클래스 인스턴스에 대한 접근 권한이 없다.
+<br />이는 자바의 <code class="highlighter-rouge">static</code>중첩 클래스와 동일하다.</p>
+</blockquote>
+
+<p><br />먼저 java에서의 InnerClass(내부 클래스)와 NestedClass(중첩 클래스)를 살펴 보자.
+<br /><bold><span class="font15">[내부 클래스 in JAVA] 내부클래스에서 외부 클래스에 대한 참조를 묵시적으로 포함한다.</span></bold></p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">InnterTest</span> <span class="o">{</span>
+
+    <span class="kt">int</span> <span class="n">resource</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">static_resource</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+
+    <span class="kd">class</span> <span class="nc">_Inner</span> <span class="o">{</span>
+
+        <span class="c1">//내부 클래스에서는 static 선언 불가</span>
+        <span class="kt">int</span> <span class="n">_resource</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+
+        <span class="cm">/* 내부 클래스는 바깥쪽 클래스에 대한 참조를 묵시적으로 포함한다. */</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">_use</span><span class="o">()</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">resource</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">static_resource</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">use</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">_Inner</span> <span class="n">i</span> <span class="o">=</span> <span class="k">new</span> <span class="n">_Inner</span><span class="o">();</span>
+        <span class="n">i</span><span class="o">.</span><span class="na">_use</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">.</span><span class="na">_resource</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p><br /><bold><span class="font15">[중첩 클래스 in JAVA] 내부클래스가 static이라서 바깥 클래스의 static멤버가 접근 가능하다.</span></bold></p>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NestedTest</span> <span class="o">{</span>
+
+    <span class="kt">int</span> <span class="n">resource</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kt">int</span> <span class="n">statc_resource</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+
+    <span class="cm">/*
+        중첩클래스 :
+            내부 클래스이지만 static이라서 바깥 클래스의 static멤버에만 접근이 가능하다.
+    */</span>
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">_Nested</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">_resource</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="kd">static</span> <span class="kt">int</span> <span class="n">_static_resource</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">_use</span><span class="o">()</span> <span class="o">{</span>
+
+            <span class="c1">//static 멤버가 아니므로 접근 불가</span>
+            <span class="c1">//System.out.println(resource);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">statc_resource</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">use</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">_Nested</span><span class="o">.</span><span class="na">_use</span><span class="o">();</span>
+<span class="c1">//      System.out.println(_resource); 접근 불가</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">_Nested</span><span class="o">.</span><span class="na">_static_resource</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>코틀린에서 내부 클래스에 <code class="highlighter-rouge">inner</code>를 붙이지 않으면 자바 static중첩 클래스로 정의 된다.
+<br /><bold><span class="font15">[중첩 클래스 인식 : kotlin]</span></bold></p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="p">&gt;&gt;&gt;</span> <span class="kd">class</span> <span class="nc">Outer</span> <span class="p">{</span>
+
+     <span class="kd">val</span> <span class="py">member1</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+
+     <span class="kd">class</span> <span class="nc">Inner</span> <span class="p">{</span>
+
+         <span class="k">fun</span> <span class="nf">use</span><span class="p">()</span> <span class="p">{</span>
+             <span class="n">println</span><span class="p">(</span><span class="n">member1</span><span class="p">)</span>
+         <span class="p">}</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+<span class="nv">error</span><span class="p">:</span> <span class="nc">unresolved</span> <span class="nv">reference</span><span class="p">:</span> <span class="nc">member1</span>
+            <span class="n">println</span><span class="p">(</span><span class="n">member1</span><span class="p">)</span></code></pre></figure>
+
+<bold><span class="font15">[inner 클래스 인식 : kotlin]</span></bold>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">class</span> <span class="nc">Outer</span> <span class="p">{</span>
+
+    <span class="kd">val</span> <span class="py">member1</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+
+    <span class="k">inner</span> <span class="kd">class</span> <span class="nc">Inner</span> <span class="p">{</span>
+
+        <span class="k">fun</span> <span class="nf">use</span><span class="p">()</span> <span class="p">{</span>
+            <span class="n">println</span><span class="p">(</span><span class="n">member1</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">&gt;&gt;&gt;</span> <span class="kd">val</span> <span class="py">i</span> <span class="p">=</span> <span class="n">Outer</span><span class="p">().</span><span class="n">Inner</span><span class="p">();</span>
+<span class="p">&gt;&gt;&gt;</span> <span class="n">i</span><span class="p">.</span><span class="n">use</span><span class="p">()</span>
+<span class="m">1</span></code></pre></figure>
+
+<p>자바와 코틀린의 충첩 클래스와 내부 클래스의 관계를 정리하면 다음과 같다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>클래스 B안에 정의된 클래스 A</th>
+      <th>자바에서는</th>
+      <th>코틀린에서는</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>중첩 클래스</td>
+      <td>static class A</td>
+      <td>class A</td>
+    </tr>
+    <tr>
+      <td>내부 클래스</td>
+      <td>class A</td>
+      <td>inner class A</td>
+    </tr>
+  </tbody>
+</table>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://juhee-studynote.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+      <div class="page-footer">
+        <div class="page-share">
+          <a href="https://twitter.com/intent/tweet?text=클래스와 오브젝트#1&url=http://localhost:4000/kotlin-class2.html" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u=http://localhost:4000/kotlin-class2.html" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+          <a href="https://plus.google.com/share?url=http://localhost:4000/kotlin-class2.html" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+        </div>
+        <div class="page-tag">
+          
+        </div>
+      </div>
+      <section class="comment-area">
+  <div class="comment-wrapper">
+    
+    <div id="disqus_thread" class="article-comments"></div>
+    <script>
+      (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//mr-brown.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+  </div>
+</section> <!-- End Comment Area -->
+
+    </div> <!-- End Wrap Content -->
+  </div> <!-- End Page Content -->
+</article> <!-- End Article Page -->
+
+</div>
+
+  </div>
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script> <!-- End Analytics -->
+
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>옵저버 패턴 - juhee's 개발과 일상</title>
+
+  <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
+
+    <meta content="juhee's 개발과 일상" property="og:site_name">
+  
+    <meta content="옵저버 패턴" property="og:title">
+  
+  
+    <meta content="article" property="og:type">
+  
+  
+    <meta content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+" property="og:description">
+  
+  
+    <meta content="http://localhost:4000/observer/" property="og:url">
+  
+  
+    <meta content="2018-12-10T00:00:00+09:00" property="article:published_time">
+    <meta content="http://localhost:4000/about/" property="article:author">
+  
+  
+    <meta content="http://localhost:4000/blog/assets/img/profile.jpg" property="og:image">
+  
+  
+    
+    <meta content="patternArts" property="article:section">
+    
+  
+  
+    
+  
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@">
+    <meta name="twitter:creator" content="@">
+  
+    <meta name="twitter:title" content="옵저버 패턴">
+  
+  
+    <meta name="twitter:url" content="http://localhost:4000/observer/">
+  
+  
+    <meta name="twitter:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+  
+  
+    <meta name="twitter:image:src" content="http://localhost:4000/blog/assets/img/profile.jpg">
+  
+
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:image" content="">
+	<link rel="shortcut icon" href="/blog/assets/img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/blog/assets/img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/blog/assets/img/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/blog/assets/img/favicon/apple-touch-icon-144x144.png">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#263959">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#263959">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#263959">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="/blog/assets/fonts/font-awesome/css/font-awesome.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="/blog/assets/css/main.css">
+        
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <aside class="sidebar">
+  <header>
+    <div class="about">
+      <div class="cover-author-image">
+        <a href="/blog/"><img src="/blog/assets/img/profile.jpg" alt="Juhee Han"></a>
+      </div>
+      <div class="author-name">Juhee Han</div>
+      <p>일상과 개발</p>
+    </div>
+  </header> <!-- End Header -->
+  <footer>
+    <section class="contact">
+      <h3 class="contact-title">Contact me</h3>
+      <ul>
+        
+<!--          <li><a href="https://twitter.com/artemsheludko_" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>-->
+        
+        
+          <li><a href="https://facebook.com/https://www.facebook.com/juhee.han.9847" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        
+        
+          <li class="github"><a href="http://github.com/lovia98" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+          <li class="linkedin"><a href="https://in.linkedin.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+        
+        
+<!--          <li class="email"><a href="mailto:example.david@blog.com"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>-->
+        
+      </ul>
+    </section> <!-- End Section Contact -->
+    <div class="copyright">
+      <p>2019 &copy; Juhee Han</p>
+    </div>
+  </footer> <!-- End Footer -->
+</aside> <!-- End Sidebar -->
+<div class="content-box clearfix">
+  <article class="article-page">
+  <div class="page-content">
+    
+    
+    <div class="wrap-content">
+      <header class="header-page">
+        <h1 class="page-title">옵저버 패턴</h1>
+        <div class="page-date"><span>2018, Dec 10&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+      </header>
+      <p>옵져버 패턴은 신문이나 잡지처럼 데이터(목적)을 데이터가 필요한 쪽(구독자)에게 발행해주는 형식의 디자인을 말한다.</p>
+
+<p>이름은 이와 맞지 않게 Observer(관찰자) 라고 붙여 있는데, 데이터를 필요로 하는 쪽 즉, 구독자가 
+데이터가 변화할때나 혹은 주기적으로 데이터의 상태를 전달 받음으로서 ‘관찰’하는 형식이 되기 때문이다.</p>
+
+<p>따라서 이 패턴의 출발 과제는 데이터를 조회 하는 client객체와 데이터를 제공하는 객체간의 관계를 어떻게
+디자인해야 하는지에 대한 고민이었다는 것을 알 수 있다.</p>
+
+<p>버스 정류장의 곧 도착하는 버스알림 전광판을 예를 들어 보자.</p>
+
+<p>각 버스 정류장에서는 곧 도착할 버스 리스트가 <strong>변경</strong> 될 때 마다 전광판에 표시를 해줘야 한다.
+전국의 버스 위치의 정보를 관리하는’ 버스 위치 시스템’이 있는데, 각 버스 정류장에서는 곧 도착할 버스 리스트를
+이 ‘버스 위치 시스템’를 통해서 곧 도착할 버스들의 리스트 정보를 얻어 올 수 있다.</p>
+
+<p>버스 리스트가 언제 갱신 될지 모르므로 각 정류장에서 주기적으로 데이터를 조회한다고 하면, 데이터가 변경되지
+않은 상황에서도 불필요하게 데이터를 조회하는 비용이 발생하게 되어 매우 비효율 적일 것이다.</p>
+
+<p>거꾸로 ‘버스 위치 시스템’에서 버스 위치 정보가 변화할때마다 각 정류장으로 데이터를 전송해 준다면, 불필요한 비용을
+막을 수 있을 것이다.</p>
+
+<p>요즘 관심이 높아지고 있는 비동기 프로그래밍이나 spring-cloud진영의 유레카 같은 기능도 옵져버 패턴을 기반으로 하고 있다.</p>
+
+<p>아까 옵져버 패턴은 신문이나 잡지와 같은 ‘구독’ 의 형식을 취하고 있다고 했다.</p>
+
+<p>‘신문 구독’의 특징을 생각해 보자.</p>
+<ul>
+  <li>신문사가 사업을 시작하고 신문을 찍어낸다. (publish)</li>
+  <li>독자(describer)가 특정 신문사에 구독 신청을 하면 매번 새로운 신문을 배달 받는다.</li>
+  <li>신문을 더이상 받아보고 싶지 않으면 구독 해지 신청을 한다.</li>
+  <li>신문사가 계속 영업을 하는 이상 꾸준히 구독 및 해지를 하게 된다.</li>
+</ul>
+
+<p>이와 같은 특성을 객체간의 관계에 적용이 되면 아래와 같다.<br />
+<img src="/blog/assets/img/pattern/observer-pattern.png" width="500" /></p>
+
+<blockquote>
+  <p>옵저버 패턴의 정의 
+  한 객체의 상태가 바뀌면 그 객체에 의존하는 다른 객체들한테 연락이 가고
+  자동으로 내용이 갱신되는 방식으로 일대다(one-to-many) 의존성을 가지게 된다.</p>
+</blockquote>
+
+<p>옵져버패턴을 적용한 객체관계 :<br />
+<img src="/blog/assets/img/pattern/observer-pattern1.png" width="500" /></p>
+
+<p>[옵져버 패턴 - 클래스 다이어그램]<br />
+  <img src="https://images.techhive.com/img/idge/imported/article/jvw/2003/03/jw-0328-designpatterns2-100156674-orig.jpg" alt="클래스다이어그램" /></p>
+
+<blockquote>
+  <p>디자인 원칙</p>
+  <ul>
+    <li>헐리우드 원칙 : 서로 상호작용을 하는 개체 사이에서는 가능하면 느슨하게 결합하는 디자인을 사용해야 한다.</li>
+  </ul>
+</blockquote>
+
+<p>옵져버 패턴을 이용하면 정보를 제공하는 객체(subject)와 정보를 조회하는 객체(observer)간의 결합을 느슨하게 해준다.</p>
+<ul>
+  <li>subject는 옵저버에 대해서 특정 인터페이스(Observer인터페이스)를 구현한다는 것만 알뿐 개별 옵저버 객체에 대해서는 알 필요가 없다.</li>
+  <li>옵저버는 언제든지 새로 추가 할 수 있다. (삭제되고 추가 되어도 subject의 코드가 변화할 될 필요가 없다)</li>
+  <li>새로운 형식의 옵저버를 추가하려고 할 때도 subject를 전혀 변경할 필요가 없다.</li>
+  <li>subject와 옵저버가 바뀌더라도 서로에게 영향을 미치지 않으며 서로 독립적으로 재사용할 수 있다.</li>
+</ul>
+
+<h3 id="코드로-만들어-보자">코드로 만들어 보자</h3>
+<p>설정 : 기상청 미세먼지 측정 시스템에서는 미세먼지 농도 지수가 위험수치 이상이 되면 앱푸시, SMS 전송으로 경고 메세지를 보낸다. 
+<a href="https://github.com/lovia98/practice/tree/master/src/main/java/com/example/algorithm/observer">전체 소스 참고</a></p>
+
+<ol>
+  <li>subject(발행자) interface와 observer(구독자) interface를 만듬
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> public interface Publisher {
+   void registerDescriber();
+   void removeDescriber();
+   void notifyDescribers();
+ }
+
+ public interface Describer {
+   void alert();  //미세먼지 농도가 위험수준이라고 알리는 함수
+ }
+</code></pre></div>    </div>
+  </li>
+  <li>publisher에 구독자를 등록 및 해지하려면 해당 객체를 넘겨받아야 함으로 등록, 해지 함수에 파라미터 추가
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  public interface Publisher {
+ void registerDescriber(Describer db);
+ void removeDescriber(Describer db);
+ void notifyDescribers();
+  }
+</code></pre></div>    </div>
+  </li>
+  <li>pulisher와 Describer를 구현하는 각 객체를 만듬
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> //미세먼지를 위험성을 알리는 객체
+ public class FineDustData implements Publisher{
+
+   @Override
+   public void registerDescriber(Describer db) {
+
+   }
+
+   @Override
+   public void removeDescriber(Describer db) {
+
+   }
+
+   @Override
+   public void notifyDescribers() {
+
+   }
+ }
+
+ //앱푸시를 보내는 객체
+ public class AppPush implements Describer {
+
+   @Override
+   public void alert(int level) {
+
+   }
+ }
+
+ //sms전송을 위한 객체
+ public class SMS implements Describer {
+
+   @Override
+   public void alert(int level) {
+
+   }
+ }
+</code></pre></div>    </div>
+  </li>
+  <li>FineDustData에 구독객체 리스트와 현재 미세먼지 농도수치, 위험수준의 농도수치를 저장할 변수를 선언 하였다.
+그리고 객체를 생성할때 각 변수의 값이 초기화 되도록 처리.
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> public class FineDustData implements Publisher{
+
+   List&lt;Describer&gt; describers;
+
+   int currentLevel;
+   int dangersLevel;
+
+   public FineDustData(int dangersLevel) {
+     this.dangersLevel = dangersLevel;
+     this.describers = new ArrayList&lt;&gt;();
+   }
+      
+   ..(생략)..
+ }
+</code></pre></div>    </div>
+  </li>
+  <li>구독자를 등록하고 해지하는 함수 구현
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> public class FineDustData implements Publisher {
+
+   ..(생략)..
+
+   @Override
+   public void registerDescriber(Describer dc) {
+     describers.add(dc);
+   }
+
+   @Override
+   public void removeDescriber(Describer dc) {
+     describers.remove(dc);
+   }
+ }
+</code></pre></div>    </div>
+  </li>
+  <li>미세먼지가 위험수치에 다다를때마다 구독자에게 알리는 함수 구현
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> public class FineDustData implements Publisher {
+
+   ...(생략)..
+
+   @Override
+   public void notifyDescribers() {    
+     //구독자 리스트를 돌면서 알림 메소드를 호출한다.
+     for (Describer dc : describers) {
+       dc.alert();
+     }
+   }
+
+   //현재 미세먼지 수치를 변경하는 함수 
+   public void changeDustLevel(int level) {
+     this.currentLevel = level;
+
+     //위험수치에 다다르면 구독자에체 알리는 함수를 호출한다.
+     if(currentLevel &gt;= dangersLevel) {
+       notifyDescribers();
+     }
+   }
+ }
+</code></pre></div>    </div>
+  </li>
+  <li>각 구독객체인 AppPush와 SMS는 미세먼지 농도가 위험 수치라는 것을 알린다!
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code> public class AppPush implements Describer {
+
+   @Override
+   public void alert() {
+     System.out.println("앱푸시! - 미세먼지가 위험수준에 도달하였습니다.");
+   }
+ }
+
+ public class SMS implements Describer {
+
+   @Override
+   public void alert() {
+     System.out.println("SMS발송! - 미세먼지가 위험수준에 도달하였습니다.\n 외출하실때 마스크 착용하세요!!");
+   }
+ }
+</code></pre></div>    </div>
+  </li>
+  <li>각 Describer이 Publisher에게 구독을 요청을 하기 위해 초기화 함수에서 publisher를 넘겨 받을 수 있도록 함.
+추가로 구독 해지 함수를 Describer insertface에 추가하고 각각의 구현 객체에 추가해줌.
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public interface Describer {
+   void alert();
+   void stopDescribe();
+ }
+
+ public class AppPush implements Describer {
+
+   Publisher pb;
+
+   public AppPush(Publisher pb) {
+     pb.registerDescriber(this);
+   }
+
+   @Override
+   public void alert() {
+     System.out.println("앱푸시! - 미세먼지가 위험수준에 도달하였습니다.");
+   }
+
+   @Override
+   public void stopDescribe(){
+     pb.removeDescriber(this);
+   }
+ }
+
+ public class SMS implements Describer {
+
+   Publisher pb;
+
+   public SMS(Publisher pb) {
+     this.pb = pb;
+     pb.registerDescriber(this);
+   }
+
+   @Override
+   public void alert() {
+     System.out.println("SMS발송! - 미세먼지가 위험수준에 도달하였습니다.\n 외출하실때 마스크 착용하세요!!");
+   }
+
+   @Override
+   public void stopDescribe() {
+     pb.removeDescriber(this);
+   }
+ }
+</code></pre></div>    </div>
+  </li>
+  <li>테스트
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public class TestFineDustObserver {
+
+  @Test
+  public void test() {
+
+    //publisher정의
+    FineDustData dustData = new FineDustData(10);
+
+    //앱푸시 구독자
+    AppPush appPush = new AppPush(dustData);
+    //SMS 구독자
+    SMS sms = new SMS(dustData);
+
+
+    //미세먼지 농도가 올라간다.
+    dustData.changeDustLevel(5);
+    //..점점 올라가더니 위험수치에 다다랐다.
+    dustData.changeDustLevel(10);
+  }
+}
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p><strong>처리결과</strong></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    앱푸시! - 미세먼지가 위험수준에 도달하였습니다.
+    SMS발송! - 미세먼지가 위험수준에 도달하였습니다.
+    외출하실때 마스크 착용하세요!!
+</code></pre></div></div>
+
+      <div class="page-footer">
+        <div class="page-share">
+          <a href="https://twitter.com/intent/tweet?text=옵저버 패턴&url=http://localhost:4000/observer/" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u=http://localhost:4000/observer/" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+          <a href="https://plus.google.com/share?url=http://localhost:4000/observer/" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+        </div>
+        <div class="page-tag">
+          
+        </div>
+      </div>
+      <section class="comment-area">
+  <div class="comment-wrapper">
+    
+    <div id="disqus_thread" class="article-comments"></div>
+    <script>
+      (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//mr-brown.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+  </div>
+</section> <!-- End Comment Area -->
+
+    </div> <!-- End Wrap Content -->
+  </div> <!-- End Page Content -->
+</article> <!-- End Article Page -->
+
+</div>
+
+  </div>
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script> <!-- End Analytics -->
+
+</body>
+</html>

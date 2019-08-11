@@ -1,10 +1,8 @@
 ---
 title : 데코레이터 패턴
-author: 한주희
 layout: post
-icon: fa-angle-right
+data: 108-12-18
 categories: patternArts
-permalink: decorator.html
 ---
 
 ### 데코레이터 패턴 
@@ -12,12 +10,12 @@ permalink: decorator.html
   기능을 유연하게 확장할 수 있는 방법을 제공한다.
  
   음료 주문의 예  
-  <img src="{{site.baseurl}}/assets/images/pattern/deco.png" width="400">
+  <img src="{{site.baseurl}}/assets/img/pattern/deco.png" width="400">
  
  위와 같이 커피의 종류가 4개가 있는데, 우유, 휘핑크림, 모카등이 첨가된 커피가 필요한
  경우 그때 마다 새로운 클래스를 만들어 낸다면 클래스 갯수가 너무 많아진다는 문제가 있다.  
  
- <img src="{{site.baseurl}}/assets/images/pattern/deco1.png" width="400">
+ <img src="{{site.baseurl}}/assets/img/pattern/deco1.png" width="400">
 
  첨가물들을 추상클래스인 Beverage에 추가하는 것을 생각해 볼 수 있다.
 ~~~
@@ -48,7 +46,7 @@ permalink: decorator.html
 그렇다면, 장식을 어떻게 디자인해야 할까? (변화에 닫혀있으면서..)  
 이는 기본 객체인 <code>확장</code>을 통해 가능하다.  
 아래 클래스 다이어그램을 보면서 이해해 보자.  
- <img src="{{site.baseurl}}/assets/images/pattern/deco2.png" width="400">
+ <img src="{{site.baseurl}}/assets/img/pattern/deco2.png" width="400">
 
 * **Component** : 장식이 추가될 될 기본 객체  
 * **ConcreteComponent** : 인터페이스를 구현하고 더 많은 기능(장식)을 추가하려는 속성을 가진 실제 클래스.  

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>자바 프로파일러 도구 모음 - juhee's 개발과 일상</title>
+
+  <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
+
+    <meta content="juhee's 개발과 일상" property="og:site_name">
+  
+    <meta content="자바 프로파일러 도구 모음" property="og:title">
+  
+  
+    <meta content="article" property="og:type">
+  
+  
+    <meta content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+" property="og:description">
+  
+  
+    <meta content="http://localhost:4000/tuning/" property="og:url">
+  
+  
+    <meta content="2019-04-04T00:00:00+09:00" property="article:published_time">
+    <meta content="http://localhost:4000/about/" property="article:author">
+  
+  
+    <meta content="http://localhost:4000/blog/assets/img/profile.jpg" property="og:image">
+  
+  
+    
+    <meta content="java" property="article:section">
+    
+  
+  
+    
+  
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@">
+    <meta name="twitter:creator" content="@">
+  
+    <meta name="twitter:title" content="자바 프로파일러 도구 모음">
+  
+  
+    <meta name="twitter:url" content="http://localhost:4000/tuning/">
+  
+  
+    <meta name="twitter:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+  
+  
+    <meta name="twitter:image:src" content="http://localhost:4000/blog/assets/img/profile.jpg">
+  
+
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:image" content="">
+	<link rel="shortcut icon" href="/blog/assets/img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/blog/assets/img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/blog/assets/img/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/blog/assets/img/favicon/apple-touch-icon-144x144.png">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#263959">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#263959">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#263959">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="/blog/assets/fonts/font-awesome/css/font-awesome.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="/blog/assets/css/main.css">
+        
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <aside class="sidebar">
+  <header>
+    <div class="about">
+      <div class="cover-author-image">
+        <a href="/blog/"><img src="/blog/assets/img/profile.jpg" alt="Juhee Han"></a>
+      </div>
+      <div class="author-name">Juhee Han</div>
+      <p>일상과 개발</p>
+    </div>
+  </header> <!-- End Header -->
+  <footer>
+    <section class="contact">
+      <h3 class="contact-title">Contact me</h3>
+      <ul>
+        
+<!--          <li><a href="https://twitter.com/artemsheludko_" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>-->
+        
+        
+          <li><a href="https://facebook.com/https://www.facebook.com/juhee.han.9847" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        
+        
+          <li class="github"><a href="http://github.com/lovia98" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+          <li class="linkedin"><a href="https://in.linkedin.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+        
+        
+<!--          <li class="email"><a href="mailto:example.david@blog.com"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>-->
+        
+      </ul>
+    </section> <!-- End Section Contact -->
+    <div class="copyright">
+      <p>2019 &copy; Juhee Han</p>
+    </div>
+  </footer> <!-- End Footer -->
+</aside> <!-- End Sidebar -->
+<div class="content-box clearfix">
+  <article class="article-page">
+  <div class="page-content">
+    
+    
+    <div class="wrap-content">
+      <header class="header-page">
+        <h1 class="page-title">자바 프로파일러 도구 모음</h1>
+        <div class="page-date"><span>2019, Apr 04&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+      </header>
+      <p>프로파일러 도구들 관련글 번역(Baeldung) - <a href="https://www.baeldung.com/java-profilers">https://www.baeldung.com/java-profilers</a></p>
+
+<h3 id="1-개요">1. 개요</h3>
+<p>때때로 실행되는 코드 작성만으로는 충분하지 않습니다. 우리는 내부적으로 메모리가 어떻게 할당되는지, 하나의 코딩 접근법을 다른 것에 사용하는 결과, 동시 실행의 의미, 성능 향상을위한 영역 등을 알고 싶을 것입니다. 우리는 이것을 위해 프로파일 러를 사용할 수 있습니다.</p>
+
+<p>Java 프로파일러는 JVM 레벨에서 Java 바이트 코드 구성 및 작업을 모니터링하는 도구입니다. 이러한 코드 구문 및 연산에는 객체 생성, 반복 실행 (재귀 호출 포함), 메소드 실행, 스레드 실행 및 가비지 수집이 포함됩니다.</p>
+
+<p>이 글에서는 JProfiler, YourKit, Java VisualVM 및 Netbeans Profiler와 같은 주요 Java 프로파일 러에 대해 설명합니다.</p>
+
+<h3 id="2-jprofiler">2. JProfiler</h3>
+<p>JProfiler는 많은 개발자에게 최고의 선택입니다. 직관적인 UI를 통해 JProfiler는 시스템 성능, 메모리 사용량, 잠재적 인 메모리 누수 및 스레드 프로파일 링을 볼 수있는 인터페이스를 제공합니다.</p>
+
+<p>이 정보를 사용하여 기본 시스템에서 최적화, 제거 또는 변경해야 할 것을 쉽게 알 수 있습니다.</p>
+
+<p>대부분의 프로파일러와 마찬가지로 이 도구는 로컬 및 원격 응용 프로그램 모두에 사용할 수 있습니다. 즉, 원격 컴퓨터에서 실행중인 Java 응용 프로그램을 설치할 필요없이 프로필을 작성할 수 있습니다.</p>
+
+<p>또한 JProfiler는 SQL 및 NoSQL 데이터베이스 모두에 대해 고급 프로파일 링을 제공합니다. JDBC, JPA / Hibernate, MongoDB, Casandra 및 HBase 데이터베이스 프로파일 링을위한 특정 지원을 제공합니다.</p>
+
+<p>아래 스크린 샷은 현재 연결 목록이있는 JDBC probing(*probe:조사하다) 인터페이스를 보여줍니다.</p>
+
+<p><img src="https://www.baeldung.com/wp-content/uploads/2017/10/2-jprofiler-database-probing-1.png" alt="jprofiler" /></p>
+
+<p>우리가 데이터베이스와 상호 작용하는 호출 트리에 대해 배우고 누수 될 수있는 연결을 알고 자한다면 JProfiler가이 문제를 잘 처리합니다.</p>
+
+<p>라이브 메모리는 JProfiler의 한 기능으로, 응용 프로그램에서 현재 메모리 사용량을 볼 수 있습니다. 우리는 객체 선언과 인스턴스 또는 전체 호출 트리에 대한 메모리 사용을 볼 수 있습니다.</p>
+
+<p>할당 호출 트리의 경우 라이브 객체, 가비지 수집 객체 또는 둘 모두의 호출 트리를 보도록 선택할 수 있습니다. 또한이 할당 트리가 특정 클래스 나 패키지 또는 모든 클래스에 대한 것인지 여부를 결정할 수 있습니다.</p>
+
+<p>아래 화면은 인스턴스 카운트가있는 모든 객체의 라이브 메모리 사용량을 보여줍니다.</p>
+
+<p><a href="https://www.baeldung.com/wp-content/uploads/2017/10/3-jprofiler-live-memory.png">jprofiler</a></p>
+
+<p>JProfiler는 Eclipse, NetBeans 및 IntelliJ와 같은 널리 사용되는 IDE와의 통합을 지원합니다. 스냅 샷에서 소스 코드까지 탐색 할 수도 있습니다!</p>
+
+<h3 id="3-yourkit">3. YourKit</h3>
+<p>YourKit Java Profiler는 다양한 플랫폼에서 실행되며 지원되는 각 운영 체제 (Windows, MacOS, Linux, Solaris, FreeBSD 등)별로 별도의 설치를 제공합니다.</p>
+
+<p>JProfiler와 마찬가지로 YourKit에는 ssh 터널링을 통한 로컬 및 원격 프로파일 링을 지원하여 스레드, 가비지 콜렉션, 메모리 사용 및 메모리 누수를 시각화하는 핵심 기능이 있습니다.</p>
+
+<p>다음은 Tomcat 서버 응용 프로그램의 메모리 프로파일 링 결과를 간략히 보여줍니다.</p>
+
+<p><img src="https://www.baeldung.com/wp-content/uploads/2017/10/4-yourkit-tomcat-profiling-memory.png" alt="YourKit" /></p>
+
+<p>YourKit은 던져진 예외를 프로파일 링하려는 경우에도 유용합니다. 어떤 유형의 예외가 발생했는지와 각 예외가 발생한 횟수를 쉽게 알 수 있습니다.</p>
+
+<p>YourKit에는 스레드의 메서드 또는 하위 트리와 같은 코드의 특정 영역에 초점을 맞춘 프로파일 링을 허용하는 흥미로운 CPU 프로파일 링 기능이 있습니다. 이것은 what-if 기능을 통해 조건부 프로파일 링을 허용하므로 매우 강력합니다.</p>
+
+<p>그림 5는 스레드 프로파일 링 인터페이스의 예를 보여줍니다.</p>
+
+<p><img src="https://www.baeldung.com/wp-content/uploads/2017/10/5-yourkit-threads-profiling.png" alt="YourKit" /></p>
+
+<p>YourKit으로 SQL 및 NoSQL 데이터베이스 호출을 프로파일 링 할 수도 있습니다. 심지어 실행 된 실제 쿼리에 대한 뷰를 제공합니다.</p>
+
+<p>기술적 인 고려 사항은 아니지만 YourKit의 허가 된 라이센스 모델은 다중 사용자 또는 분산 된 팀뿐만 아니라 단일 라이센스 구매를위한 좋은 선택입니다.</p>
+
+<h3 id="4-java-visualvm">4. Java VisualVM</h3>
+<p>Java VisualVM은 단순하지만 강력한 Java 응용 프로그램 프로파일 링 도구입니다. 기본적으로이 도구는 Java Development Kit (JDK)에 번들로 제공됩니다. 이 작업은 JConsole, jstat, jstack, jinfo 및 jmap과 같이 JDK에서 제공되는 다른 독립 실행 형 도구를 사용합니다.
+아래에서는 Java VisualVM을 사용하여 진행중인 프로파일 링 세션의 간단한 개요 인터페이스를 볼 수 있습니다.
+<img src="https://www.baeldung.com/wp-content/uploads/2017/10/6-visualvm-overview.png" alt="visualvm" /></p>
+
+<p>Java VisualVM의 흥미로운 점 중 하나는 플러그인으로 새로운 기능을 개발할 수 있다는 것입니다. 그런 다음이 플러그인을 Java VisualVM의 내장 업데이트 센터에 추가 할 수 있습니다.</p>
+
+<p>Java VisualVM은 로컬 및 원격 프로파일 링은 물론 메모리 및 CPU 프로파일 링을 지원합니다. 원격 응용 프로그램에 연결하려면 자격 증명 (필요에 따라 호스트 이름 / IP 및 암호)을 제공해야하지만 ssh 터널링을 지원하지 않습니다. 또한 즉시 업데이트 (일반적으로 2 초마다)로 실시간 프로파일 링을 활성화 할 수도 있습니다.</p>
+
+<p>아래에서 Java VisualVM을 사용하여 프로파일 링 된 Java 애플리케이션의 메모리 전망을 볼 수 있습니다.<br />
+<img src="https://www.baeldung.com/wp-content/uploads/2017/10/7-visualvm-sample-memory.png" alt="visualvm" /></p>
+
+<p>Java VisualVM의 스냅 샷 기능을 사용하여 나중에 분석 할 수 있도록 프로파일 링 세션의 스냅 샷을 만들 수 있습니다.</p>
+
+<h3 id="5-netbeans-profiler">5. NetBeans Profiler</h3>
+<p>NetBeans Profiler는 Oracle의 오픈 소스 NetBeans IDE와 함께 제공됩니다.</p>
+
+<p>이 프로파일 러는 Java VisualVM과 많은 공통점이 있지만, 모든 프로그램을 하나의 프로그램 (IDE + Profiler)에 래핑하고자 할 때 좋은 선택입니다.</p>
+
+<p>위에서 논의 된 다른 모든 프로파일 러는 IDE 통합을 향상시키는 플러그인을 제공합니다.</p>
+
+<p>아래 스크린 샷은 NetBeans Profiler 인터페이스의 예를 보여줍니다.
+<img src="https://www.baeldung.com/wp-content/uploads/2017/10/8-netbeans-telemetry-view.png" alt="netbeans" /></p>
+
+<p>Netbeans Profiler는 가벼운 개발 및 프로파일 링을위한 좋은 선택입니다. NetBeans 프로파일 러는 프로파일 링 세션을 구성 및 제어하고 결과를 표시하는 단일 창을 제공합니다. 가비지 콜렉션이 얼마나 자주 발생 하는지를 알 수있는 고유 한 기능을 제공합니다.</p>
+
+<h3 id="6-기타-솔리드solid-프로파일러">6. 기타 솔리드(solid) 프로파일러</h3>
+<p>여기에는 Java Mission Control, New Relic 및 Prefix (Stackify)가 포함되어 있습니다. 전체적으로 시장 점유율은 낮지 만 확실히 언급 할 가치가 있습니다. 예를 들어, Stackify의 Prefix는 Java 응용 프로그램뿐만 아니라 다른 웹 응용 프로그램도 프로파일 링하는 데 매우 적합한 우수한 경량 프로파일 링 도구입니다.</p>
+
+<h3 id="7-결론">7. 결론</h3>
+<p>이 글에서는 프로파일 링과 Java Profiler에 대해 설명했습니다. 우리는 각 프로파일 러의 기능을 살펴보고 잠재적 인 선택을 알려주는 정보를 제공합니다.</p>
+
+<p>고유 한 특성을 갖는 일부 Java 프로파일 러를 사용할 수 있습니다. 이 기사에서 보았 듯이 사용할 Java 프로파일 러의 선택은 대부분 개발자의 도구 선택, 필요한 분석 수준 및 프로파일 러의 기능에 달려 있습니다.</p>
+
+<p>===</p>
+<h3 id="jrebel에서-조사한-결과-많이-사용하는-비율순-top52015년-기준">JRebel에서 조사한 결과 많이 사용하는 비율순 top5(2015년 기준)</h3>
+
+<p>[참조링크] : https://jrebel.com/rebellabs/top-5-java-profilers-revealed-real-world-data-with-visualvm-jprofiler-java-mission-control-yourkit-and-custom-tooling/</p>
+
+<p><img src="https://jrebel.com/wp-content/uploads/2015/11/figure-112-profiling-tools.jpg" alt="profilers" /></p>
+
+      <div class="page-footer">
+        <div class="page-share">
+          <a href="https://twitter.com/intent/tweet?text=자바 프로파일러 도구 모음&url=http://localhost:4000/tuning/" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u=http://localhost:4000/tuning/" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+          <a href="https://plus.google.com/share?url=http://localhost:4000/tuning/" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+        </div>
+        <div class="page-tag">
+          
+        </div>
+      </div>
+      <section class="comment-area">
+  <div class="comment-wrapper">
+    
+    <div id="disqus_thread" class="article-comments"></div>
+    <script>
+      (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//mr-brown.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+  </div>
+</section> <!-- End Comment Area -->
+
+    </div> <!-- End Wrap Content -->
+  </div> <!-- End Page Content -->
+</article> <!-- End Article Page -->
+
+</div>
+
+  </div>
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script> <!-- End Analytics -->
+
+</body>
+</html>

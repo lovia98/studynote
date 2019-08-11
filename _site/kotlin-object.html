@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Object Expressions and Declarations - juhee's 개발과 일상</title>
+
+  <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
+
+    <meta content="juhee's 개발과 일상" property="og:site_name">
+  
+    <meta content="Object Expressions and Declarations" property="og:title">
+  
+  
+    <meta content="article" property="og:type">
+  
+  
+    <meta content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+" property="og:description">
+  
+  
+    <meta content="http://localhost:4000/kotlin-object.html" property="og:url">
+  
+  
+    <meta content="2018-07-08T00:00:00+09:00" property="article:published_time">
+    <meta content="http://localhost:4000/about/" property="article:author">
+  
+  
+    <meta content="http://localhost:4000/blog/assets/img/profile.jpg" property="og:image">
+  
+  
+    
+    <meta content="kotlin" property="article:section">
+    
+  
+  
+    
+  
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@">
+    <meta name="twitter:creator" content="@">
+  
+    <meta name="twitter:title" content="Object Expressions and Declarations">
+  
+  
+    <meta name="twitter:url" content="http://localhost:4000/kotlin-object.html">
+  
+  
+    <meta name="twitter:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+  
+  
+    <meta name="twitter:image:src" content="http://localhost:4000/blog/assets/img/profile.jpg">
+  
+
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:image" content="">
+	<link rel="shortcut icon" href="/blog/assets/img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/blog/assets/img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/blog/assets/img/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/blog/assets/img/favicon/apple-touch-icon-144x144.png">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#263959">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#263959">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#263959">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="/blog/assets/fonts/font-awesome/css/font-awesome.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="/blog/assets/css/main.css">
+        
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <aside class="sidebar">
+  <header>
+    <div class="about">
+      <div class="cover-author-image">
+        <a href="/blog/"><img src="/blog/assets/img/profile.jpg" alt="Juhee Han"></a>
+      </div>
+      <div class="author-name">Juhee Han</div>
+      <p>일상과 개발</p>
+    </div>
+  </header> <!-- End Header -->
+  <footer>
+    <section class="contact">
+      <h3 class="contact-title">Contact me</h3>
+      <ul>
+        
+<!--          <li><a href="https://twitter.com/artemsheludko_" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>-->
+        
+        
+          <li><a href="https://facebook.com/https://www.facebook.com/juhee.han.9847" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        
+        
+          <li class="github"><a href="http://github.com/lovia98" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+          <li class="linkedin"><a href="https://in.linkedin.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+        
+        
+<!--          <li class="email"><a href="mailto:example.david@blog.com"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>-->
+        
+      </ul>
+    </section> <!-- End Section Contact -->
+    <div class="copyright">
+      <p>2019 &copy; Juhee Han</p>
+    </div>
+  </footer> <!-- End Footer -->
+</aside> <!-- End Sidebar -->
+<div class="content-box clearfix">
+  <article class="article-page">
+  <div class="page-content">
+    
+    
+    <div class="wrap-content">
+      <header class="header-page">
+        <h1 class="page-title">Object Expressions and Declarations</h1>
+        <div class="page-date"><span>2018, Jul 08&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+      </header>
+      <p>다음은 코틀린 Ref문서중 <a href="https://kotlinlang.org/docs/reference/object-declarations.html" target="_blank">Object Expressions and Declarations</a>를 번역한 글이다.(의역 포함)</p>
+
+<p>때때로 우리는 클래스를 명시적으로 선언하지 않고 약간 수정만한 객체가 필요한 경우가 있다.
+JAVA는 이런 경우를 익명의 inner 클래스로 처리한다.</p>
+
+<p>Kotlin은 객체식(object expressions)과 객체 선언으로 이 개념을 약간 일반화한다.</p>
+
+<h2 id="object-expressions-object식">Object expressions (Object식)</h2>
+<p>어떤 타입(또는 타입들)로 부터 상속받은 익명클래스의 객체를 생성하기 위해 다음과 같이 작성한다 :</p>
+<pre><code class="language-Kotlin">window.addMouseListener(object : MouseAdapter() {
+    override fun mouseClicked(e: MouseEvent) {
+        // ...
+    }
+
+    override fun mouseEntered(e: MouseEvent) {
+        // ...
+    }
+})
+</code></pre>
+<p>상위타입이 생성자를 가지고 있다면, 적합한 생성자 파라미터가 전달되어야 한다.
+많은 상위타입들은 콜론 뒤에 쉼표로 구분 된 목록으로 지정 될 수 있다.</p>
+<pre><code class="language-Kotlin">open class A(x: Int) {
+    public open val y: Int = x
+}
+
+interface B {...}
+
+val ab: A = object : A(1), B {
+    override val y = 15
+}
+
+만약에 이렇다할 의미 있는 슈퍼타입 없이, 오로지 하나의 object가 필요하다면, 아래와 같이 간단한 방법으로 만들 수 있다.
+fun foo() {
+    val adHoc = object {
+        var x: Int = 0
+        var y: Int = 0
+    }
+    print(adHoc.x + adHoc.y)
+}
+</code></pre>
+
+<p><br />익명객체는 오로지 local안에서나 private선언으로만 타입으로서 사용될 수 있다.
+<br />익명객체를 public 함수의 리턴타입이나 프로퍼티의 타입으로 쓴다면,
+<br />그 함수나 프로퍼티의 실제 타입은 익명 클래스의 상위타입이 된다.
+<br />혹은 익명 객체에 어떤 상위 타입도 선언하지 않은 경우 Any타입으로 인식하게 된다.
+<br />익명 클래스 안에 추가된 멤버는 접근 할수 없다.</p>
+<pre><code class="language-Kotlin">class C {
+    // Private function, so the return type is the anonymous object type
+    private fun foo() = object {
+        val x: String = "x"
+    }
+
+    // Public function, so the return type is Any
+    fun publicFoo() = object {
+        val x: String = "x"
+    }
+
+    fun bar() {
+        val x1 = foo().x        // 실행가능
+        val x2 = publicFoo().x  // 'x'에 접근 안됨
+    }
+}
+</code></pre>
+<p>자바의 익명 inner class와 마찬가지로 oject expressions안의 코드들은 둘러싼 범위의 변수에 접근 할 수 있다.</p>
+
+<pre><code class="language-Kotlin">fun countClicks(window: JComponent) {
+    var clickCount = 0
+    var enterCount = 0
+
+    window.addMouseListener(object : MouseAdapter() {
+        override fun mouseClicked(e: MouseEvent) {
+            clickCount++
+        }
+
+        override fun mouseEntered(e: MouseEvent) {
+            enterCount++
+        }
+    })
+    // ...
+}
+</code></pre>
+
+<h2 id="object-declarations-object-선언">Object declarations (Object 선언)</h2>
+<p>싱글톤은 여러 경우에 유용 할 수 있으며 코틀린(Scala 이후)은 싱글톤을 선언하기 쉽다.</p>
+
+<pre><code class="language-Kotlin">object DataProviderManager {
+    fun registerDataProvider(provider: DataProvider) {
+        // ...
+    }
+
+    val allDataProviders: Collection&lt;DataProvider&gt;
+        get() = // ...
+}
+</code></pre>
+<p>이를 오브젝트 선언(object declarations)이라고하며 오브젝트 키워드 다음에 항상 이름이 있다.
+변수 선언과 마찬가지로 객체 선언은 표현식이 아니며 대입문(=)의 오른쪽 사이드에 올 수 없다.</p>
+
+<p>객체 선언의 초기화는 스레드로부터 안전하다.(thread-safe)</p>
+
+<p>객체를 참조하기 위해 이름을 직접 사용한다.</p>
+<pre><code class="language-Kotlin">DataProviderManager.registerDataProvider(...)
+</code></pre>
+
+<p>이러한 객체는 수퍼 유형을 가질 수 있습니다.</p>
+<pre><code class="language-Kotlin">object DefaultListener : MouseAdapter() {
+    override fun mouseClicked(e: MouseEvent) {
+        // ...
+    }
+
+    override fun mouseEntered(e: MouseEvent) {
+        // ...
+    }
+}
+</code></pre>
+<p>참고 : 객체 선언은 로컬일 수 없으며 (즉 함수 내에 직접 중첩 될 수 있지만-nested directly)
+다른 객체선언 또는 내부 클래스가 아닌 클래스(non-inner class)에 중첩 될 수 있습니다.</p>
+
+<h2 id="companion-objects동반자-개체">Companion Objects(동반자 개체)</h2>
+
+<p>클래스 내의 객체 선언은 companion 키워드로 표시 할 수 있다.</p>
+<pre><code class="language-Kotlin">class MyClass {
+    companion object Factory {
+        fun create(): MyClass = MyClass()
+    }
+}
+</code></pre>
+
+<p>클래스 이름을 한정자로 사용하여 companion object의 멤버를 호출 할 수 있다.</p>
+<pre><code class="language-Kotlin">val instance = MyClass.create()
+</code></pre>
+<p>companion object의 이름을 생략 할 수 있는데, 이 경우 Companion 식별자를 사용한다.</p>
+<pre><code class="language-Kotlin">class MyClass {
+    companion object {
+    }
+}
+
+val x = MyClass.Companion
+</code></pre>
+<p>companion객체의 멤버가 다른 언어의 정적 멤버처럼 보이더라도 런타임에는 여전히
+실제 객체의 인스턴스 멤버이며 예를 들어 인터페이스를 구현할 수 있다.</p>
+<pre><code class="language-Kotlin">interface Factory&lt;T&gt; {
+    fun create(): T
+}
+
+class MyClass {
+    companion object : Factory&lt;MyClass&gt; {
+        override fun create(): MyClass = MyClass()
+    }
+}
+</code></pre>
+<p>그러나 JVM에서 @JvmStatic 어노테이션을 사용하는 경우 companion객체의 멤버를 실제 정적 메서드 및 필드로 생성 할 수 있다. 자세한 내용은 Java 상호 운용성 섹션(<a href="https://kotlinlang.org/docs/reference/object-declarations.html" target="_blank">Java interoperability</a>)을 참조하십시오.</p>
+
+<h2 id="object-expressions과-declarations사이의-의미론적-차이">Object Expressions과 Declarations사이의 의미론적 차이</h2>
+<p>객체 표현과 객체 선언 사이에는 중요한 의미상의 차이가 있다.</p>
+
+<ul>
+  <li>객체 표현은 사용되는 곳에서 즉시 실행되고 초기화된다.</li>
+  <li>객체 선언은 처음 액세스 할 때 초기화됨으로 지연 초기화된다.</li>
+  <li>companion object는 Java static initializer와 의미상 일치하는 대응하는 클래스가 load(참조)되었을 때에 초기화된다. –&gt; (이해가 안가서 원문을 붙임 : a companion object is initialized when the corresponding class is loaded (resolved), matching the semantics of a Java static initializer.)</li>
+</ul>
+
+<div id="disqus_thread"></div>
+<script>
+  /**
+  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+  /*
+  var disqus_config = function () {
+  this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+  */
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://juhee-studynote.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+      <div class="page-footer">
+        <div class="page-share">
+          <a href="https://twitter.com/intent/tweet?text=Object Expressions and Declarations&url=http://localhost:4000/kotlin-object.html" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u=http://localhost:4000/kotlin-object.html" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+          <a href="https://plus.google.com/share?url=http://localhost:4000/kotlin-object.html" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+        </div>
+        <div class="page-tag">
+          
+        </div>
+      </div>
+      <section class="comment-area">
+  <div class="comment-wrapper">
+    
+    <div id="disqus_thread" class="article-comments"></div>
+    <script>
+      (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//mr-brown.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+  </div>
+</section> <!-- End Comment Area -->
+
+    </div> <!-- End Wrap Content -->
+  </div> <!-- End Page Content -->
+</article> <!-- End Article Page -->
+
+</div>
+
+  </div>
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script> <!-- End Analytics -->
+
+</body>
+</html>

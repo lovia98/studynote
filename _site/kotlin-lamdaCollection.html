@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>컬렉션 함수형 API - juhee's 개발과 일상</title>
+
+  <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
+
+    <meta content="juhee's 개발과 일상" property="og:site_name">
+  
+    <meta content="컬렉션 함수형 API" property="og:title">
+  
+  
+    <meta content="article" property="og:type">
+  
+  
+    <meta content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+" property="og:description">
+  
+  
+    <meta content="http://localhost:4000/kotlin-lamdaCollection.html" property="og:url">
+  
+  
+    <meta content="2018-06-24T00:00:00+09:00" property="article:published_time">
+    <meta content="http://localhost:4000/about/" property="article:author">
+  
+  
+    <meta content="http://localhost:4000/blog/assets/img/profile.jpg" property="og:image">
+  
+  
+    
+    <meta content="kotlin" property="article:section">
+    
+  
+  
+    
+  
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@">
+    <meta name="twitter:creator" content="@">
+  
+    <meta name="twitter:title" content="컬렉션 함수형 API">
+  
+  
+    <meta name="twitter:url" content="http://localhost:4000/kotlin-lamdaCollection.html">
+  
+  
+    <meta name="twitter:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+  
+  
+    <meta name="twitter:image:src" content="http://localhost:4000/blog/assets/img/profile.jpg">
+  
+
+	<meta name="description" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:image" content="">
+	<link rel="shortcut icon" href="/blog/assets/img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/blog/assets/img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/blog/assets/img/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/blog/assets/img/favicon/apple-touch-icon-144x144.png">
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#263959">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#263959">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#263959">
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="/blog/assets/fonts/font-awesome/css/font-awesome.min.css">
+	<!-- Styles -->
+	<link rel="stylesheet" href="/blog/assets/css/main.css">
+        
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <aside class="sidebar">
+  <header>
+    <div class="about">
+      <div class="cover-author-image">
+        <a href="/blog/"><img src="/blog/assets/img/profile.jpg" alt="Juhee Han"></a>
+      </div>
+      <div class="author-name">Juhee Han</div>
+      <p>일상과 개발</p>
+    </div>
+  </header> <!-- End Header -->
+  <footer>
+    <section class="contact">
+      <h3 class="contact-title">Contact me</h3>
+      <ul>
+        
+<!--          <li><a href="https://twitter.com/artemsheludko_" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>-->
+        
+        
+          <li><a href="https://facebook.com/https://www.facebook.com/juhee.han.9847" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+        
+        
+          <li class="github"><a href="http://github.com/lovia98" target="_blank"><i class="fa fa-github"></i></a></li>
+        
+        
+          <li class="linkedin"><a href="https://in.linkedin.com/" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+        
+        
+<!--          <li class="email"><a href="mailto:example.david@blog.com"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>-->
+        
+      </ul>
+    </section> <!-- End Section Contact -->
+    <div class="copyright">
+      <p>2019 &copy; Juhee Han</p>
+    </div>
+  </footer> <!-- End Footer -->
+</aside> <!-- End Sidebar -->
+<div class="content-box clearfix">
+  <article class="article-page">
+  <div class="page-content">
+    
+    
+    <div class="wrap-content">
+      <header class="header-page">
+        <h1 class="page-title">컬렉션 함수형 API</h1>
+        <div class="page-date"><span>2018, Jun 24&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+      </header>
+      <h3 id="filter와-map">filter와 map</h3>
+<ul>
+  <li>filter
+<br />Ref. : https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html
+<br />컬렉션에서 주어진 람다가 true를 반환하는 element를 추출하는 함수이다.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">val</span> <span class="py">list</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="n">list</span><span class="p">.</span><span class="n">filter</span> <span class="p">{</span> <span class="n">it</span> <span class="p">%</span> <span class="m">2</span> <span class="p">==</span> <span class="m">0</span> <span class="p">})</span> <span class="c1">//prints [2, 4]</span></code></pre></figure>
+
+<ul>
+  <li>map
+<br />Ref. : https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html
+<br />컬렉션에서 원하는 다른 형태의 element의 조합을 만들어 낼 수 있다.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin">  <span class="kd">val</span> <span class="py">list</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">)</span>
+  <span class="n">println</span><span class="p">(</span><span class="n">list</span><span class="p">.</span><span class="n">map</span><span class="p">{</span><span class="n">it</span> <span class="p">*</span> <span class="n">it</span><span class="p">})</span> <span class="c1">//prints [1, 4, 9, 16]</span>
+
+  <span class="c1">//객체의 필드만 추출</span>
+  <span class="kd">data class</span> <span class="nc">Person</span><span class="p">(</span><span class="kd">val</span> <span class="py">name</span><span class="p">:</span><span class="n">String</span><span class="p">,</span> <span class="kd">val</span> <span class="py">age</span><span class="p">:</span><span class="n">Int</span><span class="p">)</span>
+  <span class="kd">val</span> <span class="py">people</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="n">Person</span><span class="p">(</span><span class="s">"Alice"</span><span class="p">,</span> <span class="m">20</span><span class="p">),</span> <span class="n">Person</span><span class="p">(</span><span class="s">"juhee"</span><span class="p">,</span> <span class="m">30</span><span class="p">))</span>
+  <span class="n">println</span><span class="p">(</span><span class="n">people</span><span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="n">name</span> <span class="p">})</span>  <span class="c1">// prints [Alice, juhee]</span>
+
+  <span class="c1">//멤버참조를 이용한 표현</span>
+  <span class="n">people</span><span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="n">Person</span><span class="o">::</span><span class="n">name</span><span class="p">)</span></code></pre></figure>
+
+<ul>
+  <li>filter와 map을 연결(join)하여 원하는 컬렉션을 추출 할수도 있다.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">//예) 25세 이상인 사람의 이름을 추출</span>
+<span class="n">println</span><span class="p">(</span>
+      <span class="n">people</span><span class="p">.</span><span class="n">filter</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="n">age</span> <span class="p">&gt;</span> <span class="m">25</span> <span class="p">}</span>
+              <span class="p">.</span><span class="n">map</span><span class="p">(</span><span class="n">Person</span><span class="o">::</span><span class="n">name</span><span class="p">)</span>
+<span class="p">)</span></code></pre></figure>
+
+<hr />
+
+<h3 id="all-any-count-find">all, any, count, find</h3>
+<ul>
+  <li>
+    <p>all
+<br />컬렉션의 모든 element가 특정 조건을 만족한다면 true, 한개라도 만족하지 않는 것이 있다면 false를 반환한다.
+<br />Ref. : https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/all.html</p>
+  </li>
+  <li>
+    <p>any
+<br />특정 조건을 만족하는 element가 한개라도 존재한다면 true, 아니라면 false를 반환한다.
+<br />Ref. : https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="n">al</span> <span class="n">people</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="n">Person</span><span class="p">(</span><span class="s">"철수"</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">Person</span><span class="p">(</span><span class="s">"영희"</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">Person</span><span class="p">(</span><span class="s">"주희"</span><span class="p">,</span> <span class="m">30</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">Person</span><span class="p">(</span><span class="s">"영자"</span><span class="p">,</span> <span class="m">31</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">Person</span><span class="p">(</span><span class="s">"금자"</span><span class="p">,</span> <span class="m">32</span><span class="p">))</span>
+
+<span class="c1">//27이하에 해당하는 조건식</span>
+<span class="kd">val</span> <span class="py">canBelInClub27</span> <span class="p">=</span>  <span class="p">{</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">-&gt;</span><span class="n">p</span><span class="p">.</span><span class="n">age</span> <span class="p">&lt;=</span><span class="m">27</span><span class="p">}</span>
+
+<span class="n">println</span><span class="p">(</span><span class="s">"모두가 27세 미만인가? : "</span><span class="p">+</span> <span class="n">people</span><span class="p">.</span><span class="n">all</span><span class="p">(</span><span class="n">canBelInClub27</span><span class="p">))</span>
+<span class="n">println</span><span class="p">(</span><span class="s">"27세 미만인 사람이 있는가? : "</span><span class="p">+</span> <span class="n">people</span><span class="p">.</span><span class="n">any</span><span class="p">(</span><span class="n">canBelInClub27</span><span class="p">))</span>
+
+
+<span class="c1">//**** 출력결과</span>
+<span class="err">모두가</span> <span class="m">27</span><span class="err">세</span> <span class="err">미만인가</span><span class="p">?</span> <span class="p">:</span> <span class="k">false</span>
+<span class="m">27</span><span class="err">세</span> <span class="err">미만인</span> <span class="err">사람이</span> <span class="err">있는가</span><span class="p">?</span> <span class="p">:</span> <span class="k">true</span></code></pre></figure>
+
+<p><em class="fontHighlight">!all(condition)과 any(!condition)</em>
+<br />!all(condition) 과 any(!condition)의 결과는 같다. 반대로 !any(condition)과 all(!condition)도 같다.
+<br />가독성을 위해 !all  이나 !any와 같은 함수를 쓰기 보다는 함수안의 조건을 변경하여 사용하는 것을 추천한다.(지은이 왈)</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">val</span> <span class="py">list</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
+
+<span class="c1">//둘다 같은 true를 반환한다.</span>
+<span class="n">println</span><span class="p">(!</span><span class="n">list</span><span class="p">.</span><span class="n">all</span> <span class="p">{</span> <span class="n">it</span> <span class="p">==</span> <span class="m">3</span> <span class="p">})</span>
+<span class="n">println</span><span class="p">(</span><span class="n">list</span><span class="p">.</span><span class="n">any</span><span class="p">{</span> <span class="n">it</span><span class="p">!=</span><span class="m">3</span> <span class="p">})</span>  <span class="c1">//&lt;-- 가독성을 위해 이코드를 쓰도록 하자.</span></code></pre></figure>
+
+<ul>
+  <li>
+    <p>find
+<br />특정 조건을 만족하는 첫번째 element를 반환한다.
+<br />Ref. : https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html</p>
+  </li>
+  <li>
+    <p>count
+<br />결과 컬렉션의 element의 count수를 반환한다.
+<br />Ref. : https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/count.html</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="n">println</span><span class="p">(</span><span class="n">people</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">canBelInClub27</span><span class="p">))</span>
+<span class="n">println</span><span class="p">(</span><span class="n">people</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">canBelInClub27</span><span class="p">))</span>
+
+<span class="c1">//****  출력결과</span>
+<span class="m">2</span>
+<span class="n">Person</span><span class="p">(</span><span class="n">name</span><span class="p">=</span><span class="err">철수</span><span class="p">,</span> <span class="n">age</span><span class="p">=</span><span class="m">15</span><span class="p">)</span></code></pre></figure>
+
+<p><em class="fontHighlight">함수를 적재적소에 사용하라: count와 size</em>
+<br />컬렉션을 필터링한 결과의 크기를 가져 올때 .size보다는 count함수를 이용하는 편이 좋다.
+<br />예) people.fileter(canBelInClub27).size</p>
+
+<p><span class="fontHighlight2"><br />lazy 연산과 관련된 것 같은데(개인적인 추측) size를 이용하는 경우 실질적인 collection 결과가 필요하므로
+<br />size를 구하기전 조건에 맞는 collection을 만들게 된다.
+<br />하지만 count함수를 이용할 경우 최종 조건에 맞는 element의 수를 추척할 뿐 만족하는 요소들을 따로 저장하지 않는다.</span></p>
+
+<hr />
+
+<h3 id="groupby">groupBy</h3>
+<p><br />groupBy는 컬렉션의 요소들을 어떤 특성에 따라 분류하고자 할때 사용한다.
+<br />조건(람다식)을 파라미터로 넘기면 그에 따른 collection을 분리하여 map으로 반환해 준다. <br />
+Ref. : https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/group-by.html</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">val</span> <span class="py">people</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="n">Person</span><span class="p">(</span><span class="s">"철수"</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">Person</span><span class="p">(</span><span class="s">"영희"</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">Person</span><span class="p">(</span><span class="s">"주희"</span><span class="p">,</span> <span class="m">30</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">Person</span><span class="p">(</span><span class="s">"영자"</span><span class="p">,</span> <span class="m">30</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">Person</span><span class="p">(</span><span class="s">"금자"</span><span class="p">,</span> <span class="m">32</span><span class="p">))</span>
+
+<span class="n">println</span><span class="p">(</span><span class="n">people</span><span class="p">.</span><span class="n">groupBy</span><span class="p">{</span><span class="n">it</span><span class="p">.</span><span class="n">age</span><span class="p">})</span>
+
+
+<span class="c1">//****  출력결과</span>
+<span class="p">{</span><span class="m">15</span><span class="p">=[</span><span class="n">Person</span><span class="p">(</span><span class="n">name</span><span class="p">=</span><span class="err">철수</span><span class="p">,</span> <span class="n">age</span><span class="p">=</span><span class="m">15</span><span class="p">),</span> <span class="n">Person</span><span class="p">(</span><span class="n">name</span><span class="p">=</span><span class="err">영희</span><span class="p">,</span> <span class="n">age</span><span class="p">=</span><span class="m">15</span><span class="p">)],</span>
+<span class="m">30</span><span class="p">=[</span><span class="n">Person</span><span class="p">(</span><span class="n">name</span><span class="p">=</span><span class="err">주희</span><span class="p">,</span> <span class="n">age</span><span class="p">=</span><span class="m">30</span><span class="p">),</span> <span class="n">Person</span><span class="p">(</span><span class="n">name</span><span class="p">=</span><span class="err">영자</span><span class="p">,</span> <span class="n">age</span><span class="p">=</span><span class="m">30</span><span class="p">)],</span>
+<span class="m">32</span><span class="p">=[</span><span class="n">Person</span><span class="p">(</span><span class="n">name</span><span class="p">=</span><span class="err">금자</span><span class="p">,</span> <span class="n">age</span><span class="p">=</span><span class="m">32</span><span class="p">)]}</span></code></pre></figure>
+
+<hr />
+
+<h3 id="flatmap-flatten">flatMap, flatten</h3>
+<ul>
+  <li>flatMap
+<br />개별 element가 지니고 있는 list(or Array)의 요소들을 1개의 리스트로 병합하여 반환한다.
+<br />글을 봐서는 이해가 안되니 예제와 그림으로..
+<br />Ref. : https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/flat-map.html</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">val</span> <span class="py">books</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span>
+        <span class="n">Book</span><span class="p">(</span><span class="s">"bookA"</span><span class="p">,</span> <span class="n">listOf</span><span class="p">(</span><span class="s">"이지용"</span><span class="p">,</span> <span class="s">"김순모"</span><span class="p">,</span> <span class="s">"한원석"</span><span class="p">))</span>
+        <span class="p">,</span><span class="n">Book</span><span class="p">(</span><span class="s">"bookB"</span><span class="p">,</span> <span class="n">listOf</span><span class="p">(</span><span class="s">"한유신"</span><span class="p">,</span> <span class="s">"윤주빈"</span><span class="p">,</span> <span class="s">"한주희"</span><span class="p">))</span>
+        <span class="p">,</span><span class="n">Book</span><span class="p">(</span><span class="s">"bookC"</span><span class="p">,</span> <span class="n">listOf</span><span class="p">(</span><span class="s">"김정수"</span><span class="p">,</span> <span class="s">"조기택"</span><span class="p">,</span> <span class="s">"김현진"</span><span class="p">))</span>
+<span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="n">books</span><span class="p">.</span><span class="n">flatMap</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="n">authors</span> <span class="p">})</span>
+<span class="n">println</span><span class="p">(</span><span class="n">books</span><span class="p">.</span><span class="n">flatMap</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="n">authors</span> <span class="p">}.</span><span class="n">toSet</span><span class="p">())</span> <span class="c1">//toSet() 은 결과리스트에서 중복을 없애준다.</span>
+
+<span class="c1">//****  출력결과</span>
+<span class="na">[이지용, 김순모, 한원석, 한유신, 윤주빈, 한주희, 김정수, 조기택, 김현진, 한주희]</span>
+<span class="na">[이지용, 김순모, 한원석, 한유신, 윤주빈, 한주희, 김정수, 조기택, 김현진]</span>
+
+
+<span class="kd">val</span> <span class="py">strings</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="s">"abc"</span><span class="p">,</span> <span class="s">"def"</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="n">strings</span><span class="p">.</span><span class="n">flatMap</span><span class="p">{</span><span class="n">it</span><span class="p">.</span><span class="n">toList</span><span class="p">()})</span>
+
+<span class="c1">//****  출력결과</span>
+<span class="na">[a, b, c, d, e, f]</span></code></pre></figure>
+
+<p><img src="/blog/assets/images/kotlin/flatMap.jpg" alt="flatMap" /></p>
+
+<ul>
+  <li>flatten
+<br />개별 element가 list(or Array)자체인 경우 flatten을 이용해 1개의 리스트로 병합할 수 있다.
+<br />Ref. : https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/flatten.html</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">val</span> <span class="py">deepList</span> <span class="p">=</span> <span class="n">listOf</span><span class="p">(</span><span class="n">listOf</span><span class="p">(</span><span class="m">1</span><span class="p">),</span> <span class="n">listOf</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="n">listOf</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">))</span>
+<span class="n">println</span><span class="p">(</span><span class="n">deepList</span><span class="p">.</span><span class="n">flatten</span><span class="p">())</span> <span class="c1">// [1, 2, 3, 4, 5, 6]</span></code></pre></figure>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://juhee-studynote.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+      <div class="page-footer">
+        <div class="page-share">
+          <a href="https://twitter.com/intent/tweet?text=컬렉션 함수형 API&url=http://localhost:4000/kotlin-lamdaCollection.html" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u=http://localhost:4000/kotlin-lamdaCollection.html" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+          <a href="https://plus.google.com/share?url=http://localhost:4000/kotlin-lamdaCollection.html" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+        </div>
+        <div class="page-tag">
+          
+        </div>
+      </div>
+      <section class="comment-area">
+  <div class="comment-wrapper">
+    
+    <div id="disqus_thread" class="article-comments"></div>
+    <script>
+      (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//mr-brown.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+  </div>
+</section> <!-- End Comment Area -->
+
+    </div> <!-- End Wrap Content -->
+  </div> <!-- End Page Content -->
+</article> <!-- End Article Page -->
+
+</div>
+
+  </div>
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script> <!-- End Analytics -->
+
+</body>
+</html>
