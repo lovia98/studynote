@@ -3,9 +3,8 @@ title: 코틀린의 컬렉션
 author: 한주희
 layout: post
 icon: fa-angle-right
-categories: kotlin
+categories: Kotlin
 permalink: kotlin-collection.html
-comments: true
 ---
 
 코틀린에서는 컬렉션을 만들어내는 여러 표준 라이브러리를 제공한다.

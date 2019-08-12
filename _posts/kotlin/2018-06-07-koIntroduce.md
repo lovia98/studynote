@@ -2,7 +2,7 @@
 title: 코틀린 소개
 layout: post
 date: 2018-06-07
-categories: kotlin
+categories: Kotlin
 ---
 
 최근 회사에서 일부 신규 프로젝트를 코틀린으로 하겠다고 하여, 공부한 내용을 정리해 보고자 한다.

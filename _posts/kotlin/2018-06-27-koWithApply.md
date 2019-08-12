@@ -3,9 +3,8 @@ title: 수신 객체 지정 람다 - with와 apply
 author: 한주희
 layout: post
 icon: fa-angle-right
-categories: kotlin
+categories: Kotlin
 permalink: kotlin-withApply.html
-comments: true
 ---
 
 ## with

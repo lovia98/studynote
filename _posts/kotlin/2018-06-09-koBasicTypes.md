@@ -2,7 +2,7 @@
 title: 기본 타입
 layout: post
 date: 2018-06-09
-categories: kotlin
+categories: Kotlin
 ---
 
 이 글은 코틀린 공식 홈페이지를 보고 발번역한 내용입니다.

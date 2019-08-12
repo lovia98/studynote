@@ -3,9 +3,8 @@ title: Returns and Jumps
 author: 한주희
 layout: post
 icon: fa-angle-right
-categories: kotlin
-permalink: kotlin-returnsAndJumps.html
-comments: true
+categories: Kotlin
+permalink: kotlin-returnsAndJumps
 ---
 * 코틀린은 3가지 jump expressions를 가지고 있다. - returns. break. continue.
 

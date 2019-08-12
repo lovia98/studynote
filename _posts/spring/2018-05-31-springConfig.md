@@ -2,8 +2,7 @@
 title: 스프링 클라우드 버스
 layout: post
 date: 2018-05-31
-categories: spring
-comments: true
+categories: Spring
 ---
 
  스프링 클라우드 환경에서 환경설정 정보(깃등에 저장한 property)를 변경을 하면,

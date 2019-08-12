@@ -3,10 +3,10 @@ title: 컬렉션 함수형 API
 author: 한주희
 layout: post
 icon: fa-angle-right
-categories: kotlin
+categories: Kotlin
 permalink: kotlin-lamdaCollection.html
-comments: true
 ---
+
 ### filter와 map
 * filter
 <br>Ref. : https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html

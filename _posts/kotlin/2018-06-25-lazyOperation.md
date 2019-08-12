@@ -3,9 +3,8 @@ title: 지연 컬렉션 연산
 author: 한주희
 layout: post
 icon: fa-angle-right
-categories: kotlin
+categories: Kotlin
 permalink: kotlin-lazyOperation.html
-comments: true
 ---
 
 ### 시퀀스<sup>sequence</sup>를 이용한 컬렉션 지연 연산(lazy operation)

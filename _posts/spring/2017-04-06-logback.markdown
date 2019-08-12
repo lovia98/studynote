@@ -3,7 +3,7 @@ layout: post
 title: "[spring]Log back 기억해 둘만한 것들"
 date: 2019-02-07
 description: 로그백 관련 정보 정리. # Add post description (optional)
-categories: spring
+categories: Spring
 img:  # Add image post (optional)
 ---
 * logback-spring.xml 설정시 LOG-PATH, lOG-BACK 변수는 system property에 logging.path, logging.file 변수를 통해 정의가 가능하다.  

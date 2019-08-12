@@ -3,7 +3,7 @@ title: 스프링 클라우드(책 정리)
 author: 한주희
 layout: post
 date: 2018-05-30
-categories: spring
+categories: Spring
 ---
 
 이전에 스프링 클라우드 config를 활용한 rest서비스 구축 과정을 정리 하였는데,

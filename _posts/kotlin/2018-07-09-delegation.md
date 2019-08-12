@@ -3,10 +3,10 @@ title: 클래스와 Object:위임에 의한 구현
 author: 한주희
 layout: post
 icon: fa-angle-right
-categories: kotlin
+categories: Kotlin
 permalink: kotlin-delegation.html
-comments: true
 ---
+
 Ref 번역 : https://kotlinlang.org/docs/reference/delegation.html
 
 <code>Delegation 패턴</code>은 구현 상속에 대한 좋은 대안으로 입증되었으며, Kotlin은 native로

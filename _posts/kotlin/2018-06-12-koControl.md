@@ -2,12 +2,10 @@
 title: 조건절 if, when, for, while
 author: 한주희
 layout: post
-icon: fa-angle-right
-categories: kotlin
-permalink: kotlin-control.html
-comments: true
+date: 2018-06-12
+categories: Kotlin
 ---
----
+
 ### *If Expression*
 
 <br>코틀린에서는 if 조건절에서 value를 리턴할수 있다.

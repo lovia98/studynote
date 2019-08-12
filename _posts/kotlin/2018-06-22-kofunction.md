@@ -3,9 +3,8 @@ title: 최상위 함수와 프로퍼티
 author: 한주희
 layout: post
 icon: fa-angle-right
-categories: kotlin
+categories: Kotlin
 permalink: kotlin-static.html
-comments: true
 ---
 
 자바에서는 모든 코드를 클래스 기반에서 작성해야 한다. 하지만 특정 도메인 영역에는 포함되기 어려운 유틸에 관련된 변수나

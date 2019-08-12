@@ -2,7 +2,7 @@
 title: 스프링 클라우드
 layout: post
 date: 2018-05-28
-categories: spring
+categories: Spring
 ---
 
 Spring Cloud 홈페이지에 따르면, MSA와 같은 분산 시스템의 규모가 점차 커지면서 중간에 조정할
