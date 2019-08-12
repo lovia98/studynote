@@ -3,6 +3,7 @@ title : 데코레이터 패턴
 layout: post
 data: 108-12-18
 categories: 디자인패턴
+img: pattenrndesign.png
 ---
 
 ### 데코레이터 패턴 
