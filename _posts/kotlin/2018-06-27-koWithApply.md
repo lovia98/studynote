@@ -1,10 +1,10 @@
 ---
 title: 수신 객체 지정 람다 - with와 apply
-author: 한주희
 layout: post
 icon: fa-angle-right
 categories: Kotlin
 permalink: kotlin-withApply.html
+img: k1.png
 ---
 
 ## with

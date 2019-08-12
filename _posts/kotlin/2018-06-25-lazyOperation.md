@@ -1,10 +1,10 @@
 ---
 title: 지연 컬렉션 연산
-author: 한주희
 layout: post
 icon: fa-angle-right
 categories: Kotlin
 permalink: kotlin-lazyOperation.html
+img: k1.png
 ---
 
 ### 시퀀스<sup>sequence</sup>를 이용한 컬렉션 지연 연산(lazy operation)

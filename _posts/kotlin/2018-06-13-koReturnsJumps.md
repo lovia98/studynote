@@ -5,6 +5,7 @@ layout: post
 icon: fa-angle-right
 categories: Kotlin
 permalink: kotlin-returnsAndJumps
+img: k1.png
 ---
 * 코틀린은 3가지 jump expressions를 가지고 있다. - returns. break. continue.
 

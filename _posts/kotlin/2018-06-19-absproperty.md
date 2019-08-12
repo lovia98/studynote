@@ -1,10 +1,10 @@
 ---
 title: 인터페이스에 선언된 프로퍼티 구현
-author: 한주희
 layout: post
 icon: fa-angle-right
 categories: Kotlin
 permalink: kotlin-property2.html
+img: k1.png
 ---
  코틀린에서는 인터페이스에 추상 프로퍼티 선언을 넣을 수 있다.
  ```Kotlin

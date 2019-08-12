@@ -1,10 +1,10 @@
 ---
 title: 자바 함수형 인터페이스 활용
-author: 한주희
 layout: post
 icon: fa-angle-right
 categories: Kotlin
 permalink: kotlin-funtionalInterface.html
+img: k1.png
 ---
 
 ### 함수형 인터페이스

@@ -1,10 +1,10 @@
 ---
 title: 클래스와 Object:위임에 의한 구현
-author: 한주희
 layout: post
 icon: fa-angle-right
 categories: Kotlin
 permalink: kotlin-delegation.html
+img: k1.png
 ---
 
 Ref 번역 : https://kotlinlang.org/docs/reference/delegation.html

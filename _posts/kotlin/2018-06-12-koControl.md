@@ -4,6 +4,7 @@ author: 한주희
 layout: post
 date: 2018-06-12
 categories: Kotlin
+img: k1.png
 ---
 
 ### *If Expression*

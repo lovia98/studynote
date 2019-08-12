@@ -1,10 +1,10 @@
 ---
 title: 컬렉션 함수형 API
-author: 한주희
 layout: post
 icon: fa-angle-right
 categories: Kotlin
 permalink: kotlin-lamdaCollection.html
+img: k1.png
 ---
 
 ### filter와 map

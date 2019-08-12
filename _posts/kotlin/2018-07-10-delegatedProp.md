@@ -1,10 +1,10 @@
 ---
 title: 위임 프로퍼티1
-author: 한주희
 layout: post
 icon: fa-angle-right
 categories: Kotlin
 permalink: delegatedProp.html
+img: k1.png
 ---
 
 [Ref번역 - 의역 살짝(https://kotlinlang.org/docs/reference/delegated-properties.html#lazy)](https://kotlinlang.org/docs/reference/delegated-properties.html#lazy){: target="_blank"}
