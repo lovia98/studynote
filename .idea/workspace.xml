@@ -2,59 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ffe413d-d24e-451e-90cf-4d4a84499a65" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/category.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_layouts/category.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/javaArts/2018-05-14-funtional.html" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/java/2018-05-14-funtional.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/javaArts/2018-05-15-functional.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/java/2018-05-15-functional.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/javaArts/2018-05-16-lamda-express.html" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/java/2018-05-16-lamda-express.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/javaArts/2018-05-17-parrelStream.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/java/2018-05-17-parrelStream.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/javaArts/2018-07-12-optional.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/java/2018-07-12-optional.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/javaArts/2018-07-13-optional2.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/java/2018-07-13-optional2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/javaArts/2019-04-04-tuning.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/java/2019-04-04-tuning.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-06-07-koIntroduce.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-06-07-koIntroduce.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-06-08-koBasic.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-06-08-koBasic.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-06-09-koBasicTypes.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-06-09-koBasicTypes.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-06-12-koControl.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-06-12-koControl.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-06-13-koReturnsJumps.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-06-13-koReturnsJumps.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-06-14-koClass2.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-06-14-koClass2.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-06-15-koClass1.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-06-15-koClass1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-06-16-koClass.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-06-16-koClass.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-06-17-koClass.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-06-17-koClass.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-06-18-property.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-06-18-property.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-06-19-absproperty.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-06-19-absproperty.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-06-20-koWeb.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-06-20-koWeb.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-06-21-koFunction.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-06-21-koFunction.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-06-22-1extends.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-06-22-1extends.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-06-22-kofunction.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-06-22-kofunction.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-06-23-lamda.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-06-23-lamda.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-06-24-lamdaCollectionAPI.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-06-24-lamdaCollectionAPI.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-06-25-lazyOperation.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-06-25-lazyOperation.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-06-26-koFunctional.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-06-26-koFunctional.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-06-27-koWithApply.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-06-27-koWithApply.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-07-06-jpa.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-07-06-jpa.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-07-08-object.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-07-08-object.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-07-09-delegation.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-07-09-delegation.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/kotlin/2018-07-10-delegatedProp.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/kotlin/2018-07-10-delegatedProp.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/patternArts/2018-05-15-strategy.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/design-pattern/2018-05-15-strategy.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/patternArts/2018-05-16-template.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/design-pattern/2018-05-16-template.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/patternArts/2018-12-10-observer.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/design-pattern/2018-12-10-observer.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/patternArts/2018-12-14-dip.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/design-pattern/2018-12-14-dip.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/patternArts/2018-12-18-decorator.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/design-pattern/2018-12-18-decorator.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/patternArts/2019-03-07-versioning.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/design-pattern/2019-03-07-versioning.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/spring/2017-04-06-logback.markdown" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/spring/2017-04-06-logback.markdown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/spring/2018-05-28-spring-cloud1.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/spring/2018-05-28-spring-cloud1.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/spring/2018-05-30-msa-spring.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/spring/2018-05-30-msa-spring.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/spring/2018-05-31-springConfig.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/spring/2018-05-31-springConfig.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/spring/2018-08-01-sc-docker.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/spring/2018-08-01-sc-docker.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/spring/2018-08-03-eureka.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/spring/2018-08-03-eureka.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/decorator/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/decorator/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/dip/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/dip/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/observer/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/observer/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/etc/2018-12-09-startddd-1.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/etc/2018-12-09-startddd-1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/etc/2018-12-11-startddd.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/etc/2018-12-11-startddd.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/etc/2019-03-20-vue-es6.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/Js/2019-03-20-vue-es6.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/jpa/2018-07-07-empty.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/jpa/2018-07-07-empty.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/category/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/category/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/jpa-empty.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/jpa-empty.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page/2/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page/3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page/3/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page/4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page/4/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page/5/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page/5/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/page/6/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page/6/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page/7/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page/7/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/sitemap.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/template/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/template/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/versioning/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/versioning/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/vue-es6.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/vue-es6.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -65,120 +28,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/kotlin/2018-06-22-kofunction.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="105">
-                <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/kotlin/2018-06-23-lamda.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="120">
-                <caret line="8" selection-start-line="8" selection-end-line="8" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/kotlin/2018-06-24-lamdaCollectionAPI.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="75">
-                <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/kotlin/2018-06-25-lazyOperation.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="105">
-                <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/kotlin/2018-06-26-koFunctional.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="105">
-                <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/kotlin/2018-06-27-koWithApply.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="105">
-                <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/kotlin/2018-07-06-jpa.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="105">
-                <caret line="7" column="3" lean-forward="true" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/kotlin/2018-07-08-object.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="120">
-                <caret line="8" selection-start-line="8" selection-end-line="8" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_posts/kotlin/2018-07-09-delegation.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="120">
-                <caret line="8" selection-start-line="8" selection-end-line="8" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/_posts/kotlin/2018-07-10-delegatedProp.md">
+        <entry file="file://$PROJECT_DIR$/_posts/etc/2018-12-11-startddd.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="105">
+                <caret line="7" selection-start-line="7" selection-end-line="7" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_posts/etc/2018-12-09-startddd-1.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="75">
-                <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+                <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
               </first_editor>
               <second_editor />
             </state>
@@ -205,10 +72,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/_layouts/category.html" />
-        <option value="$PROJECT_DIR$/_posts/designPattern/2018-05-16-template.md" />
-        <option value="$PROJECT_DIR$/_posts/designPattern/2018-05-15-strategy.md" />
-        <option value="$PROJECT_DIR$/_posts/designPattern/2018-12-10-observer.md" />
         <option value="$PROJECT_DIR$/_posts/designPattern/2018-12-14-dip.md" />
         <option value="$PROJECT_DIR$/_posts/designPattern/2018-12-18-decorator.md" />
         <option value="$PROJECT_DIR$/_posts/designPattern/2019-03-07-versioning.md" />
@@ -256,6 +119,10 @@
         <option value="$PROJECT_DIR$/_posts/kotlin/2018-07-08-object.md" />
         <option value="$PROJECT_DIR$/_posts/kotlin/2018-07-09-delegation.md" />
         <option value="$PROJECT_DIR$/_posts/kotlin/2018-07-10-delegatedProp.md" />
+        <option value="$PROJECT_DIR$/_posts/jpa/2018-07-07-empty.md" />
+        <option value="$PROJECT_DIR$/_posts/etc/2019-03-20-vue-es6.md" />
+        <option value="$PROJECT_DIR$/_posts/etc/2018-12-09-startddd-1.md" />
+        <option value="$PROJECT_DIR$/_posts/etc/2018-12-11-startddd.md" />
       </list>
     </option>
   </component>
@@ -293,7 +160,19 @@
               <item name="blog" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="~/Documents/dev/blog" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="_posts" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="kotlin" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="etc" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="blog" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Documents/dev/blog" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="_posts" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="jpa" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="blog" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="~/Documents/dev/blog" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="_posts" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="Js" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -306,7 +185,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/_posts/Js" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -321,6 +200,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/_posts/js" />
       <recent name="$PROJECT_DIR$/" />
     </key>
   </component>
@@ -346,12 +226,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1565393079954</updated>
-      <workItem from="1565393081230" duration="6870000" />
+      <workItem from="1565393081230" duration="7309000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6870000" />
+    <option name="totallyTimeSpent" value="7309000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="483" y="27" width="1339" height="937" extended-state="0" />
@@ -391,46 +271,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/_posts/etc/2018-12-11-startddd.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="225">
-            <caret line="15" column="26" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="26" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_posts/etc/2018-12-09-startddd-1.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="183">
-            <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_layouts/default.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_layouts/post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="28" lean-forward="true" selection-start-line="3" selection-end-line="4" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/_layouts/category.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_layouts/main.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
@@ -864,6 +704,62 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="75">
             <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/jpa/2018-07-07-empty.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="60">
+            <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/etc/2018-05-29-mom.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/etc/2019-03-20-vue-es6.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="90">
+            <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/Js/2019-03-20-vue-es6.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/etc/2018-12-09-startddd-1.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="75">
+            <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_posts/etc/2018-12-11-startddd.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="105">
+            <caret line="7" selection-start-line="7" selection-end-line="7" />
           </first_editor>
           <second_editor />
         </state>

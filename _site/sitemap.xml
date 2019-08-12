@@ -153,11 +153,7 @@
 <lastmod>2018-08-03T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/blog/startddd-1/</loc>
-<lastmod>2018-12-09T00:00:00+09:00</lastmod>
-</url>
-<url>
-<loc>http://localhost:4000/blog/startddd/</loc>
+<loc>http://localhost:4000/blog/ddd1</loc>
 <lastmod>2018-12-09T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -165,7 +161,7 @@
 <lastmod>2018-12-10T00:00:00+09:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/blog/startddd/</loc>
+<loc>http://localhost:4000/blog/ddd2</loc>
 <lastmod>2018-12-11T00:00:00+09:00</lastmod>
 </url>
 <url>
@@ -219,8 +215,5 @@
 </url>
 <url>
 <loc>http://localhost:4000/blog/page/6/</loc>
-</url>
-<url>
-<loc>http://localhost:4000/blog/page/7/</loc>
 </url>
 </urlset>
