@@ -1,5 +1,5 @@
 #server Config options
-livereload: true   # You no longer need to include --livereload
+watch: true   # You no longer need to include --livereload
 
 title: juhee's 개발과 일상
 description: > # this means to ignore newlines until "baseurl:"
