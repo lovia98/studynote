@@ -13,7 +13,7 @@
 <p>알고리즘을 정의 하고 각각을 캡슐화하여 교체해서 사용할 수 있도록 만든다.
  <br />스트래티지를 활용하면 알고리즘을 사용하는 클라이언트와는 독립적으로 알고리즘을 변경 할 수 있다.
  <br /><br />‘오리’를 주문 제작하는 회사에서 아래와 같은 구조로 클래스를 디자인 하였다.
- <img src="assets/images/pattern/strategy1.png" />
+ <img src="assets/img/pattern/strategy1.png" />
  <br />이 회사에 주로 들어오는 오리 생산 주문에 나는 방식(fly)과 소리내는 방식(quack)에 다양한 주문이 들어오고 있다고 해보자.</p>
 
 <p>fly메소드와 quack메소드를 오버라이드 해서 새로운 서브 클래스를 만들어 내면 되겠지만,
@@ -22,12 +22,12 @@
     아무것도 하지 않는 것으로 오버라이드 해야 한다.</p>
 
 <p>변화하는 부분(fly, quack)을 분리해보면 어떨까?
-<img src="assets/images/pattern/strategy2.png" />
+<img src="/blog/assets/img/pattern/strategy2.png" />
 <br />fly, quack을 인터페이스로 추상화 하고 각기 다른 특성들을 구현체로 생성하였다.
 <br />이렇게 ‘날다’와 ‘소리내다’의 알고리즘을 따로 떼어 새로운 객체로 분리하는 것을 <code>캡슐화</code>라고 한다.</p>
 
 <p>Duck 추상화 클래스에 새로 만든 인터페이스 타입의 변수를 선언하고, ‘fly’, ‘quack’메소드를 수정하였다.
-<img src="assets/images/pattern/strategy3.png" /></p>
+<img src="/blog/assets/img/pattern/strategy3.png" /></p>
 
 <p><i>이렇게 상속보다 구성을 활용했을때의 장점이 무엇일까?</i>
 <br />만약 MallardDuck을 주문하던 client가 높이 나는 기능이 아닌 낮게 나는 오리로 변경해 달라고 주문을 변경했다고 해보자.

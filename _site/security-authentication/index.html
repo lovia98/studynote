@@ -2,39 +2,48 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>juhee's 개발과 일상</title>
+	<title>스프링 시큐리티 구조 - juhee's 개발과 일상</title>
 
   <!-- Edit site and author settings in `_config.yml` to make the social details your own -->
 
     <meta content="juhee's 개발과 일상" property="og:site_name">
   
-    <meta content="juhee's 개발과 일상" property="og:title">
+    <meta content="스프링 시큐리티 구조" property="og:title">
   
   
-    <meta content="website" property="og:type">
+    <meta content="article" property="og:type">
   
   
     <meta content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 " property="og:description">
   
   
-    <meta content="http://localhost:4000/page/7/" property="og:url">
+    <meta content="http://localhost:4000/security-authentication/" property="og:url">
   
+  
+    <meta content="2019-08-19T00:00:00+09:00" property="article:published_time">
+    <meta content="http://localhost:4000/about/" property="article:author">
   
   
     <meta content="http://localhost:4000/blog/assets/img/profile.jpg" property="og:image">
   
   
+    
+    <meta content="Spring" property="article:section">
+    
+  
+  
+    
   
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@">
     <meta name="twitter:creator" content="@">
   
-    <meta name="twitter:title" content="juhee's 개발과 일상">
+    <meta name="twitter:title" content="스프링 시큐리티 구조">
   
   
-    <meta name="twitter:url" content="http://localhost:4000/page/7/">
+    <meta name="twitter:url" content="http://localhost:4000/security-authentication/">
   
   
     <meta name="twitter:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
@@ -111,80 +120,76 @@
   </footer> <!-- End Footer -->
 </aside> <!-- End Sidebar -->
 <div class="content-box clearfix">
-  
-<article class="post">
-  
-  
-  <div class="post-content">
-    <h2 class="post-title"><a href="/blog/optional1">Optional</a></h2>
-    <p>Optional 객체 만들기 빈 Optional Optional&lt;Car&gt; optCar = Optional.empty() Optional.of Optional에 null아닌 값만 포함하고자 할때는...</p>
-    <span class="post-date">2018, May 16&nbsp;&nbsp;&nbsp;—&nbsp;</span>
-    <span class="post-words">2 minute read</span>
-  </div>
-</article>
+  <article class="article-page">
+  <div class="page-content">
+<!--    -->
+<!--    -->
+    <div class="wrap-content">
+      <header class="header-page">
+        <h1 class="page-title">스프링 시큐리티 구조</h1>
+        <div class="page-date"><span>2019, Aug 19&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+      </header>
+      <p>시큐리티를 제대로 이해해 보아요~</p>
 
-<article class="post">
-  
-  
-  <div class="post-content">
-    <h2 class="post-title"><a href="/blog/lamda-express/">람다 표현식</a></h2>
-    <p>#람다의 특징 익명 : 보통의 메서드와 달리 이름이 없으므로 익명이라 표현한다. 함수 : 메서드처럼 특정...</p>
-    <span class="post-date">2018, May 16&nbsp;&nbsp;&nbsp;—&nbsp;</span>
-    <span class="post-words">4 minute read</span>
-  </div>
-</article>
-
-<article class="post">
-  
-  
-  <div class="post-content">
-    <h2 class="post-title"><a href="/blog/functional/">함수형 프로그래밍 기법#1</a></h2>
-    <p>함수형을 지향하기 위한 프로그래밍 기법을 알아보자. 일급 시민, 고차원 함수, 커링, 부분 적용 영속 자료구조...</p>
-    <span class="post-date">2018, May 15&nbsp;&nbsp;&nbsp;—&nbsp;</span>
-    <span class="post-words">3 minute read</span>
-  </div>
-</article>
-
-<article class="post">
-  
-    <a class="post-thumbnail" style="background-image: url(/blog/assets/img/pattenrndesign.png)" href="/blog/strategy/"></a>
-  
-  <div class="post-content">
-    <h2 class="post-title"><a href="/blog/strategy/">전략 패턴</a></h2>
-    <p>디자인 원칙 달라지는 부분을 찾아 내고, 달라지지 않는 부분으로 부터 분리 시킨다. 상속보다는 구성을 활용한다....</p>
-    <span class="post-date">2018, May 15&nbsp;&nbsp;&nbsp;—&nbsp;</span>
-    <span class="post-words">2 minute read</span>
-  </div>
-</article>
-
-<article class="post">
-  
-  
-  <div class="post-content">
-    <h2 class="post-title"><a href="/blog/funtional/">함수형 프로그래밍</a></h2>
-    <p>#함수형 프로그래밍이란 무엇인가? 간단히 말해서 '함수를 이용하는 프로그래밍이다' 라고 답변할 수 있다. 그렇다면 여기서 '함수'란...</p>
-    <span class="post-date">2018, May 14&nbsp;&nbsp;&nbsp;—&nbsp;</span>
-    <span class="post-words">2 minute read</span>
-  </div>
-</article>
-
-
-<div class="container">
-  <nav class="pagination" role="pagination">
+<h2 id="인증처리-편---securitycontextholder와-authentication">인증처리 편 - SecurityContextHolder와 Authentication</h2>
+<ul>
+  <li>참고자료 :
     <ul>
-      
-        
-        <p><a class="newer-posts" href="/blog/page/6/"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a></p>
-        
-      
-
-      <p><span class="page-number">Page 7 of 7</span></p>
-
-      
+      <li><a href="https://www.inflearn.com/course/백기선-스프링-시큐리티" target="_blank">인프런 강의</a></li>
+      <li><a href="https://springbootdev.com/2017/08/23/spring-security-authentication-architecture/" target="_blank">https://springbootdev.com</a></li>
+      <li><a href="https://docs.spring.io/spring-security/site/docs/current/reference/html/overall-architecture.html#securitycontextholder-securitycontext-and-authentication-objects" target="_blank">docs.spring.io</a><br />
+<br />
+스프링 시큐리티 인증처리에 대한 전체적인 처리 흐름은 다음과 같다.
+<img src="/blog/assets/img/spring/blogpost-spring-security-architecture.png" height="400px;" /><br />
+<br /><br /></li>
     </ul>
-  </nav>
-</div>
+  </li>
+</ul>
 
+<p>그중 오늘 살펴볼 부분은 바로 이 부분<br />
+<img src="/blog/assets/img/spring/security-contextHolder.png" /></p>
+
+<ul>
+  <li><strong>SecurityContextHolder</strong>
+    <ul>
+      <li>사용자의 인증 처리(로그인 성공) 후 현재의 보안 세부 정보를 저장하는 가장 기본적인 개체</li>
+      <li>ThreadLocal을 사용하여 이러한 세부 사항을 저장한다.</li>
+      <li>이를 이용하여 한번 로그인에 성공하면 인증 객체를 securitycontext에 저장해 두고<br />
+매번 인증 처리 할 필요 없이 동일한 실행 스레드에서 사용자의 인증 처리 결과를 가져올 수 있다.</li>
+    </ul>
+  </li>
+</ul>
+
+      <div class="page-footer">
+        <div class="page-share">
+          <a href="https://twitter.com/intent/tweet?text=스프링 시큐리티 구조&url=http://localhost:4000/security-authentication/" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u=http://localhost:4000/security-authentication/" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+          <a href="https://plus.google.com/share?url=http://localhost:4000/security-authentication/" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+        </div>
+        <div class="page-tag">
+          
+        </div>
+      </div>
+      <section class="comment-area">
+  <div class="comment-wrapper">
+    
+    <div id="disqus_thread" class="article-comments"></div>
+    <script>
+      (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//mr-brown.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+  </div>
+</section> <!-- End Comment Area -->
+
+    </div> <!-- End Wrap Content -->
+  </div> <!-- End Page Content -->
+</article> <!-- End Article Page -->
 
 </div>
 
