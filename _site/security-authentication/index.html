@@ -74,7 +74,7 @@
 	<link rel="stylesheet" href="/blog/assets/fonts/font-awesome/css/font-awesome.min.css">
 	<!-- Styles -->
 	<link rel="stylesheet" href="/blog/assets/css/main.css">
-        
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -146,7 +146,7 @@
   </li>
 </ul>
 
-<p>그중 오늘 살펴볼 부분은 바로 이 부분<br />
+<p>그 중 오늘 살펴볼 부분은 바로 이 부분<br />
 <img src="/blog/assets/img/spring/security-contextHolder.png" /></p>
 
 <ul>
@@ -155,10 +155,57 @@
       <li>사용자의 인증 처리(로그인 성공) 후 현재의 보안 세부 정보를 저장하는 가장 기본적인 개체</li>
       <li>ThreadLocal을 사용하여 이러한 세부 사항을 저장한다.</li>
       <li>이를 이용하여 한번 로그인에 성공하면 인증 객체를 securitycontext에 저장해 두고<br />
-매번 인증 처리 할 필요 없이 동일한 실행 스레드에서 사용자의 인증 처리 결과를 가져올 수 있다.</li>
+매번 인증 처리 할 필요 없이 동일한 실행 스레드에서 사용자의 인증 처리 결과를 가져올 수 있다.<br />
+<br /></li>
+    </ul>
+  </li>
+  <li><strong>SecurityContext</strong>
+    <ul>
+      <li>현재 application을 사용하고 있는 보안 주체(사용자에 대한 인증 정보)를 담고 있음.<br />
+<br /></li>
+    </ul>
+  </li>
+  <li><strong>Authentication</strong>
+    <ul>
+      <li>스프링 시큐리티는 Authentication객체에 보안 주체(사용자)의 세부 정보를 저장한다.</li>
+      <li>Authentication에는 Principal과 GrantAuthority 두가지 객체가 있다.<br />
+<br /></li>
+    </ul>
+  </li>
+  <li><strong>Principal</strong>
+    <ul>
+      <li>사용자 인증 정보(아이디, 이름, 권한등)를 담는 객체</li>
+      <li>Principal을 가져오는 역할은 직접 만들어도 되지만, 스프링 시큐리티에서는 UserDetailsService<br />
+인터페이스를 제공한다.</li>
+      <li>UserDetailsService 를 구현하여 스프링시큐리티 설정시 등록해주면 유져 정보를 가져오는 부분에
+사용된다.<br />
+<br />
+<strong>UserDetailsService interface</strong>
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>public interface UserDetailsService {
+  UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
+  }
+</code></pre></div>        </div>
+        <p><br /></p>
+      </li>
+      <li>UserDetailsService 는 사용자 정보(인증정보)를 리턴하는 하나의 메소드를 가지고 있으며,<br />
+리턴 객체는 UserDetails 타입이다.</li>
+      <li>결론적으로 Principal로 쓰이는 객체는 UserDetails 타입으로 우리가 application내에<br />
+인증정보를 담는 객체를 만들때는 UserDetails 인터페이스를 구현한 객체여야 한다는 것..</li>
     </ul>
   </li>
 </ul>
+
+<p><br /></p>
+<ul>
+  <li><strong>GrantAuthority</strong>
+    <ul>
+      <li>“ROLE_USER”, “ROLE_ADMIN”과 같은 Principal이 가지고 있는 “권한”정보들</li>
+      <li>인증 이후, 인가 및 권한 확인 할때 이 정보를 참조한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><i class="fas fa-box"></i>정리</p>
 
       <div class="page-footer">
         <div class="page-share">
