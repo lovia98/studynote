@@ -57,4 +57,17 @@
   * "ROLE_USER", "ROLE_ADMIN"과 같은 Principal이 가지고 있는 "권한"정보들
   * 인증 이후, 인가 및 권한 확인 할때 이 정보를 참조한다.
 
-<i class="fas fa-box"></i>정리   
+**정리**
+ * 스프링 시큐리티에서 사용자(로그인에 성공을 한 사용자이건 아니건)의 인증 정보를 저장하는 가장 기본적인 객체는 SecurityContextHolder이다.
+ * SecurityContextHolder는 LocalThread 를 기반으로 한번 인증 처리 된 정보에 대해서 저장해 두고 이후 request에 대해서는 저장된 정보를 사용하여 
+   다시 인증 절차를 거치지 않게 된다.
+ * 세부적으로는 SecurityContext를 가지고 있고, securityContext는 Authentication객체라는 사용자 인증 주체인 정보를 가지고 있다.
+ * Authentication 은 세부적으로 Pricipal과 GrantAuthority객체를 담고 있다.
+ * Pricipal은 사용자 세부 정보, GrantAuthority 객체는 권한 정보를 담는다.
+ * 스프링 시큐리티에는 유져 인증 정보를 가져를 가져오는 UserDetailService라는 인터페이스를 제공한다.
+ * 스프링 시큐리티에는 유져 인증 정보를 담는 UserDetails라는 인터페이스를 제공한다.
+  
+ 
+ 
+ 
+ 
