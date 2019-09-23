@@ -221,6 +221,14 @@
 <lastmod>2019-09-02T00:00:00+09:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/blog/nwLayer3/</loc>
+<lastmod>2019-09-03T00:00:00+09:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/blog/ipaddress/</loc>
+<lastmod>2019-09-04T00:00:00+09:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/blog/category/</loc>
 </url>
 <url>
@@ -246,5 +254,8 @@
 </url>
 <url>
 <loc>http://localhost:4000/blog/page/7/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/blog/page/8/</loc>
 </url>
 </urlset>
