@@ -1,0 +1,145 @@
+I"�<h3 id="인터페이스-정의"><em>인터페이스 정의</em></h3>
+
+<p>java와 마찬가지로 interface를 사용한다.</p>
+<pre><code>
+interface Clickable {
+  fun click()     //추상 메소드
+}
+</code></pre>
+
+<p>인터페이스 구현하기 위해서는 클래스 이름 뒤에 콜론(:)을 붙이고 인터페이스를 붙인다.
+특이한 점은 상속(extends)도 똑같은 방법으로 이루어진다.
+따라서 콜론(:)을 통해 인터페이스와 확장이 동시에 이루어진다.</p>
+<pre><code>
+class Button : Clickable {
+  //override 변경자로 오버로딩 한다는 것을 표시한다.
+    override fun click() = println("구현체")
+}
+
+&gt;&gt;&gt; Button().click()
+구현체
+</code></pre>
+<ul>
+  <li>변경자 <bold>override</bold>는 자바의 @override와 비슷한 것으로 인터페이스에 있는 프로퍼티나 메소드를 오버라이드한다는 표시다.</li>
+  <li>자바와 달리 코틀린에서는 override변경자를 꼭 사용해야 한다. 이는 실수로 상위 클래스의 메소드를 오버라이드 하는 것을 방지해준다.</li>
+  <li>자바와 마찬가지로 인터페이스는 복수로 구현할 수 있지만, 클래스는 오직 하나만 확장할 수 있다.</li>
+  <li>코틀린에서는 인터페이스에서도 구현이 있는 메소드도 정의 할수 있다.(java8의 default함수와 비슷)</li>
+</ul>
+<pre><code>
+interface MyInterface {
+    fun printWelcome() {
+        println("welcome")
+    }
+}
+
+class MyClass : MyInterface {
+
+}
+
+&gt;&gt;&gt; MyClass().printWelcome()
+welcome
+
+</code></pre>
+
+<p>이렇게 구현체를 가진 메소드와 같은 이름을 가진 다른 인터페이스를 추가로 구현한다면 어떻게 될까?
+<br />이런경우 구현체 class에서는 해당 메소드를 override해야 한다 syntax오류가 발생한다.</p>
+<pre><code>
+interface MyInterface {
+    fun printWelcome() {
+        println("welcome")
+    }
+}
+
+interface SameMethodInterface {
+    fun printWelcome() {
+        println("Hello")
+    }
+}
+
+class MyClass2 : MyInterface, SameMethodInterface { //&lt;-- syntax 오류 발생
+
+}
+
+------------------------------------------------------------
+error: class 'MyClass2' must override public open fun printWelcome(): Unit defined in Line_68.MyInterface because it inherits multiple interface methods of it
+
+</code></pre>
+
+<p>상위 타입의 멤버 메소드를 호출 할시에는 super<상위타입> 로 구분하여 어떤 상위 타입의 메소드를 실행할지 지정 할 수 있다.</상위타입></p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">interface</span> <span class="nc">SameMethodInterface</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">printWelcome</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">MyClass</span> <span class="p">:</span> <span class="nc">MyInterface</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">MyClass2</span> <span class="p">:</span> <span class="nc">MyInterface</span><span class="p">,</span> <span class="nc">SameMethodInterface</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">printWelcome</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">super</span><span class="p">&lt;</span><span class="nc">MyInterface</span><span class="p">&gt;.</span><span class="nf">printWelcome</span><span class="p">()</span>
+
+        <span class="k">super</span><span class="p">&lt;</span><span class="nc">SameMethodInterface</span><span class="p">&gt;.</span><span class="nf">printWelcome</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">&gt;&gt;&gt;</span> <span class="nc">MyClass2</span><span class="p">().</span><span class="nf">printWelcome</span><span class="p">()</span>
+<span class="n">welcome</span>
+<span class="nc">Hello</span></code></pre></figure>
+
+<hr />
+<h3 id="기본적으로-닫혀-있는-class"><em><code class="highlighter-rouge">기본적으로 닫혀 있는 class</code></em></h3>
+<p><br />코틀린의 클래스와 메소드는 기본적으로 final이다.</p>
+
+<ul>
+  <li>취약한 기반 클래스<sup>fragile base class</sup>
+<br /> 기본적으로 클래스와 메소드가 상속에 대해 열려 있는 자바에서는 상위 클래스를 변경할시 예기치 않은 문제가 발생할 수 있는 위험이 있다.</li>
+  <li>코틀린에서는 이런 문제를 차단하기 위해서 클래스와 메소드를 기본적으로 final로 설정해 두고 상속을 허용하는 경우에만
+<br /> <code class="highlighter-rouge">open</code> 변경자를 붙이도록 하고 있다.</li>
+</ul>
+<pre><code>
+//상속에 열려있는 클래스
+open class OpenMyClass : MyInterface {
+
+    fun finalMethod() {}  //&lt;-- final함수, 하위 클래스가 이 메소드를 오버라이드 할 수 없다.
+
+    open fun openMethod() {}  //&lt;-- open함수, 하위 클래스가 이 메소드를 오버라이드 할수 있다.
+
+    override fun printWelcome() = println("welcome to kotlin") //&lt;-- open함수, override한 메소드는 기본적으로 열려 있다.
+}
+</code></pre>
+<ul>
+  <li>override 메소드는 기본적으로 상속에 열려 있다. 이것을 금지 하고 싶다면 final로 선언하면 된다.
+<br /> <code class="highlighter-rouge">final override fun printWelcome() = println("welcome to kotlin")</code></li>
+</ul>
+
+<hr />
+<h3 id="추상-클래스-정의"><em>추상 클래스 정의</em></h3>
+<p><br /></p>
+<ul>
+  <li>자바처럼 코틀린에서도 클래스를 abstract로 선언한다.</li>
+  <li>abstract로 선언한 추상 클래스는 인스턴스화할 수 없다.</li>
+  <li>추상 클래스는 상속에 항상 열려있다.</li>
+</ul>
+<pre><code>
+abstract class Animated {
+  abstract fun animate()        //&lt;-- 반드시 구현해야 할 추상 메소드
+  fun animateTwice() {}         //override 불가
+  open fun stopAnimating() {}   //override 가능
+}
+</code></pre>
+<ul>
+  <li>추상 클래스내에 abstract 함수는 반드시 override 해야한다.</li>
+  <li>추상 클래스에 속해 있다 하더라도 abstract 함수가 아니 일반 함수는 override를 허용하지 않는다.</li>
+</ul>
+<pre><code>
+class childClass : Animated() {
+    override fun animate() = print("animate")               //&lt;-- override하지 않으면 에러 발생
+    override fun stopAnimating() = print("can overriding")
+    override fun animateTwice() {}                          //&lt;-- sytax Error
+}
+</code></pre>
+
+:ET

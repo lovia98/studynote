@@ -1,0 +1,59 @@
+I"k
+<h3 id="함수">함수</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//간단한 예제
+fun main(args: Array&lt;String&gt;) {
+  println("Hello, wolrd!")
+}
+</code></pre></div></div>
+
+<ul>
+  <li>함수를 선언할 때 fun 키워드를 사용한다.</li>
+  <li>파라미터 이름 뒤에 그 파라미터의 타입을 쓴다. <code class="highlighter-rouge">s:String</code></li>
+  <li>함수를 최상위 수준에 정의할 수 있다. 꼭 클래스 안에 함수를 넣어야 할 필요가 없다.</li>
+  <li>System.out.println대신에 println이라고 쓴다.</li>
+  <li><code class="highlighter-rouge">코틀린 표준 라이브러리</code> : 코틀린에서는 표준 자바 라이브러리 함수를 간결하게 사용할 수 있게 감싼 래퍼<sup>wrapper</sup>를 제공한다.
+ <br />println도 그런 함수 중 하나다.</li>
+  <li>최신 프로그래밍 언어 경향과 마찬가지로 줄 끝에 세미클론(;)을 붙이지 않아도 좋다.</li>
+  <li>반환하는 변수가 있는 함수의 경우 함수 description끝에 콜론(:)을 붙이고 반환타입을 명시해야 한다.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>fun max(a: Int, b: Int): Int {
+  return if(a &gt;b) a else b
+}
+</code></pre></div></div>
+
+<ul>
+  <li><code>식이 본문인 함수</code>
+<br />위와 같은 식을 중괄호를 없애고 등호(=)를 붙여 본문이 식으로만 이루어진 함수로 표현할수 있다.
+<br />이와 같이 본문이 식으로만 이루어진 함수를 <bold>식이 본문인 함수</bold>라고 부르고,
+<br />중괄호{}로 둘러싸인 함수를 <bold>블록이 본문인 함수</bold>라고 한다.</li>
+</ul>
+
+<hr />
+<h3 id="변수">변수</h3>
+<ul>
+  <li>타입 추론 : 컴파일러가 타입을 분석해 프로그래머 대신 프로그램 구성 요소의 타입을 정해주는 기능.
+<br />코틀린은 타입추론을 지원한다.</li>
+</ul>
+<pre><code>
+//타입 표기 생략
+  val question = "질문"
+  val answer = 42
+
+//타입 명시
+  val answer: Int = 2
+</code></pre>
+
+<ul>
+  <li>val(값을 뜻하는 valu에서 따옴) - 변경 불가능한(immutable) 변수 선언</li>
+  <li>
+    <p>var(변수를 뜻하는 variable에서 따옴) - 변경 가능한(mutable) 변수 선언</p>
+  </li>
+  <li><span class="fontblueLight"><bold>val 참조 자체는 불면일지라도 그 참조가 가리키는 객체의 내부 값은 변경될 수 있다.</bold></span></li>
+</ul>
+<pre><code>
+val languages = arrayListOf("Java")
+languages.add("kotlin") //&lt;-- 참조가 가리키는 객체 내부를 변경한다.
+</code></pre>
+
+:ET

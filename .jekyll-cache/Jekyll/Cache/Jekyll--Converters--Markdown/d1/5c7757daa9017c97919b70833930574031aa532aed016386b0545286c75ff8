@@ -1,0 +1,83 @@
+I"�<p><span class="fontHighlight">Optional 객체 만들기</span></p>
+
+<ul>
+  <li>
+    <p>빈 Optional
+<br /><code class="highlighter-rouge"> Optional&lt;Car&gt; optCar = Optional.empty() </code></p>
+  </li>
+  <li>
+    <p>Optional.of
+<br /> Optional에 null아닌 값만 포함하고자 할때는 Optional.of로 Optional객체를 만든다.
+<br /><code class="highlighter-rouge"> Optional&lt;Car&gt; optCar = Optional.of(car) </code></p>
+  </li>
+  <li>
+    <p>Optional.ofNullable
+<br /> null값을 저장할 수 있는 Optional을 만들때 사용한다.
+<br /><code class="highlighter-rouge"> Optional&lt;Car&gt; optCar = Optional.ofNullable(car) </code></p>
+  </li>
+</ul>
+
+<p><span class="fontHighlight">map와 flatMap을 이용한 Optional처리</span>
+<br />Optional에 map와 flatMap을 이용하여 객체정보를 추출시 null-safe한 코드를 만들 수 있다.</p>
+<pre><code class="language-JAVA">
+//Optional로 데이터 모델 정의
+public class Person {
+    private Optional&lt;Car&gt; car; //차가 null일수 있다는 것을 알 수 있음
+    public Optional&lt;Car&gt; getCar() { return car; }
+}
+
+public class Car {
+    private Optional&lt;Insurance&gt; insurance; //보험이 null일수 있다는 것을 알 수 있음
+    public Optional&lt;Insurance&gt; getInsurance() { return insurance; }
+}
+
+public class Insurance {
+    private String name;    //보험에는 반드시 name이 있어야 한다는 것을 알 수 있다.
+    public String getName() { return name; }
+}
+
+//Optional을 이용해 자동차보험 이름 얻기
+public String getCarInsuranceName(Optional&lt;Person&gt; person) {
+
+    return person.flatMap(Person::getCar)
+            .flatMap(Car::getInsurance)
+            .map(Insurance::getName)
+            .orElse("Unkown");
+}
+</code></pre>
+<p><a href="/blog/optional.html" target="_blank">이전 글</a>에 만들었던 함수 getCarInsuranceNameNullCheck과
+비교해 보면 훨씬 가독성이 높으면서 null로 부터 안전한 코드가 만들어 졌다.</p>
+
+<p>getCarInsuranceName 을 보면 Person에서 Car정보를, Car에서 Insurance 정보를 가지고 올때는 flatMap을 사용하고
+<br />Insurance의 name 정보를 가져 올때는 map을 사용하였다.
+<br />이유는 Person의 car 멤버 변수가 Optional<Car>로 선언되어 있기 때문에 <code>.map(Person::getCar)</code>
+로 데이터를 추출할 경우 결과가 &lt;Optional&lt;Optional<Car>&gt; 형식으로 나타난다. Optional<Car>로 결과를 얻기 위해서는
+flatMap을 이용해야 한다.</Car></Car></Car></p>
+
+<p><span class="fontHighlight">디폴트 액션과 Option언랩<sup>unwrap</sup></span></p>
+<ul>
+  <li>
+    <p>get()
+<br />get은 래핑된 값이 있으면 해당 값을 반환하고 값이 없으면 NoSuchElementException을 발생시킨다.
+<br />따라서 Optional의 값을 읽는 가장 간단한 메서드이지만 가장 안전하지 않은 메서드로 null이 있을 수 있는 Optional값을
+읽을때는 사용하지 않는 것이 좋다.</p>
+  </li>
+  <li>
+    <p>orElse
+<br />orElse 메서드를 이용하면 Optional이 값을 포함하지 않을 때 디폴트값을 제공할 수 있다.<code>.orElse("Unknown")</code></p>
+  </li>
+  <li>
+    <p>orElseGet(orElseGet(Supplier&lt;? extends T&gt; other))
+<br />Optional에 값이 없을 때만 Supplier을 실행하여 디폴트값을 생성한다.</p>
+  </li>
+  <li>
+    <p>orElseThrow(Supplier&lt;? extends X&gt; exceptionSupplier)
+<br />Optional이 비어 있을때 예외를 발생시킬 예외의 종류를 선택 할 수 있다.</p>
+  </li>
+  <li>
+    <p>ifPresent(Consumer&lt;? super T&gt; consumer)
+<br />값이 존재할 때 인수로 넘겨준 동작을 실행할 수 있다. 값이 없으면 아무일도 일어나지 않는다.</p>
+  </li>
+</ul>
+
+:ET

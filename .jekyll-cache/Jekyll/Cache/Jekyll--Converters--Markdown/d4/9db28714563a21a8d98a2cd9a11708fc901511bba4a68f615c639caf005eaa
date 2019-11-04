@@ -1,0 +1,141 @@
+I"�4<h3 id="함수형-인터페이스">함수형 인터페이스</h3>
+<p><br /></p>
+<ul>
+  <li>java8에서 동작(함수)를 파라미터화 하기 위해서 클래스의 선언과 인스턴스화를 동시에 수행할 수 있도록 익명 클래스라는 기법을 사용하였다.</li>
+  <li>익명 클래스를 전달 할 시 코드의 장황함을 해결하기 위해서 람다 표현식이 활용 된다.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">//자바의 Onclick인터페이스</span>
+<span class="k">public</span> <span class="kd">interface</span> <span class="nc">OnClickListener</span> <span class="p">{</span>
+    <span class="n">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="nc">View</span> <span class="n">v</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">//Onclick타입의 변수를 인자로 받는 메소드</span>
+<span class="k">public</span> <span class="kd">class</span> <span class="nc">Button</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="n">void</span> <span class="nf">setOnClickListener</span><span class="p">(</span><span class="nc">OnClickListener</span> <span class="n">l</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">//......</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//익명클래스를 이용해 파라미터 전달</span>
+<span class="nc">Button</span> <span class="n">button</span> <span class="p">=</span> <span class="n">new</span> <span class="nc">Button</span><span class="p">();</span>
+<span class="n">button</span><span class="p">.</span><span class="nf">setOnClickListener</span><span class="p">(</span><span class="n">new</span> <span class="nc">OnClickListener</span><span class="p">()</span> <span class="p">{</span>
+        <span class="err">@</span><span class="k">override</span>
+        <span class="k">public</span> <span class="n">void</span> <span class="nf">onClick</span><span class="p">(</span><span class="nc">View</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nc">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="s">"button view"</span><span class="p">);</span>
+        <span class="p">}</span>
+
+    <span class="p">})</span> <span class="p">{</span>
+        <span class="c1">//.....</span>
+<span class="p">}</span>
+
+
+<span class="c1">//익명 클래스 대신 람다식을 인자로 넘김</span>
+<span class="n">button</span><span class="p">.</span><span class="nf">setOnClickListener</span><span class="p">(</span><span class="n">v-</span><span class="p">&gt;{</span> <span class="nc">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="s">"button view"</span><span class="p">);</span> <span class="p">})</span></code></pre></figure>
+
+<ul>
+  <li>위와 같이 람다식을 인자로 넘기는 코드가 가능한 이유는 OnclickListener에 추상 메소드가 단 하나만 있기 때문이다.</li>
+  <li>이렇게 하나의 추상 메소드를 가진 인터페이스를 <span class="highlighter-rouge">함수형 인터페이스(functional interface)</span> 또는 <span class="highlighter-rouge">SAM인터페이스-single abstract method</span>라고 한다.</li>
+</ul>
+
+<p><br />코틀린은 함수형 인터페이스를 인자로 취하는 자바 메소드를 호출할 때 람다를 넘길 수 있게 해준다.</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">//자바</span>
+<span class="k">public</span> <span class="kd">class</span> <span class="nc">FunctionalTest</span> <span class="p">{</span>
+
+        <span class="k">public</span> <span class="nc">String</span> <span class="nf">setFunctional</span><span class="p">(</span><span class="n">int</span> <span class="n">num</span><span class="p">,</span> <span class="nc">IntFunction</span><span class="p">&lt;</span><span class="nc">Integer</span><span class="p">&gt;</span> <span class="n">f</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s">"function Result : "</span> <span class="p">+</span> <span class="n">f</span><span class="p">.</span><span class="nf">apply</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">void</span> <span class="nf">setFunctionalCustom</span><span class="p">(</span><span class="nc">Runnable</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">&gt;</span> <span class="p">&gt;</span> <span class="p">&gt;</span> <span class="kd">val</span> <span class="py">ft</span> <span class="p">=</span> <span class="nc">FunctionalTest</span><span class="p">()</span>
+<span class="p">&gt;&gt;&gt;</span> <span class="nf">println</span><span class="p">(</span><span class="n">ft</span><span class="p">.</span><span class="nf">setFunctional</span><span class="p">(</span><span class="m">5</span><span class="p">,{</span><span class="n">i-</span><span class="p">&gt;</span><span class="n">i</span><span class="p">*</span><span class="n">i</span><span class="p">}))</span>
+<span class="n">function</span> <span class="nc">Result</span> <span class="p">:</span> <span class="m">25</span>
+
+<span class="p">&gt;&gt;&gt;</span> <span class="nf">println</span><span class="p">(</span><span class="n">ft</span><span class="p">.</span><span class="nf">setFunctional</span><span class="p">(</span><span class="m">5</span><span class="p">){</span><span class="n">i-</span><span class="p">&gt;</span><span class="n">i</span><span class="p">*</span><span class="n">i</span><span class="p">})</span>
+<span class="n">function</span> <span class="nc">Result</span> <span class="p">:</span> <span class="m">25</span></code></pre></figure>
+
+<p><br />익명클래스 전달코드를 간소화 하기 위해 람다식을 이용하지만, <code>내부적으로 람다와 익명클래스 사이에는 차이</code>가 있다.</p>
+<ul>
+  <li>익명클래스를 이용할 시에는 매번 새로운 익명 클래스의 인스턴스가 생성 되지만,
+<br /><code>람다는 단 하나의 인스턴스만 만들고 그 무명 객체를 메소드를 호출할 때마다 반복 사용한다.</code></li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">//람다를 이용할시 IntFunction타입의 인스턴스 한번만 생성됨.</span>
+
+<span class="c1">//example1</span>
+<span class="n">ft</span><span class="p">.</span><span class="nf">setFunctional</span><span class="p">(</span><span class="m">5</span><span class="p">){</span><span class="n">i-</span><span class="p">&gt;</span><span class="n">i</span><span class="p">*</span><span class="n">i</span><span class="p">}</span>
+
+
+
+<span class="c1">//example2</span>
+<span class="kd">val</span> <span class="py">intFunc</span> <span class="p">=</span> <span class="nc">IntFunction</span> <span class="p">{</span> <span class="n">i-</span><span class="p">&gt;</span><span class="n">i</span><span class="p">*</span><span class="n">i</span> <span class="p">}</span>
+<span class="nf">println</span><span class="p">(</span><span class="n">ft</span><span class="p">.</span><span class="nf">setFunctional</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="n">intFunc</span><span class="p">))</span></code></pre></figure>
+
+<ul>
+  <li>매번 같은 인스턴스를 사용한다면, 란다가 주변 영역의 변수는 어떻게 포획(capture)하는걸까? 이런 경우 컴파일러는 <code>매번 주변 영역의 변수를 포획한 새로운 인스턴스를 생성해 준다.</code></li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">//자바 (In FunctionalTest class)</span>
+<span class="k">public</span> <span class="n">void</span> <span class="nf">setFunctionalCustom</span><span class="p">(</span><span class="nc">Runnable</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">}</span>
+
+<span class="c1">//코틀린</span>
+<span class="k">fun</span> <span class="nf">callCustom</span><span class="p">(</span><span class="n">id</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="c1">// "id"변수 포획</span>
+     <span class="nf">setFunctionalCustom</span><span class="p">{</span> <span class="nf">println</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="p">}</span> <span class="c1">// &lt;-- 새로운 "id" 참조를 위해 매번 새로운 Runnable 인스턴스를 만들어 낸다.</span>
+<span class="p">}</span></code></pre></figure>
+
+<hr />
+
+<h3 id="sam생성자를-통한-람다-반환">SAM생성자를 통한 람다 반환</h3>
+<p><br />
+컴파일러가 자동으로 람다를 함수형 인터페이스의 익명 클래스로 바꾸지 못하는 경우 SAM생성자를 사용해야 하는데,
+<br />바로 함수형 인터페이스의 인스턴스를 반환하는 메소드가 있을 경우 그렇다.</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">//오류 발생!</span>
+<span class="k">fun</span> <span class="nf">createAllDoneFunnable</span><span class="p">()</span> <span class="p">:</span> <span class="nc">Runnable</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="nf">println</span><span class="p">(</span><span class="s">"All Done!"</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//Runnable생성자를 통해 리턴</span>
+<span class="k">fun</span> <span class="nf">createAllDoneFunnable</span><span class="p">()</span> <span class="p">:</span> <span class="nc">Runnable</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nc">Runnable</span> <span class="p">{</span> <span class="nf">println</span><span class="p">(</span><span class="s">"All Done!"</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//혹은 리턴타입을 람다식으로 바꾸면 가능</span>
+<span class="k">fun</span> <span class="nf">createAllDoneFunnabl1e</span><span class="p">()</span> <span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nc">Unit</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span> <span class="nf">println</span><span class="p">(</span><span class="s">"All Done!"</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">fun</span> <span class="nf">createFuntional</span><span class="p">(</span><span class="n">num</span> <span class="p">:</span> <span class="nc">Int</span><span class="p">)</span> <span class="p">:</span> <span class="nc">IntFunction</span><span class="p">&lt;</span><span class="nc">Int</span><span class="p">&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nc">IntFunction</span> <span class="p">{</span> <span class="n">num</span><span class="p">*</span><span class="n">num</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<ul>
+  <li>자바는 생성자 없이 되던데..</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">public</span> <span class="nc">Runnable</span> <span class="nf">returnRunnable</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="k">return</span> <span class="p">()-&gt;{</span>
+        <span class="nc">System</span><span class="p">.</span><span class="k">out</span><span class="p">.</span><span class="nf">println</span><span class="p">(</span><span class="s">"Runnable"</span><span class="p">);</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="nc">IntFunction</span><span class="p">&lt;</span><span class="nc">Integer</span><span class="p">&gt;</span> <span class="nf">returnIntFunc</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">i-</span><span class="p">&gt;</span><span class="n">i</span><span class="p">*</span><span class="n">i</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<blockquote>
+  <p><span class="fontHighlight1">람다안의 this</span>
+<br />람다 안에서 this는 그 람다를 둘러싼 클래스의 인스턴스를 가리킨다.
+<br />만약 이벤트 리스너가 이벤트를 처리하다가 자기 자신의 리스너 등록을 해제해야 한다면, (람다 안에서 익명 클래스의 인스턴스 자체를 호출해야 한다면) 람다를 사용 할 수 없다.
+<br />이런 경우 람다 대신 익명 객체를 사용해서 리스너를 구현해야 한다. 익명 객체 안에서는 this가 그 익명 객체 인스턴스 자신을 가리킨다.</p>
+</blockquote>
+
+:ET

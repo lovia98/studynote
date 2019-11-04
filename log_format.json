@@ -1,0 +1,14 @@
+{
+  "kinesis" : {
+    "timestamp": "2019-10-21 12:17:22.905",
+    "level": "INFO",
+    "thread": "main",
+    "mdc": {
+      "hostname": "AD01277912",
+      "port": "server.port_IS_UNDEFINED"
+    },
+    "logger": "com.example.kinesislogger.logback.MainControllerTest",
+    "message": "Starting MainControllerTest on AD01277912 with PID 29164 (started by LG in C:\\Users\\LG\\projects\\poc-kinesis-logger)",
+    "context": "default"
+  }
+}
