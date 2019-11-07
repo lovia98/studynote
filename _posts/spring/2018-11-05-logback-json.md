@@ -90,8 +90,10 @@ ELK, EFK든 중앙 로깅 시스템 진행시 엘라스틱 서치 데이터 포�
         }
      }
   ```  
-  
----
+   
+   
+---  
+
 
 ###  Logstash Logback Encoder 이용 (https://www.baeldung.com/java-application-logs-to-elastic-stack)
   개별 로직에서(service나 controller) 에서 로깅한 내용을 검색하려면 message 필드를 정규식으로 검색  
@@ -103,6 +105,7 @@ ELK, EFK든 중앙 로깅 시스템 진행시 엘라스틱 서치 데이터 포�
   공식 github 페이지를 보면 잘 설명 되어 있다.  
 
   * pom.xml dependency 추가  
+  
  ```
   <dependency>
       <groupId>net.logstash.logback</groupId>
