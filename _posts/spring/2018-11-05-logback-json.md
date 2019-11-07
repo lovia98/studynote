@@ -89,7 +89,8 @@ ELK, EFK든 중앙 로깅 시스템 진행시 엘라스틱 서치 데이터 포�
           "customKey" : "aaaa"
         }
      }
-  ```
+  ```  
+  
 ---
 
 ###  Logstash Logback Encoder 이용 (https://www.baeldung.com/java-application-logs-to-elastic-stack)
