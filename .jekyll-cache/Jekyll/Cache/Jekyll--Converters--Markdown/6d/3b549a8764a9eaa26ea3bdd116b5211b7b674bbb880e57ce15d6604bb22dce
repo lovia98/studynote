@@ -1,0 +1,183 @@
+I"P<p>코틀린에서도 자바와 같이 생성자를 하나 이상 선언할 수 있다.
+<br />다만 다른 점이 있는데, 코틀린에서 생성자는 <code class="highlighter-rouge">주 생성자</code>와 <code class="highlighter-rouge">부 생성자</code>로 구분된다.</p>
+
+<p>먼저 <code class="highlighter-rouge">주 생성자</code><sup>Primary Constructor</sup>를 살펴보자.
+<br />주 생성자는 클래스 선언문의 header영역의 한 부분으로 class 이름 다음에 위치한다.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class User constructor(val nickname: String) {}
+</code></pre></div></div>
+<p>또한 별다른 어노테이션이나 가시성 변경자(visibility modifier)가 없는 경우 <code class="highlighter-rouge">constructor</code> 키워드는 생략 가능하며,
+별다른 초기화할 코드가 없다면 class body부분인 중괄호도 생략 가능하다.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//constructor keyword생략 가능
+class User (nickname: String) {}
+
+//class body부분 생략 가능
+class User (nickname: String)
+</code></pre></div></div>
+
+<p>주 생성자는 다음과 같은 역할을 한다.</p>
+<ul>
+  <li>생성자 파라미터를 선언</li>
+  <li>그 생성자 파라미터에 의해 초기화 되는 프로퍼티를 정의</li>
+</ul>
+
+<p>주 생성자는 파라미터(or프로퍼티)선언 외에 초기화에 필요한 코드를 추가 할 수 없기 때문에,
+<br /><code>초기화 블록(initializer blocks)</code>이라는 것을 사용할 수 있다.</p>
+
+<p>초기화 블록은 <code class="highlighter-rouge">init</code>키워드로 블록으로 클래스 객체의 instance가 생성될때 주 생성자와 함께 사용되며
+<br />필요하다면 class body안에 여러개 선언할 수 있다.</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">class</span> <span class="nc">InitOrderDemo</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">firstProperty</span> <span class="p">=</span> <span class="s">"First property: $name"</span><span class="p">.</span><span class="nf">also</span><span class="p">(</span><span class="o">::</span><span class="n">println</span><span class="p">)</span>
+
+    <span class="nf">init</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"First initializer block that prints ${name}"</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">val</span> <span class="py">secondProperty</span> <span class="p">=</span> <span class="s">"Second property: ${name.length}"</span><span class="p">.</span><span class="nf">also</span><span class="p">(</span><span class="o">::</span><span class="n">println</span><span class="p">)</span>
+
+    <span class="nf">init</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Second initializer block that prints ${name.length}"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">&gt;&gt;&gt;</span><span class="nc">InitOrderDemo</span><span class="p">(</span><span class="s">"hello"</span><span class="p">)</span>
+<span class="nc">First</span> <span class="n">property</span><span class="p">:</span> <span class="n">hello</span>
+<span class="nc">First</span> <span class="n">initializer</span> <span class="n">block</span> <span class="n">that</span> <span class="n">prints</span> <span class="n">hello</span>
+<span class="nc">Second</span> <span class="n">property</span><span class="p">:</span> <span class="m">5</span>
+<span class="nc">Second</span> <span class="n">initializer</span> <span class="n">block</span> <span class="n">that</span> <span class="n">prints</span> <span class="m">5</span></code></pre></figure>
+
+<p>초기화 블록없이 class body안에서 주생성자로 전달된 파라미터를 이용하여 프로퍼티를 초기화 할수 있다.</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">class</span> <span class="nc">User</span><span class="p">(</span><span class="n">_nickname</span><span class="p">:</span><span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">val</span> <span class="py">nickname</span> <span class="p">=</span> <span class="n">_nickname</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>주 생성자 안에 <code>val</code>을 추가하는 방식으로 프로퍼티 정의와 초기화를 한번에 할 수 있다.</p>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">User</span><span class="p">(</span><span class="kd">val</span> <span class="py">nickname</span><span class="p">:</span><span class="nc">String</span><span class="p">)</span>
+</code></pre></div></div>
+<p>또한 함수 파라미터와 마찬가지로 생성자 파라미터에도 디폴트 값을 정의 할 수 있다.</p>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">User</span><span class="p">(</span><span class="kd">val</span> <span class="py">nickname</span><span class="p">:</span><span class="nc">String</span><span class="p">,</span> <span class="kd">val</span> <span class="py">isSubscribed</span><span class="p">:</span> <span class="nc">Boolean</span> <span class="p">=</span> <span class="k">true</span><span class="p">)</span>
+</code></pre></div></div>
+<p>클래스의 인스턴스를 만들려면 new 키워드 없이 생성자를 직접 호출하면 된다.</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">//첫번째 파라미터만 전달</span>
+<span class="p">&gt;&gt;&gt;</span> <span class="kd">val</span> <span class="py">hyun</span> <span class="p">=</span> <span class="nc">User</span><span class="p">(</span><span class="s">"현석"</span><span class="p">)</span>
+<span class="p">&gt;&gt;&gt;</span> <span class="nf">println</span><span class="p">(</span><span class="n">hyun</span><span class="p">.</span><span class="n">isSubscribed</span><span class="p">)</span>
+<span class="k">true</span>
+
+<span class="c1">//모든 인자를 순서대로 전달</span>
+<span class="p">&gt;&gt;&gt;</span> <span class="kd">val</span> <span class="py">gye</span> <span class="p">=</span> <span class="nc">User</span><span class="p">(</span><span class="s">"계명"</span><span class="p">,</span> <span class="k">false</span><span class="p">)</span>
+<span class="p">&gt;&gt;&gt;</span> <span class="nf">println</span><span class="p">(</span><span class="n">gye</span><span class="p">.</span><span class="n">isSubscribed</span><span class="p">)</span>
+<span class="k">false</span>
+
+<span class="c1">//생성자 인자 중 일부에 대해 이름을 지정할 수도 있다.</span>
+<span class="p">&gt;&gt;&gt;</span> <span class="kd">val</span> <span class="py">hye</span> <span class="p">=</span> <span class="nc">User</span><span class="p">(</span><span class="s">"혜원"</span><span class="p">,</span> <span class="n">isSubscribed</span> <span class="p">=</span> <span class="k">false</span><span class="p">)</span>
+<span class="p">&gt;&gt;&gt;</span> <span class="nf">println</span><span class="p">(</span><span class="n">hye</span><span class="p">.</span><span class="n">isSubscribed</span><span class="p">)</span>
+<span class="k">false</span>
+
+<span class="c1">//정의된 생성자 파라미터명과 다른 이름을 지정한 경우 오류 발생</span>
+<span class="p">&gt;&gt;&gt;</span><span class="kd">val</span> <span class="py">hye</span> <span class="p">=</span> <span class="nc">User</span><span class="p">(</span><span class="s">"혜원"</span><span class="p">,</span> <span class="n">isSubsciption</span> <span class="p">=</span> <span class="k">false</span><span class="p">)</span>
+<span class="n">error</span><span class="p">:</span> <span class="n">cannot</span> <span class="n">find</span> <span class="n">a</span> <span class="n">parameter</span> <span class="n">with</span> <span class="k">this</span> <span class="n">name</span><span class="p">:</span> <span class="n">isSubscribe</span>
+<span class="kd">val</span> <span class="py">hye</span> <span class="p">=</span> <span class="nc">User</span><span class="p">(</span><span class="s">"혜원"</span><span class="p">,</span> <span class="n">isSubscribe</span> <span class="p">=</span> <span class="k">false</span><span class="p">)</span></code></pre></figure>
+
+<ul>
+  <li>클래스를 정의할 때 별도로 생성자를 정의하지 않으면 컴파일러가 자동으로 아무 일도 하지 않는 인자가 없는 디폴트 생성자를 만들어준다.
+    <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//인자가 없는 디폴트 생성자</span>
+<span class="k">open</span> <span class="kd">class</span> <span class="nc">Button</span>
+</code></pre></div>    </div>
+    <p>아무 인자도 받지 않지만, Button 클래스를 상송한 하위 클래스는 반드시 Button클래스의 생성자를 호출해야 한다.</p>
+    <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//인자가 없는 클래스를 상속받을 때</span>
+<span class="kd">class</span> <span class="nc">RadioButton</span> <span class="p">:</span> <span class="nc">Button</span><span class="p">()</span>
+</code></pre></div>    </div>
+    <p>또한 상위 클래스의 생성자에 파라미터가 선언되어 있다면 인자도 넘겨야 한다.</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">//상위 클래스의 생성자에 파라미터를 넘기지 않아서 오류 발생</span>
+<span class="p">&gt;&gt;&gt;</span> <span class="k">open</span> <span class="kd">class</span> <span class="nc">Button</span><span class="p">(</span><span class="n">w</span><span class="p">:</span><span class="nc">Int</span><span class="p">,</span> <span class="n">h</span><span class="p">:</span><span class="nc">Int</span><span class="p">)</span>
+<span class="p">&gt;&gt;&gt;</span> <span class="kd">class</span> <span class="nc">RadionButton</span><span class="p">:</span><span class="nc">Button</span><span class="p">()</span>
+
+<span class="n">error</span><span class="p">:</span> <span class="n">no</span> <span class="n">value</span> <span class="n">passed</span> <span class="k">for</span> <span class="n">parameter</span> <span class="sc">'w'</span>
+<span class="kd">class</span> <span class="nc">RadionButton</span><span class="p">:</span><span class="nc">Button</span><span class="p">()</span>
+                          <span class="p">^</span>
+<span class="n">error</span><span class="p">:</span> <span class="n">no</span> <span class="n">value</span> <span class="n">passed</span> <span class="k">for</span> <span class="n">parameter</span> <span class="sc">'h'</span>
+<span class="kd">class</span> <span class="nc">RadionButton</span><span class="p">:</span><span class="nc">Button</span><span class="p">()</span></code></pre></figure>
+
+<hr />
+<p><code class="highlighter-rouge">부 생성자</code><sup>Secondary Constructor</sup></p>
+
+<p>일반적으로 코틀린에서는 생성자가 여럿 있는 경우가 자바보다 훨씬 적다. 새로운 생성자가 필요한 상황 중 상당수는 코틀린의 디폴트 파라미터 값과 이름붙은
+인자 문법을 사용해 해결할 수 있다.</p>
+
+<ul>
+  <li>Tip. 인자에 대한 디폴트 값을 제공하기 위해 부 생성자를 여럿 만들지 말고 파라미터의 디폴트 값을 생성자 시그니처에 직접 명시하자.</li>
+</ul>
+
+<p>하지만 인자의 갯수가 다른 부 생성자가 필요한 경우 다음과 같이 정의할 수 있다.</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">//주생성자가 없는 클래스의 부 생성자</span>
+<span class="k">open</span> <span class="kd">class</span> <span class="nc">View</span> <span class="p">{</span>
+  <span class="k">constructor</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//... }</span>
+
+  <span class="k">constructor</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">attr</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//... }</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><br />아래는 주 생성자가 없는 View객체를 상속하는 부 객체에서 상위객체를 초기화 하는 방식의 여러 예이다.</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">//class MyView0: View() 인자가 없는 생성자가 존재 하지 않으므로 오류 발생</span>
+
+<span class="kd">class</span> <span class="nc">MyView1</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span><span class="nc">String</span><span class="p">):</span> <span class="nc">View</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
+
+<span class="kd">class</span> <span class="nc">MyView2</span><span class="p">:</span> <span class="nc">View</span><span class="p">(</span><span class="n">ctx</span><span class="p">=</span><span class="s">"merong"</span><span class="p">)</span>
+
+<span class="kd">class</span> <span class="nc">MyView3</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span><span class="nc">String</span><span class="p">,</span> <span class="n">attr</span><span class="p">:</span><span class="nc">String</span><span class="p">):</span> <span class="nc">View</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+
+<span class="kd">class</span> <span class="nc">MyView4</span><span class="p">():</span> <span class="nc">View</span><span class="p">(</span><span class="n">ctx</span><span class="p">=</span><span class="s">"1"</span><span class="p">,</span> <span class="n">attr</span><span class="p">=</span><span class="s">"2"</span><span class="p">)</span>
+
+<span class="kd">class</span> <span class="nc">MyView5</span><span class="p">:</span> <span class="nc">View</span><span class="p">(</span><span class="n">ctx</span><span class="p">=</span><span class="s">"1"</span><span class="p">,</span> <span class="n">attr</span><span class="p">=</span><span class="s">"2"</span><span class="p">)</span>
+
+<span class="kd">class</span> <span class="nc">MyView6</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span><span class="nc">String</span><span class="p">,</span> <span class="n">attr</span><span class="p">:</span><span class="nc">String</span><span class="p">):</span> <span class="nc">View</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span></code></pre></figure>
+
+<ul>
+  <li>클래스에 주 생성자가 없다면 모든 부 생성자는 반드시 상위 클래스를 초기화하거나 다른 생성자에게 생성을 위임해야 한다.
+이 객체를 상속할때 하위 객체의 <code>부 생성자</code>에서는 <code class="highlighter-rouge">super()</code> 키워드를 통해 자신에 대응하는 상위 클래스 생성자를 호출할 수 있다.</li>
+</ul>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">MyView</span><span class="p">:</span> <span class="nc">View</span> <span class="p">{</span>
+    <span class="k">constructor</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span><span class="nc">String</span><span class="p">):</span> <span class="k">super</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//...</span>
+    <span class="p">}</span>
+
+    <span class="k">constructor</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">attr</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="k">super</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>또한 <code class="highlighter-rouge">this()</code> 키워드를 통해 자신의 다른 부생성자를 호출하여 생성자 처리를 <code>위임(delegate)</code>할 수 있다.</p>
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">MineView</span><span class="p">:</span> <span class="nc">View</span> <span class="p">{</span>
+    <span class="k">constructor</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span><span class="k">this</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="s">"strong"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//부 생성자</span>
+    <span class="p">}</span>
+
+    <span class="k">constructor</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">attr</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="k">super</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//부 생성자</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">//주생성자가 있는 클래스의 부 생성자</span>
+<span class="k">open</span> <span class="kd">class</span> <span class="nc">Dog</span><span class="p">(</span><span class="kd">val</span> <span class="py">name</span><span class="p">:</span><span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">constructor</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="nc">Int</span><span class="p">)</span> <span class="p">:</span> <span class="k">this</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">//주 생성자가 있는 클래스를 상속</span>
+<span class="kd">class</span> <span class="nc">MyDog1</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Dog</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="kd">class</span> <span class="nc">MyDog2</span><span class="p">:</span> <span class="nc">Dog</span><span class="p">(</span><span class="n">name</span><span class="p">=</span><span class="s">"myDog"</span><span class="p">)</span>
+
+<span class="kd">class</span> <span class="nc">MyDog3</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span><span class="nc">Int</span><span class="p">):</span> <span class="nc">Dog</span><span class="p">(</span><span class="n">name</span><span class="p">)</span></code></pre></figure>
+
+:ET

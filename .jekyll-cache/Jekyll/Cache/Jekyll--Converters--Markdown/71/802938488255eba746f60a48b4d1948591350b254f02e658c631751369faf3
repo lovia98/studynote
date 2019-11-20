@@ -1,0 +1,170 @@
+I"�I<h3 id="filter와-map">filter와 map</h3>
+<ul>
+  <li>filter
+<br />Ref. : https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/filter.html
+<br />컬렉션에서 주어진 람다가 true를 반환하는 element를 추출하는 함수이다.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">val</span> <span class="py">list</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">)</span>
+<span class="nf">println</span><span class="p">(</span><span class="n">list</span><span class="p">.</span><span class="nf">filter</span> <span class="p">{</span> <span class="n">it</span> <span class="p">%</span> <span class="m">2</span> <span class="p">==</span> <span class="m">0</span> <span class="p">})</span> <span class="c1">//prints [2, 4]</span></code></pre></figure>
+
+<ul>
+  <li>map
+<br />Ref. : https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html
+<br />컬렉션에서 원하는 다른 형태의 element의 조합을 만들어 낼 수 있다.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin">  <span class="kd">val</span> <span class="py">list</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">)</span>
+  <span class="nf">println</span><span class="p">(</span><span class="n">list</span><span class="p">.</span><span class="nf">map</span><span class="p">{</span><span class="n">it</span> <span class="p">*</span> <span class="n">it</span><span class="p">})</span> <span class="c1">//prints [1, 4, 9, 16]</span>
+
+  <span class="c1">//객체의 필드만 추출</span>
+  <span class="kd">data class</span> <span class="nc">Person</span><span class="p">(</span><span class="kd">val</span> <span class="py">name</span><span class="p">:</span><span class="nc">String</span><span class="p">,</span> <span class="kd">val</span> <span class="py">age</span><span class="p">:</span><span class="nc">Int</span><span class="p">)</span>
+  <span class="kd">val</span> <span class="py">people</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span><span class="nc">Person</span><span class="p">(</span><span class="s">"Alice"</span><span class="p">,</span> <span class="m">20</span><span class="p">),</span> <span class="nc">Person</span><span class="p">(</span><span class="s">"juhee"</span><span class="p">,</span> <span class="m">30</span><span class="p">))</span>
+  <span class="nf">println</span><span class="p">(</span><span class="n">people</span><span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="n">name</span> <span class="p">})</span>  <span class="c1">// prints [Alice, juhee]</span>
+
+  <span class="c1">//멤버참조를 이용한 표현</span>
+  <span class="n">people</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nc">Person</span><span class="o">::</span><span class="n">name</span><span class="p">)</span></code></pre></figure>
+
+<ul>
+  <li>filter와 map을 연결(join)하여 원하는 컬렉션을 추출 할수도 있다.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="c1">//예) 25세 이상인 사람의 이름을 추출</span>
+<span class="nf">println</span><span class="p">(</span>
+      <span class="n">people</span><span class="p">.</span><span class="nf">filter</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="n">age</span> <span class="p">&gt;</span> <span class="m">25</span> <span class="p">}</span>
+              <span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="nc">Person</span><span class="o">::</span><span class="n">name</span><span class="p">)</span>
+<span class="p">)</span></code></pre></figure>
+
+<hr />
+
+<h3 id="all-any-count-find">all, any, count, find</h3>
+<ul>
+  <li>
+    <p>all
+<br />컬렉션의 모든 element가 특정 조건을 만족한다면 true, 한개라도 만족하지 않는 것이 있다면 false를 반환한다.
+<br />Ref. : https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/all.html</p>
+  </li>
+  <li>
+    <p>any
+<br />특정 조건을 만족하는 element가 한개라도 존재한다면 true, 아니라면 false를 반환한다.
+<br />Ref. : https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/any.html</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="n">al</span> <span class="n">people</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span><span class="nc">Person</span><span class="p">(</span><span class="s">"철수"</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span>
+        <span class="p">,</span> <span class="nc">Person</span><span class="p">(</span><span class="s">"영희"</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span>
+        <span class="p">,</span> <span class="nc">Person</span><span class="p">(</span><span class="s">"주희"</span><span class="p">,</span> <span class="m">30</span><span class="p">)</span>
+        <span class="p">,</span> <span class="nc">Person</span><span class="p">(</span><span class="s">"영자"</span><span class="p">,</span> <span class="m">31</span><span class="p">)</span>
+        <span class="p">,</span> <span class="nc">Person</span><span class="p">(</span><span class="s">"금자"</span><span class="p">,</span> <span class="m">32</span><span class="p">))</span>
+
+<span class="c1">//27이하에 해당하는 조건식</span>
+<span class="kd">val</span> <span class="py">canBelInClub27</span> <span class="p">=</span>  <span class="p">{</span><span class="n">p</span><span class="p">:</span><span class="nc">Person-</span><span class="p">&gt;</span><span class="n">p</span><span class="p">.</span><span class="n">age</span> <span class="p">&lt;=</span><span class="m">27</span><span class="p">}</span>
+
+<span class="nf">println</span><span class="p">(</span><span class="s">"모두가 27세 미만인가? : "</span><span class="p">+</span> <span class="n">people</span><span class="p">.</span><span class="nf">all</span><span class="p">(</span><span class="n">canBelInClub27</span><span class="p">))</span>
+<span class="nf">println</span><span class="p">(</span><span class="s">"27세 미만인 사람이 있는가? : "</span><span class="p">+</span> <span class="n">people</span><span class="p">.</span><span class="nf">any</span><span class="p">(</span><span class="n">canBelInClub27</span><span class="p">))</span>
+
+
+<span class="c1">//**** 출력결과</span>
+<span class="err">모두가</span> <span class="m">27</span><span class="err">세</span> <span class="err">미만인가</span><span class="p">?</span> <span class="p">:</span> <span class="k">false</span>
+<span class="m">27</span><span class="err">세</span> <span class="err">미만인</span> <span class="err">사람이</span> <span class="err">있는가</span><span class="p">?</span> <span class="p">:</span> <span class="k">true</span></code></pre></figure>
+
+<p><em class="fontHighlight">!all(condition)과 any(!condition)</em>
+<br />!all(condition) 과 any(!condition)의 결과는 같다. 반대로 !any(condition)과 all(!condition)도 같다.
+<br />가독성을 위해 !all  이나 !any와 같은 함수를 쓰기 보다는 함수안의 조건을 변경하여 사용하는 것을 추천한다.(지은이 왈)</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">val</span> <span class="py">list</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
+
+<span class="c1">//둘다 같은 true를 반환한다.</span>
+<span class="nf">println</span><span class="p">(!</span><span class="n">list</span><span class="p">.</span><span class="nf">all</span> <span class="p">{</span> <span class="n">it</span> <span class="p">==</span> <span class="m">3</span> <span class="p">})</span>
+<span class="nf">println</span><span class="p">(</span><span class="n">list</span><span class="p">.</span><span class="nf">any</span><span class="p">{</span> <span class="n">it</span><span class="p">!=</span><span class="m">3</span> <span class="p">})</span>  <span class="c1">//&lt;-- 가독성을 위해 이코드를 쓰도록 하자.</span></code></pre></figure>
+
+<ul>
+  <li>
+    <p>find
+<br />특정 조건을 만족하는 첫번째 element를 반환한다.
+<br />Ref. : https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/find.html</p>
+  </li>
+  <li>
+    <p>count
+<br />결과 컬렉션의 element의 count수를 반환한다.
+<br />Ref. : https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/count.html</p>
+  </li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="nf">println</span><span class="p">(</span><span class="n">people</span><span class="p">.</span><span class="nf">count</span><span class="p">(</span><span class="n">canBelInClub27</span><span class="p">))</span>
+<span class="nf">println</span><span class="p">(</span><span class="n">people</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="n">canBelInClub27</span><span class="p">))</span>
+
+<span class="c1">//****  출력결과</span>
+<span class="m">2</span>
+<span class="nc">Person</span><span class="p">(</span><span class="n">name</span><span class="p">=</span><span class="err">철수</span><span class="p">,</span> <span class="n">age</span><span class="p">=</span><span class="m">15</span><span class="p">)</span></code></pre></figure>
+
+<p><em class="fontHighlight">함수를 적재적소에 사용하라: count와 size</em>
+<br />컬렉션을 필터링한 결과의 크기를 가져 올때 .size보다는 count함수를 이용하는 편이 좋다.
+<br />예) people.fileter(canBelInClub27).size</p>
+
+<p><span class="fontHighlight2"><br />lazy 연산과 관련된 것 같은데(개인적인 추측) size를 이용하는 경우 실질적인 collection 결과가 필요하므로
+<br />size를 구하기전 조건에 맞는 collection을 만들게 된다.
+<br />하지만 count함수를 이용할 경우 최종 조건에 맞는 element의 수를 추척할 뿐 만족하는 요소들을 따로 저장하지 않는다.</span></p>
+
+<hr />
+
+<h3 id="groupby">groupBy</h3>
+<p><br />groupBy는 컬렉션의 요소들을 어떤 특성에 따라 분류하고자 할때 사용한다.
+<br />조건(람다식)을 파라미터로 넘기면 그에 따른 collection을 분리하여 map으로 반환해 준다. <br />
+Ref. : https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/group-by.html</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">val</span> <span class="py">people</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span><span class="nc">Person</span><span class="p">(</span><span class="s">"철수"</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span>
+        <span class="p">,</span> <span class="nc">Person</span><span class="p">(</span><span class="s">"영희"</span><span class="p">,</span> <span class="m">15</span><span class="p">)</span>
+        <span class="p">,</span> <span class="nc">Person</span><span class="p">(</span><span class="s">"주희"</span><span class="p">,</span> <span class="m">30</span><span class="p">)</span>
+        <span class="p">,</span> <span class="nc">Person</span><span class="p">(</span><span class="s">"영자"</span><span class="p">,</span> <span class="m">30</span><span class="p">)</span>
+        <span class="p">,</span> <span class="nc">Person</span><span class="p">(</span><span class="s">"금자"</span><span class="p">,</span> <span class="m">32</span><span class="p">))</span>
+
+<span class="nf">println</span><span class="p">(</span><span class="n">people</span><span class="p">.</span><span class="nf">groupBy</span><span class="p">{</span><span class="n">it</span><span class="p">.</span><span class="n">age</span><span class="p">})</span>
+
+
+<span class="c1">//****  출력결과</span>
+<span class="p">{</span><span class="m">15</span><span class="p">=[</span><span class="nc">Person</span><span class="p">(</span><span class="n">name</span><span class="p">=</span><span class="err">철수</span><span class="p">,</span> <span class="n">age</span><span class="p">=</span><span class="m">15</span><span class="p">),</span> <span class="nc">Person</span><span class="p">(</span><span class="n">name</span><span class="p">=</span><span class="err">영희</span><span class="p">,</span> <span class="n">age</span><span class="p">=</span><span class="m">15</span><span class="p">)],</span>
+<span class="m">30</span><span class="p">=[</span><span class="nc">Person</span><span class="p">(</span><span class="n">name</span><span class="p">=</span><span class="err">주희</span><span class="p">,</span> <span class="n">age</span><span class="p">=</span><span class="m">30</span><span class="p">),</span> <span class="nc">Person</span><span class="p">(</span><span class="n">name</span><span class="p">=</span><span class="err">영자</span><span class="p">,</span> <span class="n">age</span><span class="p">=</span><span class="m">30</span><span class="p">)],</span>
+<span class="m">32</span><span class="p">=[</span><span class="nc">Person</span><span class="p">(</span><span class="n">name</span><span class="p">=</span><span class="err">금자</span><span class="p">,</span> <span class="n">age</span><span class="p">=</span><span class="m">32</span><span class="p">)]}</span></code></pre></figure>
+
+<hr />
+
+<h3 id="flatmap-flatten">flatMap, flatten</h3>
+<ul>
+  <li>flatMap
+<br />개별 element가 지니고 있는 list(or Array)의 요소들을 1개의 리스트로 병합하여 반환한다.
+<br />글을 봐서는 이해가 안되니 예제와 그림으로..
+<br />Ref. : https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/flat-map.html</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">val</span> <span class="py">books</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span>
+        <span class="nc">Book</span><span class="p">(</span><span class="s">"bookA"</span><span class="p">,</span> <span class="nf">listOf</span><span class="p">(</span><span class="s">"이지용"</span><span class="p">,</span> <span class="s">"김순모"</span><span class="p">,</span> <span class="s">"한원석"</span><span class="p">))</span>
+        <span class="p">,</span><span class="nc">Book</span><span class="p">(</span><span class="s">"bookB"</span><span class="p">,</span> <span class="nf">listOf</span><span class="p">(</span><span class="s">"한유신"</span><span class="p">,</span> <span class="s">"윤주빈"</span><span class="p">,</span> <span class="s">"한주희"</span><span class="p">))</span>
+        <span class="p">,</span><span class="nc">Book</span><span class="p">(</span><span class="s">"bookC"</span><span class="p">,</span> <span class="nf">listOf</span><span class="p">(</span><span class="s">"김정수"</span><span class="p">,</span> <span class="s">"조기택"</span><span class="p">,</span> <span class="s">"김현진"</span><span class="p">))</span>
+<span class="p">)</span>
+<span class="nf">println</span><span class="p">(</span><span class="n">books</span><span class="p">.</span><span class="nf">flatMap</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="n">authors</span> <span class="p">})</span>
+<span class="nf">println</span><span class="p">(</span><span class="n">books</span><span class="p">.</span><span class="nf">flatMap</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="n">authors</span> <span class="p">}.</span><span class="nf">toSet</span><span class="p">())</span> <span class="c1">//toSet() 은 결과리스트에서 중복을 없애준다.</span>
+
+<span class="c1">//****  출력결과</span>
+<span class="na">[이지용, 김순모, 한원석, 한유신, 윤주빈, 한주희, 김정수, 조기택, 김현진, 한주희]</span>
+<span class="na">[이지용, 김순모, 한원석, 한유신, 윤주빈, 한주희, 김정수, 조기택, 김현진]</span>
+
+
+<span class="kd">val</span> <span class="py">strings</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span><span class="s">"abc"</span><span class="p">,</span> <span class="s">"def"</span><span class="p">)</span>
+<span class="nf">println</span><span class="p">(</span><span class="n">strings</span><span class="p">.</span><span class="nf">flatMap</span><span class="p">{</span><span class="n">it</span><span class="p">.</span><span class="nf">toList</span><span class="p">()})</span>
+
+<span class="c1">//****  출력결과</span>
+<span class="na">[a, b, c, d, e, f]</span></code></pre></figure>
+
+<p><img src="/blog/assets/images/kotlin/flatMap.jpg" alt="flatMap" /></p>
+
+<ul>
+  <li>flatten
+<br />개별 element가 list(or Array)자체인 경우 flatten을 이용해 1개의 리스트로 병합할 수 있다.
+<br />Ref. : https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/flatten.html</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">val</span> <span class="py">deepList</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span><span class="nf">listOf</span><span class="p">(</span><span class="m">1</span><span class="p">),</span> <span class="nf">listOf</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">),</span> <span class="nf">listOf</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">))</span>
+<span class="nf">println</span><span class="p">(</span><span class="n">deepList</span><span class="p">.</span><span class="nf">flatten</span><span class="p">())</span> <span class="c1">// [1, 2, 3, 4, 5, 6]</span></code></pre></figure>
+
+:ET

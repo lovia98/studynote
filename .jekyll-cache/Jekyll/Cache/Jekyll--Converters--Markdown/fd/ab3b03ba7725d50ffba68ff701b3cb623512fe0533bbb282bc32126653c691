@@ -1,0 +1,80 @@
+I"<p>오늘 Pivotal Summit 2019을 다녀오니 에너지가 장전 됐나 보다.ㅋㅋㅋ<br />
+ 작년 여름에 공부하고 접어 놓았던 스프링 클라우드를 다시 공부 해야 겠다는 생각이 들어
+ 포스팅을 한다.</p>
+
+<p>먼저 “클라우드 네이티브 애플리케이션”이라는 용어(?)를 알아 볼 필요가 있다.</p>
+
+<p><strong><em>“네이티브 클라우드 애플리케이션이란 단순히 클라우드로 이전한 프로그램이 아니라 클라우드
+ 환경을 위해 잘 설계된 프로그램이다.”</em></strong></p>
+
+<p>이름에서도 알 수 있지만, 스프링 클라우드 프로젝트 군(Foundry)들은 이런 취지로
+ 탄생 하였고, MSA는 태생적으로 클라우드 네이티브다.<br />
+ (but, 이전 회사는 클라우드 없이 MSA를 구축했었드랬다..불가능 한것은 아니지만 별로 추천하는 방식은 아닌듯 하다.)<br />
+ 따라서 스프링 클라우드에는 MSA를 쉽게 구현할 수 있게 지원해 주는 여러 라이브러리가 등장한다.</p>
+
+<p>MSA에 대해서 이야기 하자면 <code class="highlighter-rouge">넥플릭스(Netflex)</code>란 단어가 늘 등장하는데,
+ 바로 MSA를 처음 구축한 회사가 넥플릭스 이기 때문이다.<br />
+ 넥플릭스는 자신들이 MSA를 구축하기 위해 만들었던 여러 어플리케이션들을 오픈 소스로 공개하고 발표 하였다.<br />
+ 이것을 Pivotal에서 적극 반영 하여 Spring Framework에서 사용 할 수 있게 되었다.</p>
+
+<p>오늘은 스프링 클라우드에서 제공 하는 서비스들이 어떤 것들이 있는지 분류하고, 앞으로 하나씩 공부하면서 포스팅 하고자 한다. (최근 업무나 스터디 모임 등으로 공부하는 것들이
+많아서 언제 다음을 하게 될진 모르겠답 ^^ ㅠ)</p>
+<ol>
+  <li>분산 컨피규레이션
+    <ul>
+      <li>Spring Cloud Config<br />
+  <br /></li>
+    </ul>
+  </li>
+  <li>서비스 디스커버리
+    <ul>
+      <li>Spring Cloud Eureka<br />
+  <br /></li>
+    </ul>
+  </li>
+  <li>상호 통신
+    <ul>
+      <li>Spring Cloud Hystrix</li>
+      <li>Spring Cloud Ribbon</li>
+      <li>Spring Cloud Feign</li>
+      <li>Spring Cloud Zuul<br />
+  <br /></li>
+    </ul>
+  </li>
+  <li>추적
+    <ul>
+      <li>Spring Cloud Sleuth</li>
+      <li>Spring Cloud Sleuth Zipkin</li>
+      <li>Spring Cloud Sleuth Stream<br />
+  <br /></li>
+    </ul>
+  </li>
+  <li>클라우드 플랫폼 지원
+    <ul>
+      <li>Spring Cloud Foundry</li>
+      <li>Spring Cloud AWS</li>
+      <li>Spring Cloud Function</li>
+      <li>Spring Cloud Connectors  <br />
+  <br /></li>
+    </ul>
+  </li>
+  <li>메시징 및 통합
+    <ul>
+      <li>Spring Cloud Stream</li>
+      <li>Spring Cloud Bus</li>
+      <li>Spring Cloud Stream Apps</li>
+      <li>Spring Cloud Data Flow<br />
+  <br /></li>
+    </ul>
+  </li>
+  <li>기타
+    <ul>
+      <li>Spring Cloud Contract</li>
+      <li>Spring Cloud Security</li>
+      <li>Spring Cloud Task</li>
+      <li>Spring Cloud Cluster<br />
+  <br /></li>
+    </ul>
+  </li>
+</ol>
+:ET

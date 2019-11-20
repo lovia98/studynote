@@ -1,0 +1,204 @@
+I"�4<p>이 글은 코틀린 공식 홈페이지를 보고 발번역한 내용입니다.
+<br /><a href="https://kotlinlang.org/docs/reference/basic-types.html" target="_blank">Kotlin Refrence 링크</a></p>
+
+<p>코틀린에서는 모든 변수는 객체이다. 따라서 java의 <em>Integer</em>와 같은 wrapper 객체가 존재하지 않는다.
+런타임시에 primitive 변수로 처리 되는 몇개의 타입들이 있는데, 다음과 같은 타입들이다. <code class="highlighter-rouge">numbers, characters, booleans, arrays, strings</code></p>
+<hr />
+
+<h2 id="numbers">Numbers</h2>
+<p>JAVA와 아주 비슷하게 numbers를 다루는데 다른점은,</p>
+<ul>
+  <li>크기가 큰 타입으로의 암시적인 타입변환이 없다.(명시적으로 타입 변환을 해주어야 한다.)</li>
+  <li>몇몇의 경우에 <a href="https://ko.wikipedia.org/wiki/%EB%A6%AC%ED%84%B0%EB%9F%B4" target="_blank">literals(변수값)</a>할당시 약간 다른점이 있다.</li>
+</ul>
+
+<p><span class="font14">숫자형 타입들</span>
+<br /><img src="/blog/assets/img/kotlin/types_of_numbers.jpg" alt="typesOfNumbers" /></p>
+
+<p>숫자 리터럴안에 underline을 이용하여 좀더 알아보기 쉽게 표현할 수 있다.</p>
+<pre><code class="kotlin">
+  val oneMillion = 1_000_000
+  val creditCardNumber = 1234_5678_9012_3456L
+  val socialSecurityNumber = 999_99_9999L
+
+  println(oneMillion)
+  println(creditCardNumber)
+  println(socialSecurityNumber)
+
+//********* 출력결과
+  1000000
+  1234567890123456
+  999999999    
+</code></pre>
+
+<ul>
+  <li>
+    <bold class="colorBlueLight">명시적 타입 변환</bold>
+    <p>코틀린에서는 크기가 작은 타입이 크기가 큰 타입으로 자동(암묵적인)변환되지 않는다.
+<br /><span class="font15">(나와 같은 경우 공식문서의 예와는 다르게 print 결과가 나오기 전에 syntax오류 발생하였다.)</span></p>
+  </li>
+</ul>
+<pre><code>
+    val a: Int? = 1
+    val b: Long? = a //intellij에서 해보니 이 부분에서 syntax오류가 발생
+    print(b == a)
+
+    val b: Byte = 1
+    val i: Int = b //Error
+</code></pre>
+<p><span class="font15">다음과 같이 크기가 큰 타입을 명시적으로 변환할수 있다.</span></p>
+<pre><code>
+  val i: Int = b.toInt()
+</code></pre>
+
+<p>모든 number type은 다음과 같은 형변환 처리 함수를 제공한다.</p>
+<pre><code>
+//Primitives.kt안의 코드에서 발췌
+    public override fun toByte(): Byte
+    public override fun toChar(): Char
+    public override fun toShort(): Short
+    public override fun toInt(): Int
+    public override fun toLong(): Long
+    pub      
+     override fun toFloat(): Float
+    public override fun toDouble(): Double
+</code></pre>
+
+<bold class="font19">비교연산</bold>
+<ul>
+  <li><code>sh1(bits)</code> : java에서의 <code>&lt;&lt;</code></li>
+  <li><code>shr(bits)</code> : java에서의 <code>&gt;&gt;</code></li>
+  <li><code>ushr(bits)</code> : java에서의 <code>&gt;&gt;&gt;</code></li>
+  <li><code>and(bits)</code> : bitwise and</li>
+  <li><code>or(bits)</code> : bitwise or</li>
+  <li><code>xor(bits)</code> : bitwise xor</li>
+  <li><code>inv()</code> : bitwise inversion</li>
+</ul>
+
+<bold class="font19">소수점숫자들의 비교</bold>
+<ul>
+  <li>equality Check : <code>a == b</code>, <code>a != b</code></li>
+  <li>비교연산자들 : <code>a &lt; b</code>, <code>a &gt; b</code>, <code>a &lt;= b</code>, <code>a &gt;= b</code></li>
+  <li><code>범위설정 표현과 범위 체크</code> : <code>a..b</code>, <code>x in a..b</code>, <code>x !in a..b</code></li>
+</ul>
+
+<hr />
+
+<h2 id="characters">Characters</h2>
+<p>문자열들은 <code>Char</code>으로 표현된다.
+Char 타입의 변수들은 숫자로 바로 대치 될 수 없다. (위에서 언급한 ‘명시적인 타입변환’특징의 하나인 것 같다.)</p>
+<pre><code>
+fun check(c: Char) {
+  if (c == 1) { // ERROR: incompatible types
+  // ...
+  }
+}
+</code></pre>
+<p>Char 변수는 single quotes(‘)로 표현한다: <code>'1'</code>
+<br />특수문자들은 백슬러시를 이용하면 single auotes사용없이 표현 가능하다.
+<code>\t</code>, <code>\b</code>, <code>\n</code>, <code>\r</code>, <code>\'</code>
+<code>\"t"</code>, <code>\\</code>, <code>$</code></p>
+
+<p>역시 명시적인 형변화를 통해 문자열을 Int형으로 변환 가능하다.</p>
+<pre><code class="kotlin">
+val c:Char = 'A'
+val n:Int = c.toInt() - '0'.toInt() //Explicit conversions to numbers
+</code></pre>
+
+<hr />
+
+<h2 id="booleans">Booleans</h2>
+<p>true나 false 둘 중 하나의 값을 가지는 타입, java와 별반 다를게 없다.</p>
+<hr />
+
+<h2 id="arrays">Arrays</h2>
+<ul>
+  <li>Arrays class로 존재한다.  get, set 함수, size 프로퍼티를 가지고 있습니다.
+(<a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html" target="_blank">refer링크</a>)</li>
+  <li>배열을 생성하는 방법은 아래와 같습니다.
+<br />1) 표준 라이브러리 함수를 사용 - arrayOf(), arrayOfNulls(), emptyArray()
+<br />2) Array Contructor 사용 - controctor는 배열size와 초기화할 element를 만드는 람다식을 파라미터로 받는 형식.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">val</span> <span class="py">t</span><span class="p">:</span><span class="nc">Array</span><span class="p">&lt;</span><span class="nc">Int</span><span class="p">&gt;</span> <span class="p">=</span> <span class="nf">arrayOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">)</span> <span class="c1">// [1,2,3]</span>
+<span class="kd">val</span> <span class="py">s</span><span class="p">:</span> <span class="nc">Array</span><span class="p">&lt;</span><span class="nc">Int</span><span class="err">?</span><span class="p">&gt;</span> <span class="p">=</span> <span class="nf">arrayOfNulls</span><span class="p">(</span><span class="m">3</span><span class="p">)</span> <span class="c1">//size: 3, null로 이루어진 array 생성</span>
+
+<span class="c1">//빈 Array선언</span>
+<span class="kd">val</span> <span class="py">a</span><span class="p">:</span> <span class="nc">Array</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">&gt;</span> <span class="p">=</span> <span class="nf">emptyArray</span><span class="p">();</span>
+
+<span class="c1">//size : 5, (i*i)값으로 이루어진 Array&lt;String&gt;생성 ["0", "1", "4", "9", "16"]</span>
+<span class="kd">val</span> <span class="py">asc</span> <span class="p">=</span> <span class="nc">Array</span><span class="p">(</span><span class="m">5</span><span class="p">,</span> <span class="p">{</span><span class="n">i-</span><span class="p">&gt;(</span><span class="n">i</span><span class="p">*</span><span class="n">i</span><span class="p">).</span><span class="nf">toString</span><span class="p">()})</span>
+
+<span class="c1">//Any타입으로 선언하면 여러 타입의 element을 가질수 있네요.</span>
+<span class="kd">val</span> <span class="py">c</span><span class="p">:</span><span class="nc">Array</span><span class="p">&lt;</span><span class="nc">Any</span><span class="p">&gt;</span> <span class="p">=</span> <span class="nf">arrayOf</span><span class="p">(</span><span class="s">"1"</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3.3</span><span class="p">)</span></code></pre></figure>
+
+<ul>
+  <li>코틀린은 자바와 같은 자동 boxing 처리 없이 각 원시타입을 위한 특화된 클래스가 존재합니다.
+<br /><code>ByteArray</code>, <code>ShortArray</code>, <code>IntArray</code> 등등..
+<br />일반 배열과 마찬가지로, 원시타입을 위한 배열을 생성하는 함수 또한 표준 라이브러리에 포함 되어 있습니다.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="kd">val</span> <span class="py">intArr</span> <span class="p">:</span> <span class="nc">IntArray</span> <span class="p">=</span> <span class="nc">IntArray</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">)</span></code></pre></figure>
+
+<ul>
+  <li>한가지 알아둘 점은 자바와 달리 코틀린에서 배열은 타입의 변환을 허용하지 않는다는 점입니다.(Arrays are invariant)
+즉 <code>Array&lt; String &gt;</code> 타입의 변수를 <code>Array&lt; Any &gt;</code>타입으로 배당할수 없습니다.
+ 예를 들어 java에서는 다음과 같은 코드가 허용 되지만,</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="nc">Number</span><span class="p">[]</span> <span class="n">numbers</span> <span class="p">=</span> <span class="n">new</span> <span class="nc">Number</span><span class="p">[</span><span class="m">1</span><span class="p">];</span>
+<span class="nc">Object</span><span class="p">[]</span> <span class="n">objects</span> <span class="p">=</span> <span class="n">numbers</span><span class="p">;</span>
+<span class="n">objects</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="p">=</span> <span class="s">"hello"</span><span class="p">;</span></code></pre></figure>
+
+<p>다음과 같이 코틀린에서는 <code>Array&lt; Int &gt; -&gt;Array&lt; Any &gt;</code>로의 할당이 불가능합니다.</p>
+
+<figure class="highlight"><pre><code class="language-kotlin" data-lang="kotlin"><span class="k">fun</span> <span class="nf">copy</span><span class="p">(</span><span class="n">from</span><span class="p">:</span> <span class="nc">Array</span><span class="p">&lt;</span><span class="nc">Any</span><span class="p">&gt;,</span> <span class="n">to</span><span class="p">:</span> <span class="nc">Array</span><span class="p">&lt;</span><span class="nc">Any</span><span class="p">&gt;)</span> <span class="p">{</span>
+    <span class="nf">assert</span><span class="p">(</span><span class="n">from</span><span class="p">.</span><span class="n">size</span> <span class="p">==</span> <span class="n">to</span><span class="p">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="k">in</span> <span class="n">from</span><span class="p">.</span><span class="n">indices</span><span class="p">)</span>
+        <span class="n">to</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="n">from</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="kd">val</span> <span class="py">ints</span><span class="p">:</span> <span class="nc">Array</span><span class="p">&lt;</span><span class="nc">Int</span><span class="p">&gt;</span> <span class="p">=</span> <span class="nf">arrayOf</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+    <span class="kd">val</span> <span class="py">any</span> <span class="p">=</span> <span class="nc">Array</span><span class="p">&lt;</span><span class="nc">Any</span><span class="p">&gt;(</span><span class="m">3</span><span class="p">){</span> <span class="s">""</span> <span class="p">}</span>
+    <span class="nf">copy</span><span class="p">(</span><span class="n">ints</span><span class="p">,</span> <span class="n">any</span><span class="p">)</span> <span class="c1">//오류 발생</span></code></pre></figure>
+
+<hr />
+
+<h2 id="strings">Strings</h2>
+<p>java와 같이 코틀린에서도 String은 불변객체입니다.(immutable)
+string의 각 요소는 characters로 이루어져 있으며 indexing operation을 통해 접근 가능합니다. : <code>s[i]</code></p>
+<pre><code>
+for(c in str) {
+  println(c)
+}
+</code></pre>
+<p>코틀린에서 triple quote(<code class="highlighter-rouge"> """ </code>)를 사용하면 개행문자(<code class="highlighter-rouge"> \n </code>)를 쓰지 않고도 줄바꿈이나 공백등 어떤 문자든 자유롭게 표현 할 수 있습니다.</p>
+<pre><code>
+var text = """
+  for (c in "foo")
+    print(c)
+"""
+</code></pre>
+<p>또한 각줄의 시작을 구분하는 문자(default <code class="highlighter-rouge">|</code>)로 채운 후 <code class="highlighter-rouge">trimMargin()</code>을 이용하여 앞의 공백의 제거 할 수 있습니다.</p>
+<pre><code>
+val text = """
+    |Tell me and I forget.
+    |Teach me and I remember.
+    |Involve me and I learn.
+    |(Benjamin Franklin)
+    """.trimMargin()
+</code></pre>
+<p>공백 구분값으로 사용되는 문자 <code class="highlighter-rouge">|</code>는 default입니다. 다른 문자를 사용할 경우 함수에 해당 구분문자를 파라미터로 넘겨주어 사용 가능합니다.
+<code class="highlighter-rouge">trimmargin("&gt;")</code></p>
+
+<p><em>문자열 템플릿</em>
+문자열 템플릿을 이용하여 문자내 일부 단어를 다른 값으로 치환할 수 있습니다.</p>
+<pre><code>
+val i = 10
+println("i = $i") //prints "i = 10"
+
+val s = "abc"
+println("$s.length is ${s.length}") //prints "abc.length is 3"
+</code></pre>
+
+:ET

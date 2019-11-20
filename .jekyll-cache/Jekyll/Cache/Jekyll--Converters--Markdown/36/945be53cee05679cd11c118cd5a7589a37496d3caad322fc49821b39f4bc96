@@ -1,0 +1,16 @@
+I"�<p>시간이 없으니까 속성으루~</p>
+
+<ol>
+  <li>elasticsearch + kibana 도커 환경 구성 - 한땀 한땀 친절한 주석 감사~ ㅠ
+    <ul>
+      <li>https://jistol.github.io/docker/2019/03/27/docker-compose-elasticsearch-cluster/</li>
+    </ul>
+  </li>
+  <li>elasticsearch 기초
+    <ul>
+      <li>https://d2.naver.com/helloworld/273788</li>
+      <li>https://12bme.tistory.com/171</li>
+    </ul>
+  </li>
+</ol>
+:ET

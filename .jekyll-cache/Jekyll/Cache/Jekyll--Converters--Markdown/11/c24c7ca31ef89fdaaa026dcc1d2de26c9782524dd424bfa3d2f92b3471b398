@@ -1,0 +1,112 @@
+I"�<ul>
+  <li>코틀린은 3가지 jump expressions를 가지고 있다. - returns. break. continue.</li>
+</ul>
+
+<hr />
+
+<h3 id="lable로-break와-continue-하기">Lable로 Break와 Continue 하기</h3>
+
+<ul>
+  <li>코틀린에서는 어떤 식이던 <code>라벨</code>로 표시할수 있다.</li>
+  <li>라벨은 식별자 다음에 <code>@</code>를 붙여 사용한다. : <code class="highlighter-rouge">abc@</code>, <code class="highlighter-rouge">fooBar@</code></li>
+  <li>특정 조건절앞에 라벨을 붙이기만 하면 label expressions을 사용할 수 있다.</li>
+</ul>
+<pre><code>
+  myLabel@ for(i in 1..100) {
+      for(j in 1..100) {
+          println(j)
+          if(j == 3) break@myLabel
+      }
+  }
+
+  //*****
+  1
+  2
+  3
+</code></pre>
+
+<hr />
+
+<h3 id="lable로-return">Lable로 Return</h3>
+<p>코틀린에서는 아래와 같이 return 식별자 하나만 사용이 가능한데, 공식문서에 의하면 <a href="https://kotlinlang.org/docs/reference/exceptions.html#the-nothing-type" target="_blank">Nothing Type</a>을 넘기는거라고 한다.</p>
+<pre><code>
+  val s = person.name ?: return
+</code></pre>
+<p>이를 이용해서 loop를 빠져 나가는 용도로 쓸 수 있다.</p>
+<pre><code>
+fun foo() {
+  listOf(1, 2, 3, 4, 5).forEach {
+      if (it == 3) return // non-local return directly to the caller of foo()
+      println(it)
+  }
+  println("this point is unreachable")
+}
+
+&gt;&gt;&gt; foo()
+1
+2
+</code></pre>
+<p>주의할 점은 return-expression은 가장 가까운 함수를 return한다는 점이다.
+<br />위 코드의 경우 .forEach 람다식의 결과가 return되는 것이 아니라 함수 foo()의 리턴
+으로 인식하고 함수를 빠져 나가게 된다.</p>
+
+<ul>
+  <li>람다식 내에서만 return 하고 싶다면 label을 이용해야 한다.</li>
+</ul>
+<pre><code>
+fun fooLabel() {
+    listOf(1, 2, 3, 4, 5).forEach lit@{
+        if (it == 3) return@lit // local return to the caller of the lambda, i.e. the forEach loop
+        print(it)
+    }
+    print(" done with explicit label")
+}
+
+
+&gt;&gt;&gt; fooLabel()
+1
+2
+4
+5
+ done with explicit label
+</code></pre>
+
+<p>다음과 같이 앞단에 라벨을 선언하지 않고도 암시적인 Lable을 사용할 수도 있다.</p>
+<pre><code>
+fun foo() {
+    listOf(1, 2, 3, 4, 5).forEach {
+        if (it == 3) return@forEach // local return to the caller of the lambda, i.e. the forEach loop
+        println(it)
+    }
+    println(" done with implicit label")
+}
+
+&gt;&gt;&gt; foo()
+1
+2
+4
+5
+ done with implicit label
+</code></pre>
+
+<ul>
+  <li>Label왜에 익명함수를 이용하여 위와 똑같은 결과를 도출 할 수도 있다.</li>
+</ul>
+<pre><code>
+fun foo() {
+    listOf(1, 2, 3, 4, 5).forEach(fun(value: Int) {
+        if (value == 3) return  // local return to the caller of the anonymous fun, i.e. the forEach loop
+        println(value)
+    })
+    println(" done with anonymous function")
+}
+
+&gt;&gt;&gt; foo()
+1
+2
+4
+5
+ done with anonymous function
+</code></pre>
+
+:ET

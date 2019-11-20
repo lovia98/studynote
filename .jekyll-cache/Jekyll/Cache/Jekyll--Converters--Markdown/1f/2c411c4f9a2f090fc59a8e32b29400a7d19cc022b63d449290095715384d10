@@ -1,0 +1,136 @@
+I"H<p>스프링 클라우드 환경에서 환경설정 정보(깃등에 저장한 property)를 변경을 하면,
+ <br />config server는 바로 반영 하지만 config server를 바라보는 마이스크로 서비스는
+ 자동으로 갱신된 정보를 가져가지 못한다.</p>
+
+<ul>
+  <li>Spring Cloud Config와 Clinet설정은 <a href="/blog/spring-cloud.html" target="_blank">이전글</a> 참고
+<br /><br />
+환경설정 정보를 최신화하려면 각 마이크로서비스의 /refresh 엔드포인트를 호출 해야 한다.
+<br />마이스크로 서비스가 한 두개가 아닌 경우 일일히 호출해주는 것도 만만한 일이 아닐 것이다.
+<br />스프링 클라우드 버스는 이런 문제를 해결해 주기 위한 서비스이다.
+<br /><img src="/blog/assets/img/spring/sp-clound-bus.jpg" /></li>
+</ul>
+
+<p>본격적으로 설정을 위해
+<a href="http://cloud.spring.io/spring-cloud-bus/single/spring-cloud-bus.html#_quick_start" target="_blank">레퍼런스</a>을 방문 하였다.
+<br />dependency에 <code>spring-cloud-starter-bus-amqp</code>나
+<code>spring-cloud-starter-bus-kafka</code>둘 중 하나를 추가하라고 하는거 보니, Message Queque를
+이용해 /refresh를 전파하는 방식이라는 것을 알 수 있었다.
+<br />따라서 메세지를 저장할 서버가 별도로 필요하다.
+<br /><br /></p>
+
+<ol>
+  <li>
+    &nbsp;<span class="fontHighlight1">RabbitMq를 설치</span>
+    <br />RabbitMq를 사용하기로 선택하여서 RabbitMq를 설치했다.
+    <br />- 설치는 RabbitMq 홈페이지에서 <a href="https://www.rabbitmq.com/download.html" target="_blank">다운</a>을 받거나
+    <a href="https://docs.docker.com/samples/library/rabbitmq/" target="_blank">Docker</a>통해 설치하면 된다.
+  </li>
+  <li>
+      &nbsp;<span class="fontHighlight1">Config서버 설정</span>
+      <br /><bold>pom.xml</bold>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">  <span class="nt">&lt;dependency&gt;</span>
+      <span class="nt">&lt;groupId&gt;</span>org.springframework.cloud<span class="nt">&lt;/groupId&gt;</span>
+      <span class="nt">&lt;artifactId&gt;</span>spring-cloud-starter-bus-amqp<span class="nt">&lt;/artifactId&gt;</span>
+      <span class="nt">&lt;version&gt;</span>1.3.4.RELEASE<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;/dependency&gt;</span></code></pre></figure>
+
+
+      <bold>bootstrap.yml</bold>
+
+<figure class="highlight"><pre><code class="language-yml" data-lang="yml">  <span class="na">server</span><span class="pi">:</span>
+  <span class="na">port</span><span class="pi">:</span> <span class="m">8888</span>
+
+  <span class="na">spring</span><span class="pi">:</span>
+    <span class="na">cloud</span><span class="pi">:</span>
+      <span class="na">config</span><span class="pi">:</span>
+        <span class="na">server</span><span class="pi">:</span>
+          <span class="na">git</span><span class="pi">:</span>
+            <span class="na">uri</span><span class="pi">:</span> <span class="s">https://github.com/xxxx/spring-cloud-config.git</span>
+    <span class="na">rabbitmq</span><span class="pi">:</span>
+      <span class="na">host</span><span class="pi">:</span> <span class="s">localhost</span>
+      <span class="na">port</span><span class="pi">:</span> <span class="m">5672</span>
+      <span class="na">username</span><span class="pi">:</span> <span class="s">guest</span>
+      <span class="na">password</span><span class="pi">:</span> <span class="s">guest</span>
+
+  <span class="na">management</span><span class="pi">:</span>
+    <span class="na">security</span><span class="pi">:</span>
+      <span class="na">enabled</span><span class="pi">:</span> <span class="no">false</span></code></pre></figure>
+
+    <ul>
+      <li>각 마이크로서비스에 /refresh를 전파하기 위해서는 메세지 발행(publishing)이 필요한데,
+      <br />actuator <code>/bus/refresh</code>를 통해 가능하다.</li>
+      <li>테스트를 위해 actuator호출시 security 적용을 해체 하기 위해 management.security.enabled설정을 false로 했다.</li>
+    </ul>
+  </li>
+  <li>
+    &nbsp;<span class="fontHighlight1">Client서비스 설정</span>
+    <br /><bold>pom.xml</bold>
+
+<figure class="highlight"><pre><code class="language-yml" data-lang="yml">    <span class="s">&lt;dependency&gt;</span>
+        <span class="s">&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span>
+        <span class="s">&lt;artifactId&gt;spring-cloud-starter-bus-amqp&lt;/artifactId&gt;</span>
+        <span class="s">&lt;version&gt;1.3.4.RELEASE&lt;/version&gt;</span>
+    <span class="s">&lt;/dependency&gt;</span></code></pre></figure>
+
+    <bold> bootstrap.yml </bold>
+
+<figure class="highlight"><pre><code class="language-yml" data-lang="yml"><span class="na">spring</span><span class="pi">:</span>
+  <span class="na">application</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">product-service</span>
+  <span class="na">profiles</span><span class="pi">:</span>
+    <span class="na">active</span><span class="pi">:</span> <span class="s">dev</span>
+  <span class="na">cloud</span><span class="pi">:</span>
+    <span class="na">config</span><span class="pi">:</span>
+      <span class="na">uri</span><span class="pi">:</span> <span class="s">http://localhost:8888/</span>
+  <span class="na">rabbitmq</span><span class="pi">:</span>
+    <span class="na">host</span><span class="pi">:</span> <span class="s">localhost</span>
+    <span class="na">port</span><span class="pi">:</span> <span class="m">5672</span>
+    <span class="na">username</span><span class="pi">:</span> <span class="s">guest</span>
+    <span class="na">password</span><span class="pi">:</span> <span class="s">guest</span></code></pre></figure>
+
+    <bold>application.yml</bold>
+
+<figure class="highlight"><pre><code class="language-yml" data-lang="yml"><span class="na">server</span><span class="pi">:</span>
+<span class="na">port</span><span class="pi">:</span> <span class="m">8081</span>
+
+<span class="na">management</span><span class="pi">:</span>
+  <span class="na">security</span><span class="pi">:</span>
+    <span class="na">enabled</span><span class="pi">:</span> <span class="no">false</span></code></pre></figure>
+
+  </li>
+  <li>
+    &nbsp;<span class="fontHighlight1">테스트</span>
+    <ul>
+      <li>RabbitMq서버 실행!(설치된 위치와 실행방법은 홈페이지 Document를 참고)
+        <br /><code>./rabbitmq-server</code>
+        <br /><br />
+      </li>
+      <li>
+        여러개의 서비스에 전파되는 것을 확인 하기 위해 client프로젝트를 복사하여 port변경
+        <br /><code>서비스1 : port 8081 , 서비스2: port 8082</code>
+        <br /><br />
+      </li>
+      <li>
+          git에 있는 property 변경 (원래 item-dev-api.myhost.com 였음)
+          <br /><img src="/studynote/assets/images/spring/properChanged.jpg" height="160" />
+          <br /><br />
+      </li>
+      <li>
+          Config Server의 액츄에이터 <code>/bus/refresh</code> 호출
+          <br /><code>$ curl -X POST http://localhost:8888/bus/refresh </code>
+          <br /><br />
+      </li>
+      <li>
+          두개의 client서비스 모두의 환경 설정 정보가 변경 된 것을 확인 할수 있었다.
+          <br /><img src="/studynote/assets/images/spring/localhost_8081_dynamic_.jpg" />
+          <br /><img src="/studynote/assets/images/spring/localhost_8082_dynamic_.jpg" />
+      </li>
+    </ul>
+  </li>
+</ol>
+<ul>
+  <li>예제 GitHub : <a href="https://github.com/lovia98/spring-cloud-example" target="_blank">https://github.com/lovia98/spring-cloud-example</a></li>
+</ul>
+:ET
