@@ -1,5 +1,5 @@
 {
-  "kinesis" : {
+  "kinesis": {
     "timestamp": "2019-10-21 12:17:22.905",
     "level": "INFO",
     "thread": "main",
