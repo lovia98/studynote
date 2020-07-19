@@ -12,6 +12,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 site-twitter: #if your site has a twitter account, enter it here
 
 # Author Settings
+
 author: Juhee Han # add your name
 author-img: profile.jpg # add your photo
 about-author: 일상과 개발 # add description
