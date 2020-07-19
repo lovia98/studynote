@@ -22,7 +22,7 @@ html {
  */
 body {
     margin: 0;
-}
+} 
 
 /**
  * Add the correct display in IE 9-.
@@ -83,7 +83,8 @@ hr {
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
-pre {
+pre
+{
     font-family: monospace, monospace;
     /* 1 */
     font-size: 1em;
@@ -437,24 +438,24 @@ template {
 }
 
 .highlight {
-    background-color: #faf9f9;
     -webkit-border-radius: 3px;
     border-radius: 3px;
     margin: 0;
 }
 
 .highlighter-rouge {
-    color: #283131;
+    color: #f05f70;
+    background-color: #f4eeee;
     font-weight: 400;
-    border: 1px solid #c2c9d4;
+    /*border: 1px solid #c2c9d4;*/
     -webkit-border-radius: 3px;
     border-radius: 3px;
-    padding: 0.1rem 0.1rem;
+    padding: 3px 10px;
     margin-top: 5px;
 }
 
 .highlight .hll {
-    background-color: #ffc;
+    background-color: #fff;
 }
 
 .highlight .c {
@@ -825,6 +826,7 @@ pre code {
     white-space: pre-wrap;
     word-wrap: break-word;
     word-break: break-all;
+    color: #6D737B;
 }
 
 table {
