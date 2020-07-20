@@ -37,7 +37,7 @@ VueJs 공식 홈페이지와 [맨땅에 개발하기](https://www.youtube.com/wa
    * vue project가 생성된 다음 파일 구조는 다음과 같다.  
    ![vue create project]({{site.baseurl}}/assets/img/js/springboot_vue.png){:height="300"}  
       
-3. 프론트 개발환경은 ```localhost:3000```  백엔드는 ``` localhost:8080 ``` 에서 작동하도록 하게 설정하는 것으로 잡았다. 
+3. 프론트 개발환경은 ```localhost:3000```  백엔드는 ``` localhost:8080 ``` 에서 작동하도록 하게 설정하는 것으로 잡았다.  
    헌데 이렇게 하면, 프론트에서 백엔드를 호출 할때 **cross-origin 요청 제한** 문제가 생길 수 밖에 없는데,  
    이 문제를 해결 하기 위해서는 vue쪽 환경설정에 http proxy를 설정해줘야 한다.
    
