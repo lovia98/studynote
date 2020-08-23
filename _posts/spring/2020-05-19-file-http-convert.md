@@ -2,7 +2,7 @@
 layout: post
 title: "MultipartFile Restemplate 전송시 오류"
 date: 2020-05-19
-description: 로그백 관련 정보 정리. # Add post description (optional)
+description: restTemplate으로 파일 전송시 오류
 categories: Spring
 img:  # Add image post (optional)
 ---
