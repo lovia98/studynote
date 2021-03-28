@@ -1,0 +1,24 @@
+---
+title: json string을 List로 변환하는 Generic 함수
+layout: post
+categories: JAVA
+date: 2021-03-24
+---
+
+최근 http 응답 결과를 공통으로 처리해주는 서비스에 순수 list만 반환해주는 generic 함수를 추가할 일이 생겼다.  
+구글신에게 물어봐서 해결!  
+
+```
+/** 
+* json to List 
+* * @param jsonStr 
+* @param clz 
+* @param <T> 
+* @return 
+*/
+public static <T> List<T> jsonStrToCollectionTyp(final String jsonStr, Class<T> clz){    
+    return mapper.readValue(jsonStr, TypeFactory.defaultInstance().constructCollectionType(List.class, clz));    
+}
+
+
+```
